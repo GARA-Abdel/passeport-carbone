@@ -1,33 +1,12 @@
 /* =========================================
    PASSEPORT CARBONE
-   Facteurs d'émission — Burkina Faso
-   =========================================
-
-   Sources principales :
-   - MRV Burkina Faso
-   - Lignes directrices 2006 du GIEC
-   - Données nationales disponibles
-
-   IMPORTANT :
-   Les facteurs des combustibles sont conservés
-   dans leur unité méthodologique d'origine (kg/TJ).
-
-   Les conversions vers les unités utilisées
-   dans les formulaires sont effectuées dans
-   calcul.js lorsqu'une donnée de conversion
-   suffisamment documentée est disponible.
-
-   Lorsqu'un facteur national suffisamment
-   documenté n'est pas disponible, la valeur
-   reste volontairement à 0 afin d'éviter
-   d'introduire une fausse précision.
-
+   FACTEURS D'EMISSION
+   Prototype de recherche — 2026
    ========================================= */
 
 
-
 /* =========================================
-   POTENTIELS DE RÉCHAUFFEMENT GLOBAL
+   POTENTIELS DE RECHAUFFEMENT GLOBAL
    ========================================= */
 
 const GWP_BURKINA = {
@@ -41,20 +20,27 @@ const GWP_BURKINA = {
 };
 
 
-
 /* =========================================
-   FACTEURS NATIONAUX DES COMBUSTIBLES
-   Unité : kg de gaz / TJ
+   COMBUSTIBLES
+   =========================================
+   
+   Les facteurs sont exprimés en kg de gaz
+   à effet de serre par TJ d'énergie.
+   
+   Le moteur de calcul effectue ensuite
+   les conversions nécessaires.
    ========================================= */
 
 const FACTEURS_COMBUSTIBLES = {
 
 
-    /* =====================================
-       ⛽ ESSENCE
-       ===================================== */
+    /* -----------------------------------------
+       ESSENCE
+       ----------------------------------------- */
 
     essence: {
+
+        nom: "Essence",
 
         unite: "litre",
 
@@ -66,37 +52,23 @@ const FACTEURS_COMBUSTIBLES = {
 
         uniteFacteur: "kg/TJ",
 
-
-        /*
-         * Pouvoir calorifique inférieur
-         * Essence automobile :
-         * 44,3 TJ/Gg
-         */
-
         NCV: 44.3,
-
-
-        /*
-         * Conversion volume → masse
-         *
-         * 1351 litres ≈ 1 tonne
-         */
 
         conversionVolumeMasse: 1351,
 
-
         source:
-            "MRV Burkina Faso + GIEC 2006"
+            "Facteurs de référence GIEC 2006 / données nationales disponibles"
 
     },
 
 
-
-    /* =====================================
-       ⛽ DIESEL / GASOIL
-       ===================================== */
+    /* -----------------------------------------
+       DIESEL / GASOIL
+       ----------------------------------------- */
 
     diesel: {
+
+        nom: "Gasoil / Diesel",
 
         unite: "litre",
 
@@ -108,134 +80,23 @@ const FACTEURS_COMBUSTIBLES = {
 
         uniteFacteur: "kg/TJ",
 
-
-        /*
-         * Pouvoir calorifique inférieur
-         * Gas/diesel oil :
-         * 43,0 TJ/Gg
-         */
-
         NCV: 43.0,
-
-
-        /*
-         * Conversion volume → masse
-         *
-         * 1149 litres ≈ 1 tonne
-         */
 
         conversionVolumeMasse: 1149,
 
-
         source:
-            "MRV Burkina Faso + GIEC 2006"
+            "Facteurs de référence GIEC 2006 / données nationales disponibles"
 
     },
 
 
-
-    /* =====================================
-       🔥 GAZ NATUREL
-       ===================================== */
-
-    gazNaturel: {
-
-        /*
-         * Le formulaire demande actuellement
-         * une quantité en mètres cubes (m³).
-         */
-
-        unite: "m3",
-
-
-        /*
-         * Aucun facteur national suffisamment
-         * documenté n'est actuellement retenu
-         * dans notre modèle pour le gaz naturel.
-         *
-         * Les facteurs restent donc à 0.
-         */
-
-        facteurCO2: 0,
-
-        facteurCH4: 0,
-
-        facteurN2O: 0,
-
-        uniteFacteur: "kg/TJ",
-
-
-        /*
-         * NCV non utilisé tant qu'un facteur
-         * national approprié et une méthode
-         * de conversion m³ → TJ clairement
-         * documentée pour notre contexte
-         * ne sont pas retenus.
-         */
-
-        NCV: 0,
-
-        conversionVolumeMasse: 0,
-
-
-        statut:
-            "Non calculé — facteur national et conversion m³ → énergie à documenter",
-
-
-        source:
-            "MRV Burkina Faso — facteur spécifique à documenter"
-
-    },
-
-
-
-    /* =====================================
-       🔥 FIOUL
-       ===================================== */
-
-    fioul: {
-
-        unite: "litre",
-
-        facteurCO2: 77400,
-
-        facteurCH4: 3,
-
-        facteurN2O: 0.6,
-
-        uniteFacteur: "kg/TJ",
-
-
-        /*
-         * Pouvoir calorifique inférieur
-         * Fioul résiduel :
-         * 40,4 TJ/Gg
-         */
-
-        NCV: 40.4,
-
-
-        /*
-         * Conversion volume → masse
-         *
-         * 1053 litres ≈ 1 tonne
-         */
-
-        conversionVolumeMasse: 1053,
-
-
-        source:
-            "MRV Burkina Faso + GIEC 2006"
-
-    },
-
-
-
-    /* =====================================
-       🔥 PROPANE / GPL
-       ===================================== */
+    /* -----------------------------------------
+       GPL / BUTANE
+       ----------------------------------------- */
 
     propane: {
+
+        nom: "GPL / Butane",
 
         unite: "kg",
 
@@ -247,48 +108,108 @@ const FACTEURS_COMBUSTIBLES = {
 
         uniteFacteur: "kg/TJ",
 
-
-        /*
-         * Pouvoir calorifique inférieur
-         * GPL :
-         * 47,3 TJ/Gg
-         */
-
         NCV: 47.3,
-
-
-        /*
-         * Le propane est saisi directement
-         * en kilogrammes dans notre formulaire.
-         */
 
         conversionVolumeMasse: 0,
 
+        source:
+            "Facteurs de référence GIEC 2006 / données nationales disponibles"
+
+    },
+
+
+    /* -----------------------------------------
+       FIOUL
+       ----------------------------------------- */
+
+    fioul: {
+
+        nom: "Fioul",
+
+        unite: "litre",
+
+        facteurCO2: 77400,
+
+        facteurCH4: 3,
+
+        facteurN2O: 0.6,
+
+        uniteFacteur: "kg/TJ",
+
+        NCV: 40.4,
+
+        conversionVolumeMasse: 1053,
 
         source:
-            "MRV Burkina Faso + GIEC 2006"
+            "Facteurs de référence GIEC 2006"
 
     }
 
 };
 
 
+/* =========================================
+   BIOMASSE — BOIS
+   =========================================
+   
+   Le bois est traité séparément car il est
+   utilisé directement dans plusieurs activités
+   des PME étudiées.
+   
+   Valeurs utilisées pour le prototype :
+   NCV = 15 TJ/Gg
+   ========================================= */
+
+const FACTEUR_BOIS = {
+
+    nom: "Bois de chauffe",
+
+    unite: "kg",
+
+    NCV: 15,
+
+    facteurCO2: 112000,
+
+    facteurCH4: 30,
+
+    facteurN2O: 4,
+
+    uniteFacteur: "kg/TJ",
+
+    source:
+        "Valeurs de référence utilisées pour le prototype — à affiner selon la biomasse étudiée"
+
+};
+
 
 /* =========================================
-   FACTEUR ÉLECTRICITÉ
-   =========================================
+   CHARBON DE BOIS
+   ========================================= */
 
-   Une valeur historique de référence de
-   0,588 kgCO2/kWh a été documentée pour
-   le réseau SONABEL en 2014.
+const FACTEUR_CHARBON = {
 
-   Elle NE DOIT PAS être présentée comme
-   le facteur actuel 2026.
+    nom: "Charbon de bois",
 
-   Nous la conservons uniquement comme
-   référence documentée en attendant de
-   retenir un facteur adapté à la période
-   de notre étude.
+    unite: "kg",
+
+    NCV: 29,
+
+    facteurCO2: 94600,
+
+    facteurCH4: 10,
+
+    facteurN2O: 1.5,
+
+    uniteFacteur: "kg/TJ",
+
+    source:
+        "Valeurs de référence utilisées pour le prototype — à documenter selon le contexte national"
+
+};
+
+
+/* =========================================
+   ELECTRICITE
    ========================================= */
 
 const FACTEUR_ELECTRICITE = {
@@ -297,33 +218,27 @@ const FACTEUR_ELECTRICITE = {
 
     facteur: 0.588,
 
-    uniteFacteur: "kgCO2/kWh",
+    uniteFacteur: "kgCO2e/kWh",
 
     anneeReference: 2014,
 
     statut:
-        "Référence historique — à ne pas présenter comme facteur 2026",
+        "Facteur de référence historique — ne pas présenter comme facteur officiel 2026",
 
     source:
-        "Référence réseau SONABEL / Burkina Faso"
+        "Référence historique du réseau électrique du Burkina Faso"
+
 
 };
 
 
-
 /* =========================================
-   FLUIDES FRIGORIGÈNES
+   FLUIDES FRIGORIGENES
    =========================================
-
-   Les valeurs ci-dessous sont des GWP
-   internationaux associés aux substances.
-
-   Elles ne sont PAS présentées comme des
-   facteurs d'émission nationaux du Burkina Faso.
-
-   Elles servent uniquement au prototype
-   lorsque le fluide effectivement utilisé
-   est connu.
+   
+   Ces valeurs correspondent au GWP des
+   fluides et non à des facteurs nationaux
+   d'émission.
    ========================================= */
 
 const FACTEURS_FRIGORIGENES = {
@@ -333,15 +248,16 @@ const FACTEURS_FRIGORIGENES = {
 
     r134a: {
 
+        nom: "R-134a",
+
         unite: "kg",
 
         facteur: 1430,
 
-        type:
-            "GWP",
+        type: "GWP",
 
         source:
-            "Valeur GWP internationale de référence"
+            "Valeur internationale de référence du GWP"
 
     },
 
@@ -350,15 +266,16 @@ const FACTEURS_FRIGORIGENES = {
 
     r404a: {
 
+        nom: "R-404A",
+
         unite: "kg",
 
         facteur: 3922,
 
-        type:
-            "GWP",
+        type: "GWP",
 
         source:
-            "Valeur GWP internationale de référence"
+            "Valeur internationale de référence du GWP"
 
     },
 
@@ -367,35 +284,60 @@ const FACTEURS_FRIGORIGENES = {
 
     r32: {
 
+        nom: "R-32",
+
         unite: "kg",
 
         facteur: 675,
 
-        type:
-            "GWP",
+        type: "GWP",
 
         source:
-            "Valeur GWP internationale de référence"
+            "Valeur internationale de référence du GWP"
 
     }
 
 };
 
 
+/* =========================================
+   CIMENT
+   =========================================
+   
+   Le ciment représente une source importante
+   dans le secteur BTP.
+   
+   Pour éviter d'utiliser un facteur sans
+   justification méthodologique suffisante,
+   le calcul automatique reste désactivé
+   dans cette version du prototype.
+   ========================================= */
+
+const FACTEUR_CIMENT = {
+
+    unite: "kg",
+
+    facteur: 0,
+
+    statut:
+        "Facteur à documenter avant intégration au calcul",
+
+    source:
+        "Non retenu dans la version actuelle du prototype"
+
+};
+
 
 /* =========================================
-   DÉCHETS
+   DECHETS ORGANIQUES
    =========================================
-
-   Aucun facteur unique n'est retenu ici.
-
-   La quantité de déchets seule ne suffit pas :
-   le traitement (enfouissement, compostage,
-   incinération, etc.) influence fortement
-   les émissions.
-
-   Le calcul sera ajouté lorsque la
-   méthodologie sera définie.
+   
+   La quantité seule ne permet pas de déterminer
+   correctement les émissions.
+   
+   Le traitement doit être connu :
+   compostage, enfouissement, méthanisation,
+   brûlage, etc.
    ========================================= */
 
 const FACTEUR_DECHETS = {
@@ -405,21 +347,72 @@ const FACTEUR_DECHETS = {
     facteur: 0,
 
     statut:
-        "Non calculé — traitement des déchets à préciser",
+        "Non calculé — méthode de traitement à préciser",
 
     source:
-        "MRV Burkina Faso"
+        "Méthodologie à définir pour le prototype"
+
 
 };
 
 
+/* =========================================
+   AGRICULTURE ET ELEVAGE
+   =========================================
+   
+   Ces émissions nécessitent davantage
+   d'informations que celles actuellement
+   demandées dans le formulaire.
+   
+   Elles restent donc désactivées pour
+   éviter une fausse précision.
+   ========================================= */
+
+const FACTEURS_AGRICULTURE = {
+
+    animaux: {
+
+        facteur: 0,
+
+        unite: "animal",
+
+        statut:
+            "Non calculé — espèce et catégorie animale à préciser"
+
+    },
+
+
+    fumier: {
+
+        facteur: 0,
+
+        unite: "kg",
+
+        statut:
+            "Non calculé — mode de gestion du fumier à préciser"
+
+    },
+
+
+    engrais: {
+
+        facteur: 0,
+
+        unite: "kg",
+
+        statut:
+            "Non calculé — teneur en azote à préciser"
+
+    }
+
+};
+
 
 /* =========================================
-   RÉSEAUX DE CHALEUR / FROID
+   RESEAUX DE CHALEUR / FROID
    ========================================= */
 
 const FACTEURS_RESEAUX = {
-
 
     reseauChaleur: {
 
@@ -447,7 +440,6 @@ const FACTEURS_RESEAUX = {
 };
 
 
-
 /* =========================================
    STRUCTURE GLOBALE
    ========================================= */
@@ -455,7 +447,7 @@ const FACTEURS_RESEAUX = {
 const FACTEURS_EMISSION = {
 
 
-    /* Électricité */
+    /* Electricité */
 
     electricite:
         FACTEUR_ELECTRICITE,
@@ -469,17 +461,23 @@ const FACTEURS_EMISSION = {
     diesel:
         FACTEURS_COMBUSTIBLES.diesel,
 
-    gazNaturel:
-        FACTEURS_COMBUSTIBLES.gazNaturel,
+    propane:
+        FACTEURS_COMBUSTIBLES.propane,
 
     fioul:
         FACTEURS_COMBUSTIBLES.fioul,
 
-    propane:
-        FACTEURS_COMBUSTIBLES.propane,
+
+    /* Biomasse */
+
+    bois:
+        FACTEUR_BOIS,
+
+    charbon:
+        FACTEUR_CHARBON,
 
 
-    /* Fluides frigorigènes */
+    /* Fluides */
 
     r134a:
         FACTEURS_FRIGORIGENES.r134a,
@@ -491,10 +489,28 @@ const FACTEURS_EMISSION = {
         FACTEURS_FRIGORIGENES.r32,
 
 
+    /* BTP */
+
+    ciment:
+        FACTEUR_CIMENT,
+
+
     /* Déchets */
 
     dechets:
         FACTEUR_DECHETS,
+
+
+    /* Agriculture */
+
+    animaux:
+        FACTEURS_AGRICULTURE.animaux,
+
+    fumier:
+        FACTEURS_AGRICULTURE.fumier,
+
+    engrais:
+        FACTEURS_AGRICULTURE.engrais,
 
 
     /* Réseaux */
