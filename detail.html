@@ -1,0 +1,1365 @@
+<!DOCTYPE html><html lang="fr"><head><meta charset="UTF-8">
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
+
+<title>Évaluation détaillée | Passeport Carbone</title>
+
+<link rel="stylesheet" href="style.css">
+
+</head><body><!-- ================================
+     NAVIGATION
+     ================================ -->
+
+<header class="navbar">
+
+    <div class="logo">
+
+        <span>🌿</span>
+
+        Passeport Carbone
+
+    </div>
+
+
+    <a
+        href="index.html"
+        class="nav-button"
+    >
+        Accueil
+    </a>
+
+</header>
+
+
+
+<!-- ================================
+     CONTENU PRINCIPAL
+     ================================ -->
+
+<main class="form-page">
+
+
+    <!-- ================================
+         PROGRESSION
+         ================================ -->
+
+    <div class="progress-container">
+
+        <div class="progress-info">
+
+            <span>
+                Parcours d'évaluation
+            </span>
+
+            <strong>
+                Étape 2 sur 3
+            </strong>
+
+        </div>
+
+
+        <div class="progress-bar">
+
+            <div
+                class="progress-fill"
+                style="width: 66.66%;"
+            ></div>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- ================================
+         INTRODUCTION
+         ================================ -->
+
+    <section class="form-intro">
+
+        <span class="section-label">
+            ÉTAPE 2 — ÉVALUATION DÉTAILLÉE
+        </span>
+
+
+        <h1>
+
+            Approfondissez votre
+            <span>évaluation.</span>
+
+        </h1>
+
+
+        <p>
+
+            Cette seconde évaluation recueille davantage
+            d'informations afin de comparer son niveau
+            de précision avec l'évaluation simplifiée.
+
+        </p>
+
+    </section>
+
+
+
+    <!-- ================================
+         FORMULAIRE
+         ================================ -->
+
+    <form
+        id="detail-form"
+        class="form-card"
+    >
+
+
+        <!-- ================================
+             ÉLECTRICITÉ
+             ================================ -->
+
+        <div class="form-header">
+
+            <span class="form-number">
+                01
+            </span>
+
+
+            <h2>
+                ⚡ Électricité
+            </h2>
+
+
+            <p>
+                Indiquez votre consommation électrique
+                et sa principale source.
+            </p>
+
+        </div>
+
+
+        <div class="form-group">
+
+            <label for="electricite">
+                Consommation électrique (kWh)
+            </label>
+
+
+            <input
+                type="number"
+                id="electricite"
+                min="0"
+                step="any"
+                placeholder="Ex. 12000"
+                required
+            >
+
+        </div>
+
+
+        <div class="form-group">
+
+            <label for="source-electricite">
+                Source principale
+            </label>
+
+
+            <select
+                id="source-electricite"
+                required
+            >
+
+                <option value="">
+                    Sélectionnez une source
+                </option>
+
+                <option value="reseau">
+                    Réseau électrique
+                </option>
+
+                <option value="solaire">
+                    Solaire
+                </option>
+
+                <option value="mixte">
+                    Mixte
+                </option>
+
+                <option value="autre">
+                    Autre
+                </option>
+
+            </select>
+
+        </div>
+
+
+
+        <!-- ================================
+             COMBUSTIBLES FIXES
+             ================================ -->
+
+        <div class="form-header">
+
+            <span class="form-number">
+                02
+            </span>
+
+
+            <h2>
+                🔥 Combustibles fixes
+            </h2>
+
+
+            <p>
+                Indiquez les combustibles utilisés
+                pour les installations fixes.
+            </p>
+
+        </div>
+
+
+        <div class="form-group">
+
+            <label for="type-combustible">
+                Type de combustible
+            </label>
+
+
+            <select
+                id="type-combustible"
+                required
+            >
+
+                <option value="">
+                    Aucun / non renseigné
+                </option>
+
+                <option value="gaz-naturel">
+                    Gaz naturel
+                </option>
+
+                <option value="fioul">
+                    Fioul
+                </option>
+
+                <option value="propane">
+                    Propane / GPL
+                </option>
+
+                <option value="autre">
+                    Autre
+                </option>
+
+            </select>
+
+        </div>
+
+
+        <div class="form-group">
+
+            <label for="quantite-combustible">
+                Quantité consommée
+            </label>
+
+
+            <input
+                type="number"
+                id="quantite-combustible"
+                min="0"
+                step="any"
+                placeholder="Ex. 500"
+            >
+
+        </div>
+
+
+        <div class="form-group">
+
+            <label for="unite-combustible">
+                Unité
+            </label>
+
+
+            <select
+                id="unite-combustible"
+            >
+
+                <option value="litres">
+                    Litres
+                </option>
+
+                <option value="kg">
+                    Kilogrammes
+                </option>
+
+                <option value="m3">
+                    Mètres cubes
+                </option>
+
+            </select>
+
+        </div>
+
+
+
+        <!-- ================================
+             TRANSPORT
+             ================================ -->
+
+        <div class="form-header">
+
+            <span class="form-number">
+                03
+            </span>
+
+
+            <h2>
+                🚗 Carburants des véhicules
+            </h2>
+
+
+            <p>
+                Indiquez les consommations annuelles
+                d'essence et de diesel.
+            </p>
+
+        </div>
+
+
+        <div class="form-group">
+
+            <label for="essence">
+                Essence (litres)
+            </label>
+
+
+            <input
+                type="number"
+                id="essence"
+                min="0"
+                step="any"
+                placeholder="Ex. 2000"
+            >
+
+        </div>
+
+
+        <div class="form-group">
+
+            <label for="diesel">
+                Diesel / Gasoil (litres)
+            </label>
+
+
+            <input
+                type="number"
+                id="diesel"
+                min="0"
+                step="any"
+                placeholder="Ex. 3000"
+            >
+
+        </div>
+
+
+
+        <!-- ================================
+             FLUIDES FRIGORIGÈNES
+             ================================ -->
+
+        <div class="form-header">
+
+            <span class="form-number">
+                04
+            </span>
+
+
+            <h2>
+                ❄️ Fluides frigorigènes
+            </h2>
+
+
+            <p>
+                Indiquez si une recharge de fluide
+                frigorigène a été effectuée.
+            </p>
+
+        </div>
+
+
+        <div class="form-group">
+
+            <label for="fluide-frigorifique">
+                Recharge de fluide ?
+            </label>
+
+
+            <select
+                id="fluide-frigorifique"
+                required
+            >
+
+                <option value="">
+                    Sélectionnez une réponse
+                </option>
+
+                <option value="oui">
+                    Oui
+                </option>
+
+                <option value="non">
+                    Non
+                </option>
+
+                <option value="inconnu">
+                    Je ne sais pas
+                </option>
+
+            </select>
+
+        </div>
+
+
+        <div
+            id="fluide-details"
+            style="display:none;"
+        >
+
+            <div class="form-group">
+
+                <label for="type-fluide">
+                    Type de fluide
+                </label>
+
+
+                <select
+                    id="type-fluide"
+                >
+
+                    <option value="">
+                        Sélectionnez un fluide
+                    </option>
+
+                    <option value="r134a">
+                        R-134a
+                    </option>
+
+                    <option value="r404a">
+                        R-404A
+                    </option>
+
+                    <option value="r32">
+                        R-32
+                    </option>
+
+                    <option value="autre">
+                        Autre / inconnu
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label for="quantite-fluide">
+                    Quantité rechargée (kg)
+                </label>
+
+
+                <input
+                    type="number"
+                    id="quantite-fluide"
+                    min="0"
+                    step="any"
+                    placeholder="Ex. 2"
+                >
+
+            </div>
+
+        </div>
+
+
+
+        <!-- ================================
+             RÉSEAUX
+             ================================ -->
+
+        <div class="form-header">
+
+            <span class="form-number">
+                05
+            </span>
+
+
+            <h2>
+                ♨️ Chaleur / froid acheté
+            </h2>
+
+
+            <p>
+                Indiquez si l'entreprise achète de la
+                chaleur ou du froid auprès d'un réseau.
+            </p>
+
+        </div>
+
+
+        <div class="form-group">
+
+            <label for="reseau-energie">
+                Utilisation d'un réseau ?
+            </label>
+
+
+            <select
+                id="reseau-energie"
+                required
+            >
+
+                <option value="">
+                    Sélectionnez une réponse
+                </option>
+
+                <option value="oui">
+                    Oui
+                </option>
+
+                <option value="non">
+                    Non
+                </option>
+
+            </select>
+
+        </div>
+
+
+        <div
+            id="reseau-details"
+            style="display:none;"
+        >
+
+            <div class="form-group">
+
+                <label for="quantite-reseau">
+                    Quantité consommée
+                </label>
+
+
+                <input
+                    type="number"
+                    id="quantite-reseau"
+                    min="0"
+                    step="any"
+                    placeholder="Ex. 1000"
+                >
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label for="unite-reseau">
+                    Unité
+                </label>
+
+
+                <select id="unite-reseau">
+
+                    <option value="kWh">
+                        kWh
+                    </option>
+
+                </select>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- ================================
+             DÉCHETS
+             ================================ -->
+
+        <div class="form-header">
+
+            <span class="form-number">
+                06
+            </span>
+
+
+            <h2>
+                🗑️ Déchets
+            </h2>
+
+
+            <p>
+                Indiquez la quantité annuelle approximative
+                de déchets produits.
+            </p>
+
+        </div>
+
+
+        <div class="form-group">
+
+            <label for="dechets">
+                Déchets produits (kg)
+            </label>
+
+
+            <input
+                type="number"
+                id="dechets"
+                min="0"
+                step="any"
+                placeholder="Ex. 500"
+            >
+
+        </div>
+
+
+
+        <!-- ================================
+             INFORMATION
+             ================================ -->
+
+        <div class="form-notice">
+
+            <span class="notice-icon">
+                🔬
+            </span>
+
+
+            <div>
+
+                <strong>
+                    Objectif de cette étape
+                </strong>
+
+
+                <p>
+
+                    Cette évaluation permet de recueillir
+                    davantage de données afin de comparer
+                    les résultats avec l'évaluation simplifiée.
+
+                </p>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- ================================
+             ACTIONS
+             ================================ -->
+
+        <div class="form-actions">
+
+            <a
+                href="simple.html"
+                class="back-button"
+            >
+                ← Retour
+            </a>
+
+
+            <button
+                type="submit"
+                class="primary-button"
+            >
+                Voir les résultats →
+            </button>
+
+        </div>
+
+    </form>
+
+</main>
+
+
+
+<!-- ================================
+     JAVASCRIPT
+     ================================ -->
+
+<script>
+
+    const form =
+        document.getElementById(
+            "detail-form"
+        );
+
+
+    /* =================================
+       ÉLÉMENTS DYNAMIQUES
+       ================================= */
+
+    const rechargeFluide =
+        document.getElementById(
+            "fluide-frigorifique"
+        );
+
+
+    const fluideDetails =
+        document.getElementById(
+            "fluide-details"
+        );
+
+
+    const reseauEnergie =
+        document.getElementById(
+            "reseau-energie"
+        );
+
+
+    const reseauDetails =
+        document.getElementById(
+            "reseau-details"
+        );
+
+
+
+    /* =================================
+       AFFICHAGE FLUIDE
+       ================================= */
+
+    rechargeFluide.addEventListener(
+        "change",
+        function () {
+
+            if (
+                this.value === "oui"
+            ) {
+
+                fluideDetails.style.display =
+                    "block";
+
+            }
+
+            else {
+
+                fluideDetails.style.display =
+                    "none";
+
+            }
+
+        }
+    );
+
+
+
+    /* =================================
+       AFFICHAGE RÉSEAU
+       ================================= */
+
+    reseauEnergie.addEventListener(
+        "change",
+        function () {
+
+            if (
+                this.value === "oui"
+            ) {
+
+                reseauDetails.style.display =
+                    "block";
+
+            }
+
+            else {
+
+                reseauDetails.style.display =
+                    "none";
+
+            }
+
+        }
+    );
+
+
+
+    /* =================================
+       SOUMISSION
+       ================================= */
+
+    form.addEventListener(
+        "submit",
+        function (event) {
+
+            event.preventDefault();
+
+
+            /* ================================
+               RÉCUPÉRATION
+               ================================ */
+
+            const electricite =
+                document.getElementById(
+                    "electricite"
+                ).value;
+
+
+            const sourceElectricite =
+                document.getElementById(
+                    "source-electricite"
+                ).value;
+
+
+            const typeCombustible =
+                document.getElementById(
+                    "type-combustible"
+                ).value;
+
+
+            const quantiteCombustible =
+                document.getElementById(
+                    "quantite-combustible"
+                ).value;
+
+
+            const uniteCombustible =
+                document.getElementById(
+                    "unite-combustible"
+                ).value;
+
+
+            const essence =
+                document.getElementById(
+                    "essence"
+                ).value;
+
+
+            const diesel =
+                document.getElementById(
+                    "diesel"
+                ).value;
+
+
+            const typeFluide =
+                document.getElementById(
+                    "type-fluide"
+                ).value;
+
+
+            const recharge =
+                document.getElementById(
+                    "fluide-frigorifique"
+                ).value;
+
+
+            const quantiteFluide =
+                document.getElementById(
+                    "quantite-fluide"
+                ).value;
+
+
+            const reseau =
+                document.getElementById(
+                    "reseau-energie"
+                ).value;
+
+
+            const quantiteReseau =
+                document.getElementById(
+                    "quantite-reseau"
+                ).value;
+
+
+            const uniteReseau =
+                document.getElementById(
+                    "unite-reseau"
+                ).value;
+
+
+            const dechets =
+                document.getElementById(
+                    "dechets"
+                ).value;
+
+
+
+            /* ================================
+               VALIDATION
+               ================================ */
+
+            if (
+                electricite === "" ||
+                sourceElectricite === "" ||
+                typeCombustible === "" ||
+                essence === "" ||
+                diesel === "" ||
+                recharge === "" ||
+                reseau === ""
+            ) {
+
+                alert(
+                    "Veuillez remplir les champs obligatoires."
+                );
+
+                return;
+
+            }
+
+
+            /* ================================
+               VALIDATION FLUIDE
+               ================================ */
+
+            if (
+                recharge === "oui" &&
+                (
+                    typeFluide === "" ||
+                    quantiteFluide === ""
+                )
+            ) {
+
+                alert(
+                    "Veuillez renseigner le type et la quantité du fluide frigorigène."
+                );
+
+                return;
+
+            }
+
+
+            /* ================================
+               VALIDATION RÉSEAU
+               ================================ */
+
+            if (
+                reseau === "oui" &&
+                (
+                    quantiteReseau === "" ||
+                    uniteReseau === ""
+                )
+            ) {
+
+                alert(
+                    "Veuillez renseigner les informations du réseau."
+                );
+
+                return;
+
+            }
+
+
+
+            /* ================================
+               DONNÉES DÉTAILLÉES
+               ================================ */
+
+            const donneesDetaillees = {
+
+                electricite:
+                    Number(electricite),
+
+                sourceElectricite:
+                    sourceElectricite,
+
+                typeCombustible:
+                    typeCombustible,
+
+                quantiteCombustible:
+                    Number(
+                        quantiteCombustible || 0
+                    ),
+
+                uniteCombustible:
+                    uniteCombustible,
+
+                essence:
+                    Number(
+                        essence || 0
+                    ),
+
+                diesel:
+                    Number(
+                        diesel || 0
+                    ),
+
+                typeFluide:
+                    typeFluide || null,
+
+                rechargeFluide:
+                    recharge,
+
+                fluideFrigorifique:
+                    Number(
+                        quantiteFluide || 0
+                    ),
+
+                reseauEnergie:
+                    reseau,
+
+                quantiteReseau:
+                    Number(
+                        quantiteReseau || 0
+                    ),
+
+                uniteReseau:
+                    uniteReseau || null,
+
+                dechets:
+                    Number(
+                        dechets || 0
+                    )
+
+            };
+
+
+            /* ================================
+               SAUVEGARDE
+               ================================ */
+
+            localStorage.setItem(
+
+                "passeportCarboneDetail",
+
+                JSON.stringify(
+                    donneesDetaillees
+                )
+
+            );
+
+
+            /* ================================
+               REDIRECTION
+               ================================ */
+
+            window.location.href =
+                "resultat.html";
+
+        }
+    );
+
+</script>
+
+</body></html>        "fluide-frigorifique"
+                ).value;
+
+
+            const quantiteFluide =
+                document.getElementById(
+                    "quantite-fluide"
+                ).value;
+
+
+
+            const reseauEnergie =
+                document.getElementById(
+                    "reseau-energie"
+                ).value;
+
+
+            const quantiteReseau =
+                document.getElementById(
+                    "quantite-reseau"
+                ).value;
+
+
+            const uniteReseau =
+                document.getElementById(
+                    "unite-reseau"
+                ).value;
+
+
+            const dechets =
+                document.getElementById(
+                    "dechets"
+                ).value;
+
+
+
+            /* =================================
+               VÉRIFICATION DES DONNÉES
+               OBLIGATOIRES
+               ================================= */
+
+            if (
+                electricite === "" ||
+                sourceElectricite === "" ||
+                typeCombustible === "" ||
+                essence === "" ||
+                diesel === "" ||
+                fluideFrigorifique === "" ||
+                reseauEnergie === "" ||
+                dechets === ""
+            ) {
+
+                alert(
+                    "Veuillez compléter les informations principales avant de continuer."
+                );
+
+                return;
+
+            }
+
+
+
+            /* =================================
+               VÉRIFICATION DES COMBUSTIBLES
+               ================================= */
+
+            if (
+                typeCombustible !== "aucun"
+            ) {
+
+                if (
+                    quantiteCombustible === "" ||
+                    uniteCombustible === ""
+                ) {
+
+                    alert(
+                        "Veuillez renseigner la quantité et l'unité du combustible utilisé."
+                    );
+
+                    return;
+
+                }
+
+            }
+
+
+
+            /* =================================
+               VÉRIFICATION DES FLUIDES
+               ================================= */
+
+            if (
+                fluideFrigorifique === "oui"
+            ) {
+
+                if (
+                    typeFluide === "" ||
+                    typeFluide === "autre" ||
+                    quantiteFluide === ""
+                ) {
+
+                    alert(
+                        "Pour une recharge de fluide, indiquez un type de fluide connu et sa quantité."
+                    );
+
+                    return;
+
+                }
+
+            }
+
+
+
+            /*
+             * Si aucune recharge n'a été effectuée,
+             * le type de fluide et la quantité ne sont
+             * pas obligatoires.
+             */
+
+            if (
+                fluideFrigorifique === "non" ||
+                fluideFrigorifique === "inconnu"
+            ) {
+
+                /*
+                 * Les valeurs sont volontairement
+                 * conservées comme zéro lors de
+                 * l'enregistrement.
+                 */
+
+            }
+
+
+
+            /* =================================
+               VÉRIFICATION DU RÉSEAU
+               ================================= */
+
+            if (
+                reseauEnergie === "oui"
+            ) {
+
+                if (
+                    quantiteReseau === "" ||
+                    uniteReseau === ""
+                ) {
+
+                    alert(
+                        "Veuillez renseigner la quantité et l'unité de l'énergie fournie par le réseau."
+                    );
+
+                    return;
+
+                }
+
+            }
+
+
+
+            /* =================================
+               VÉRIFICATION DES VALEURS
+               ================================= */
+
+            const valeurs = [
+
+                Number(electricite),
+
+                Number(essence),
+
+                Number(diesel),
+
+                Number(
+                    quantiteCombustible || 0
+                ),
+
+                Number(
+                    quantiteFluide || 0
+                ),
+
+                Number(
+                    quantiteReseau || 0
+                ),
+
+                Number(dechets)
+
+            ];
+
+
+            if (
+                valeurs.some(
+                    valeur =>
+                        !Number.isFinite(valeur) ||
+                        valeur < 0
+                )
+            ) {
+
+                alert(
+                    "Veuillez vérifier les quantités renseignées. Elles doivent être des valeurs positives ou nulles."
+                );
+
+                return;
+
+            }
+
+
+
+            /* =================================
+               DONNÉES DÉTAILLÉES
+               ================================= */
+
+            const donneesDetaillees = {
+
+                electricite:
+                    Number(electricite),
+
+
+                sourceElectricite:
+                    sourceElectricite,
+
+
+                combustibles: {
+
+                    type:
+                        typeCombustible,
+
+                    quantite:
+                        Number(
+                            quantiteCombustible || 0
+                        ),
+
+                    unite:
+                        uniteCombustible
+
+                },
+
+
+                vehicules: {
+
+                    essence:
+                        Number(essence),
+
+                    diesel:
+                        Number(diesel)
+
+                },
+
+
+                fluidesFrigorigenes: {
+
+                    type:
+                        typeFluide || null,
+
+                    recharge:
+                        fluideFrigorifique,
+
+                    quantite:
+                        Number(
+                            quantiteFluide || 0
+                        )
+
+                },
+
+
+                reseauChaleurFroid: {
+
+                    utilise:
+                        reseauEnergie,
+
+                    quantite:
+                        Number(
+                            quantiteReseau || 0
+                        ),
+
+                    unite:
+                        uniteReseau || null
+
+                },
+
+
+                dechets:
+                    Number(dechets)
+
+            };
+
+
+
+            /* =================================
+               ENREGISTREMENT
+               ================================= */
+
+            localStorage.setItem(
+
+                "passeportCarboneDetail",
+
+                JSON.stringify(
+                    donneesDetaillees
+                )
+
+            );
+
+
+
+            /* =================================
+               PASSAGE À L'ÉTAPE 3
+               ================================= */
+
+            alert(
+                "Évaluation détaillée enregistrée avec succès."
+            );
+
+
+            window.location.href =
+                "resultat.html";
+
+        }
+
+
+    </script>
+
+
+</body>
+
+</html>

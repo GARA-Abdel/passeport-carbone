@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Évaluation simple | Passeport Carbone</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- ================================
+         NAVIGATION
+         ================================ -->
+
+    <header class="navbar">
+
+        <div class="logo">
+            <span>🌿</span>
+            Passeport Carbone
+        </div>
+
+        <a href="index.html" class="nav-button">
+            Accueil
+        </a>
+
+    </header>
+
+
+    <!-- ================================
+         CONTENU PRINCIPAL
+         ================================ -->
+
+    <main class="form-page">
+
+
+        <!-- ================================
+             PROGRESSION
+             ================================ -->
+
+        <div class="progress-container">
+
+            <div class="progress-info">
+
+                <span>
+                    Parcours d'évaluation
+                </span>
+
+                <strong>
+                    Étape 1 sur 3
+                </strong>
+
+            </div>
+
+
+            <div class="progress-bar">
+
+                <div class="progress-fill"></div>
+
+            </div>
+
+        </div>
+
+
+        <!-- ================================
+             INTRODUCTION
+             ================================ -->
+
+        <section class="form-intro">
+
+            <span class="section-label">
+                ÉTAPE 1 — ÉVALUATION SIMPLIFIÉE
+            </span>
+
+            <h1>
+                Mesurons
+                <span>l'essentiel.</span>
+            </h1>
+
+            <p>
+                Cette première évaluation repose volontairement
+                sur un nombre limité de données essentielles :
+                votre consommation d'électricité et de carburant.
+            </p>
+
+        </section>
+
+
+        <!-- ================================
+             CARTE DU FORMULAIRE
+             ================================ -->
+
+        <section class="form-card">
+
+
+            <!-- En-tête -->
+
+            <div class="form-header">
+
+                <div>
+
+                    <span class="form-number">
+                        01
+                    </span>
+
+                    <h2>
+                        Données essentielles
+                    </h2>
+
+                    <p>
+                        Renseignez les données correspondant à la
+                        période que vous avez sélectionnée.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- ================================
+                 NOM DE L'ENTREPRISE
+                 ================================ -->
+
+            <div class="form-group">
+
+                <label for="entreprise">
+                    Nom de l'entreprise
+                </label>
+
+                <input
+                    type="text"
+                    id="entreprise"
+                    placeholder="Ex. FasoTech"
+                    autocomplete="organization"
+                >
+
+                <small>
+                    Le nom utilisé pour identifier votre rapport.
+                </small>
+
+            </div>
+
+
+            <!-- ================================
+                 PÉRIODE
+                 ================================ -->
+
+            <div class="form-group">
+
+                <label for="periode">
+                    Période de l'évaluation
+                </label>
+
+                <select id="periode">
+
+                    <option value="">
+                        Sélectionnez une période
+                    </option>
+
+                    <option value="2025">
+                        Janvier – Décembre 2025
+                    </option>
+
+                    <option value="2026">
+                        Janvier – Décembre 2026
+                    </option>
+
+                    <option value="12-mois">
+                        Les 12 derniers mois
+                    </option>
+
+                </select>
+
+                <small>
+                    Les consommations renseignées doivent
+                    correspondre à cette période.
+                </small>
+
+            </div>
+
+
+            <!-- ================================
+                 ÉLECTRICITÉ
+                 ================================ -->
+
+            <div class="form-group">
+
+                <label for="electricite">
+                    ⚡ Consommation annuelle d'électricité
+                </label>
+
+                <input
+                    type="number"
+                    id="electricite"
+                    placeholder="Ex. 12500"
+                    min="0"
+                    step="0.01"
+                    inputmode="decimal"
+                >
+
+                <small>
+                    Indiquez votre consommation en
+                    <strong>kWh</strong> pour la période évaluée.
+                </small>
+
+            </div>
+
+
+            <!-- ================================
+                 ESSENCE
+                 ================================ -->
+
+            <div class="form-group">
+
+                <label for="essence">
+                    ⛽ Consommation d'essence
+                </label>
+
+                <input
+                    type="number"
+                    id="essence"
+                    placeholder="Ex. 400"
+                    min="0"
+                    step="0.01"
+                    inputmode="decimal"
+                >
+
+                <small>
+                    Indiquez la quantité d'essence consommée en
+                    <strong>litres</strong> pour la période évaluée.
+                </small>
+
+            </div>
+
+
+            <!-- ================================
+                 DIESEL / GASOIL
+                 ================================ -->
+
+            <div class="form-group">
+
+                <label for="diesel">
+                    ⛽ Consommation de diesel / gasoil
+                </label>
+
+                <input
+                    type="number"
+                    id="diesel"
+                    placeholder="Ex. 450"
+                    min="0"
+                    step="0.01"
+                    inputmode="decimal"
+                >
+
+                <small>
+                    Indiquez la quantité de diesel / gasoil consommée
+                    en <strong>litres</strong> pour la période évaluée.
+                </small>
+
+            </div>
+
+
+            <!-- ================================
+                 MESSAGE D'INFORMATION
+                 ================================ -->
+
+            <div class="form-notice">
+
+                <span class="notice-icon">
+                    🔬
+                </span>
+
+                <div>
+
+                    <strong>
+                        Une approche volontairement simplifiée
+                    </strong>
+
+                    <p>
+                        Cette étape utilise uniquement les données
+                        essentielles retenues pour notre étude.
+                        Une évaluation plus détaillée sera proposée
+                        à l'étape suivante.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- ================================
+                 ACTIONS
+                 ================================ -->
+
+            <div class="form-actions">
+
+                <a
+                    href="index.html"
+                    class="back-button"
+                >
+                    ← Retour
+                </a>
+
+
+                <button
+                    type="button"
+                    class="primary-button"
+                    onclick="continuer()"
+                >
+                    Continuer →
+                </button>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- ================================
+         JAVASCRIPT
+         ================================ -->
+
+    <script>
+
+        function continuer() {
+
+            const entreprise =
+                document.getElementById("entreprise").value.trim();
+
+            const periode =
+                document.getElementById("periode").value;
+
+            const electricite =
+                document.getElementById("electricite").value;
+
+            const essence =
+                document.getElementById("essence").value;
+
+            const diesel =
+                document.getElementById("diesel").value;
+
+
+            /* ================================
+               VÉRIFICATION DES CHAMPS
+               ================================ */
+
+            if (
+                entreprise === "" ||
+                periode === "" ||
+                electricite === "" ||
+                essence === "" ||
+                diesel === ""
+            ) {
+
+                alert(
+                    "Veuillez compléter toutes les informations avant de continuer."
+                );
+
+                return;
+            }
+
+
+            /* ================================
+               VÉRIFICATION DES VALEURS
+               ================================ */
+
+            if (Number(electricite) < 0) {
+
+                alert(
+                    "La consommation d'électricité ne peut pas être négative."
+                );
+
+                return;
+            }
+
+
+            if (Number(essence) < 0) {
+
+                alert(
+                    "La consommation d'essence ne peut pas être négative."
+                );
+
+                return;
+            }
+
+
+            if (Number(diesel) < 0) {
+
+                alert(
+                    "La consommation de diesel / gasoil ne peut pas être négative."
+                );
+
+                return;
+            }
+
+
+            /* ================================
+               ENREGISTREMENT DES DONNÉES
+               ================================ */
+
+            const entrepriseData = {
+
+                nom: entreprise,
+
+                periode: periode,
+
+                electricite: Number(electricite),
+
+                essence: Number(essence),
+
+                diesel: Number(diesel)
+
+            };
+
+
+            localStorage.setItem(
+                "passeportCarboneEntreprise",
+                JSON.stringify(entrepriseData)
+            );
+
+
+            /* ================================
+               PASSAGE À L'ÉTAPE 2
+               ================================ */
+
+            window.location.href = "detail.html";
+
+        }
+
+    </script>
+
+
+</body>
+
+</html>

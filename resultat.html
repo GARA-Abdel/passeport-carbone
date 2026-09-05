@@ -1,0 +1,1119 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Résultats | Passeport Carbone</title>
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+
+<body>
+
+
+    <!-- ================================
+         NAVIGATION
+         ================================ -->
+
+    <header class="navbar">
+
+        <div class="logo">
+
+            <span>🌿</span>
+
+            Passeport Carbone
+
+        </div>
+
+
+        <a
+            href="index.html"
+            class="nav-button"
+        >
+            Accueil
+        </a>
+
+    </header>
+
+
+
+    <!-- ================================
+         CONTENU PRINCIPAL
+         ================================ -->
+
+    <main class="form-page">
+
+
+        <!-- ================================
+             PROGRESSION
+             ================================ -->
+
+        <div class="progress-container">
+
+            <div class="progress-info">
+
+                <span>
+                    Parcours d'évaluation
+                </span>
+
+                <strong>
+                    Étape 3 sur 3
+                </strong>
+
+            </div>
+
+
+            <div class="progress-bar">
+
+                <div
+                    class="progress-fill"
+                    style="width: 100%;"
+                ></div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- ================================
+             INTRODUCTION
+             ================================ -->
+
+        <section class="form-intro">
+
+            <span class="section-label">
+                ÉTAPE 3 — RÉSULTATS
+            </span>
+
+
+            <h1>
+
+                Votre bilan
+                <span>carbone.</span>
+
+            </h1>
+
+
+            <p>
+
+                Voici les résultats obtenus à partir des
+                données renseignées dans les deux évaluations.
+
+            </p>
+
+        </section>
+
+
+
+        <!-- ================================
+             IDENTIFICATION
+             ================================ -->
+
+        <section class="form-card">
+
+            <div class="form-header">
+
+                <span class="form-number">
+                    ENTREPRISE
+                </span>
+
+
+                <h2 id="nom-entreprise">
+                    —
+                </h2>
+
+
+                <p id="periode-entreprise">
+                    —
+                </p>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ================================
+             ÉVALUATION SIMPLE
+             ================================ -->
+
+        <section class="form-card">
+
+            <div class="form-header">
+
+                <span class="form-number">
+                    01
+                </span>
+
+
+                <h2>
+                    🌿 Évaluation simplifiée
+                </h2>
+
+
+                <p>
+                    Résultat obtenu à partir des données
+                    essentielles recueillies lors de la première étape.
+                </p>
+
+            </div>
+
+
+            <div class="form-notice">
+
+                <span class="notice-icon">
+                    🌱
+                </span>
+
+
+                <div>
+
+                    <strong>
+                        Émissions estimées
+                    </strong>
+
+
+                    <p>
+
+                        <span id="total-simple">
+                            —
+                        </span>
+
+                        kgCO₂e
+
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ================================
+             ÉVALUATION DÉTAILLÉE
+             ================================ -->
+
+        <section class="form-card">
+
+            <div class="form-header">
+
+                <span class="form-number">
+                    02
+                </span>
+
+
+                <h2>
+                    🔬 Évaluation détaillée
+                </h2>
+
+
+                <p>
+                    Résultat obtenu à partir des données
+                    complémentaires recueillies lors de la deuxième étape.
+                </p>
+
+            </div>
+
+
+            <div class="form-notice">
+
+                <span class="notice-icon">
+                    📊
+                </span>
+
+
+                <div>
+
+                    <strong>
+                        Émissions estimées
+                    </strong>
+
+
+                    <p>
+
+                        <span id="total-detaille">
+                            —
+                        </span>
+
+                        kgCO₂e
+
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ================================
+             DÉTAIL DES ÉMISSIONS
+             ================================ -->
+
+        <section class="form-card">
+
+            <div class="form-header">
+
+                <span class="form-number">
+                    03
+                </span>
+
+
+                <h2>
+                    📊 Répartition des émissions
+                </h2>
+
+
+                <p>
+                    Cette répartition présente les sources
+                    prises en compte dans l'évaluation détaillée.
+                </p>
+
+            </div>
+
+
+
+            <!-- ÉLECTRICITÉ -->
+
+            <div class="form-group">
+
+                <label>
+                    ⚡ Électricité
+                </label>
+
+                <strong id="emission-electricite">
+                    —
+                </strong>
+
+                <small id="statut-electricite">
+                    —
+                </small>
+
+            </div>
+
+
+
+            <!-- ESSENCE -->
+
+            <div class="form-group">
+
+                <label>
+                    ⛽ Essence
+                </label>
+
+                <strong id="emission-essence">
+                    —
+                </strong>
+
+                <small id="statut-essence">
+                    —
+                </small>
+
+            </div>
+
+
+
+            <!-- DIESEL -->
+
+            <div class="form-group">
+
+                <label>
+                    🚗 Diesel / Gasoil
+                </label>
+
+                <strong id="emission-diesel">
+                    —
+                </strong>
+
+                <small id="statut-diesel">
+                    —
+                </small>
+
+            </div>
+
+
+
+            <!-- COMBUSTIBLES -->
+
+            <div class="form-group">
+
+                <label>
+                    🔥 Combustibles fixes
+                </label>
+
+                <strong id="emission-combustibles">
+                    —
+                </strong>
+
+                <small id="statut-combustibles">
+                    —
+                </small>
+
+            </div>
+
+
+
+            <!-- RÉFRIGÉRANTS -->
+
+            <div class="form-group">
+
+                <label>
+                    ❄️ Fluides frigorigènes
+                </label>
+
+                <strong id="emission-refrigerants">
+                    —
+                </strong>
+
+                <small id="statut-refrigerants">
+                    —
+                </small>
+
+            </div>
+
+
+
+            <!-- DÉCHETS -->
+
+            <div class="form-group">
+
+                <label>
+                    🗑️ Déchets
+                </label>
+
+                <strong id="emission-dechets">
+                    —
+                </strong>
+
+                <small id="statut-dechets">
+                    —
+                </small>
+
+            </div>
+
+
+
+            <!-- RÉSEAU -->
+
+            <div class="form-group">
+
+                <label>
+                    ♨️ Chaleur / froid acheté
+                </label>
+
+                <strong id="emission-reseau">
+                    —
+                </strong>
+
+                <small id="statut-reseau">
+                    —
+                </small>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ================================
+             INFORMATIONS MÉTHODOLOGIQUES
+             ================================ -->
+
+        <section class="form-card">
+
+            <div class="form-header">
+
+                <span class="form-number">
+                    MÉTHODOLOGIE
+                </span>
+
+
+                <h2>
+                    🔬 Interprétation des résultats
+                </h2>
+
+
+                <p>
+                    Certaines catégories peuvent être renseignées
+                    dans le formulaire sans être encore intégrées
+                    numériquement au bilan.
+                </p>
+
+            </div>
+
+
+            <div class="form-notice">
+
+                <span class="notice-icon">
+                    ℹ️
+                </span>
+
+
+                <div>
+
+                    <strong>
+                        Attention à l'interprétation
+                    </strong>
+
+
+                    <p>
+
+                        Une catégorie peut présenter une émission
+                        réellement nulle lorsqu'aucune activité ou
+                        consommation n'est enregistrée.
+
+                        <br><br>
+
+                        À l'inverse, une catégorie peut être
+                        <strong>non calculable</strong> lorsque les
+                        données ou facteurs nécessaires au calcul
+                        ne sont pas encore suffisamment documentés.
+
+                        <br><br>
+
+                        Les catégories non calculables ne sont pas
+                        ajoutées au total du bilan.
+
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ================================
+             COMPARAISON
+             ================================ -->
+
+        <section class="form-card">
+
+            <div class="form-header">
+
+                <span class="form-number">
+                    04
+                </span>
+
+
+                <h2>
+                    📈 Comparaison
+                </h2>
+
+
+                <p>
+                    Cette comparaison constitue l'un des éléments
+                    centraux de notre recherche.
+                </p>
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>
+                    Écart entre les deux estimations
+                </label>
+
+
+                <div
+                    id="ecart"
+                    class="form-notice"
+                >
+
+                    <span class="notice-icon">
+                        —
+                    </span>
+
+
+                    <div>
+
+                        <strong>
+                            —
+                        </strong>
+
+
+                        <p>
+                            —
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ================================
+             ACTIONS
+             ================================ -->
+
+        <section class="form-card">
+
+            <div class="form-actions">
+
+                <a
+                    href="detail.html"
+                    class="back-button"
+                >
+                    ← Retour
+                </a>
+
+
+                <a
+                    href="index.html"
+                    class="primary-button"
+                >
+                    Terminer →
+                </a>
+
+            </div>
+
+        </section>
+
+
+    </main>
+
+
+
+    <!-- ================================
+         JAVASCRIPT
+         ================================ -->
+
+    <script src="facteurs.js"></script>
+
+    <script src="calcul.js"></script>
+
+
+    <script>
+
+
+        /* =================================
+           RÉCUPÉRATION DU BILAN
+           ================================= */
+
+        const bilan =
+            PasseportCarboneCalcul.calculerBilanCarbone();
+
+
+
+        /* =================================
+           FONCTION — AFFICHAGE D'UNE VALEUR
+           ================================= */
+
+        function afficherValeur(
+            id,
+            valeur
+        ) {
+
+            const element =
+                document.getElementById(id);
+
+
+            if (!element) {
+                return;
+            }
+
+
+            if (
+                typeof valeur !== "number" ||
+                !Number.isFinite(valeur)
+            ) {
+
+                element.textContent =
+                    "Non calculé";
+
+                return;
+            }
+
+
+            element.textContent =
+                valeur.toLocaleString(
+                    "fr-FR",
+                    {
+                        maximumFractionDigits: 2
+                    }
+                );
+
+        }
+
+
+
+        /* =================================
+           FONCTION — AFFICHER UNE ÉMISSION
+           ================================= */
+
+        function afficherEmission(
+            id,
+            resultat
+        ) {
+
+            const element =
+                document.getElementById(id);
+
+
+            if (!element) {
+                return;
+            }
+
+
+            if (!resultat) {
+
+                element.textContent =
+                    "Non calculé";
+
+                return;
+            }
+
+
+            if (
+                resultat.calculable === false
+            ) {
+
+                element.textContent =
+                    "Non calculé";
+
+                return;
+            }
+
+
+            const valeur =
+                Number(
+                    resultat.CO2e
+                );
+
+
+            if (
+                !Number.isFinite(valeur)
+            ) {
+
+                element.textContent =
+                    "Non calculé";
+
+                return;
+            }
+
+
+            element.textContent =
+                valeur.toLocaleString(
+                    "fr-FR",
+                    {
+                        maximumFractionDigits: 2
+                    }
+                );
+
+        }
+
+
+
+        /* =================================
+           FONCTION — STATUT
+           ================================= */
+
+        function afficherStatut(
+            id,
+            texte
+        ) {
+
+            const element =
+                document.getElementById(id);
+
+
+            if (!element) {
+                return;
+            }
+
+
+            element.textContent =
+                texte;
+
+        }
+
+
+
+        /* =================================
+           VÉRIFICATION
+           ================================= */
+
+        if (!bilan) {
+
+            alert(
+                "Impossible de récupérer les données de l'évaluation."
+            );
+
+            window.location.href =
+                "simple.html";
+
+        }
+
+
+
+        /* =================================
+           AFFICHAGE DES RÉSULTATS
+           ================================= */
+
+        if (bilan) {
+
+
+            /* ================================
+               ENTREPRISE
+               ================================ */
+
+            document.getElementById(
+                "nom-entreprise"
+            ).textContent =
+                bilan.entreprise;
+
+
+            document.getElementById(
+                "periode-entreprise"
+            ).textContent =
+                "Période : " + bilan.periode;
+
+
+
+            /* ================================
+               TOTAL SIMPLE
+               ================================ */
+
+            afficherValeur(
+
+                "total-simple",
+
+                bilan.simple.total
+
+            );
+
+
+
+            /* ================================
+               TOTAL DÉTAILLÉ
+               ================================ */
+
+            afficherValeur(
+
+                "total-detaille",
+
+                bilan.detaillee.total
+
+            );
+
+
+
+            /* ================================
+               RÉSULTATS DÉTAILLÉS
+               ================================ */
+
+            const details =
+                bilan.detaillee.details;
+
+
+            /* ================================
+               ÉLECTRICITÉ
+               ================================ */
+
+            afficherEmission(
+
+                "emission-electricite",
+
+                details.electricite
+
+            );
+
+
+            afficherStatut(
+
+                "statut-electricite",
+
+                details.electricite?.calculable
+
+                    ? details.electricite.methode
+
+                    : details.electricite?.methode ||
+                      "Électricité non calculable."
+
+            );
+
+
+
+            /* ================================
+               ESSENCE
+               ================================ */
+
+            afficherEmission(
+
+                "emission-essence",
+
+                details.essence
+
+            );
+
+
+            afficherStatut(
+
+                "statut-essence",
+
+                details.essence?.calculable
+
+                    ? "Facteur d'émission appliqué."
+
+                    : details.essence?.methode ||
+                      "Essence non calculable."
+
+            );
+
+
+
+            /* ================================
+               DIESEL
+               ================================ */
+
+            afficherEmission(
+
+                "emission-diesel",
+
+                details.diesel
+
+            );
+
+
+            afficherStatut(
+
+                "statut-diesel",
+
+                details.diesel?.calculable
+
+                    ? "Facteur d'émission appliqué."
+
+                    : details.diesel?.methode ||
+                      "Diesel non calculable."
+
+            );
+
+
+
+            /* ================================
+               COMBUSTIBLES FIXES
+               ================================ */
+
+            afficherEmission(
+
+                "emission-combustibles",
+
+                details.combustible
+
+            );
+
+
+            afficherStatut(
+
+                "statut-combustibles",
+
+                details.combustible?.calculable
+
+                    ? details.combustible.methode
+
+                    : details.combustible?.methode ||
+                      "Combustible fixe non calculable."
+
+            );
+
+
+
+            /* ================================
+               FLUIDES FRIGORIGÈNES
+               ================================ */
+
+            afficherEmission(
+
+                "emission-refrigerants",
+
+                details.refrigerants
+
+            );
+
+
+            afficherStatut(
+
+                "statut-refrigerants",
+
+                details.refrigerants?.calculable
+
+                    ? details.refrigerants.methode
+
+                    : details.refrigerants?.methode ||
+                      "Fluide frigorigène non calculable."
+
+            );
+
+
+
+            /* ================================
+               DÉCHETS
+               ================================ */
+
+            afficherEmission(
+
+                "emission-dechets",
+
+                details.dechets
+
+            );
+
+
+            afficherStatut(
+
+                "statut-dechets",
+
+                details.dechets?.calculable
+
+                    ? "Aucune émission calculée."
+
+                    : details.dechets?.methode ||
+                      "Déchets non calculables."
+
+            );
+
+
+
+            /* ================================
+               RÉSEAU CHALEUR / FROID
+               ================================ */
+
+            afficherEmission(
+
+                "emission-reseau",
+
+                details.reseau
+
+            );
+
+
+            afficherStatut(
+
+                "statut-reseau",
+
+                details.reseau?.calculable
+
+                    ? "Calcul effectué."
+
+                    : details.reseau?.methode ||
+                      "Chaleur / froid acheté non calculable."
+
+            );
+
+
+
+            /* ================================
+               COMPARAISON
+               ================================ */
+
+            const comparaison =
+                bilan.comparaison;
+
+
+            const ecart =
+                document.getElementById(
+                    "ecart"
+                );
+
+
+            if (
+                comparaison &&
+                ecart
+            ) {
+
+
+                const pourcentage =
+
+                    Number(
+                        comparaison.pourcentageEcart
+                    ).toLocaleString(
+                        "fr-FR",
+                        {
+                            maximumFractionDigits: 2
+                        }
+                    );
+
+
+                const difference =
+
+                    Number(
+                        comparaison.ecartAbsolu
+                    ).toLocaleString(
+                        "fr-FR",
+                        {
+                            maximumFractionDigits: 2
+                        }
+                    );
+
+
+                const differenceSignee =
+
+                    Number(
+                        comparaison.difference
+                    ).toLocaleString(
+                        "fr-FR",
+                        {
+                            maximumFractionDigits: 2,
+                            signDisplay: "always"
+                        }
+                    );
+
+
+                ecart.innerHTML = `
+
+                    <span class="notice-icon">
+                        📊
+                    </span>
+
+                    <div>
+
+                        <strong>
+                            ${pourcentage} %
+                        </strong>
+
+                        <p>
+
+                            Différence :
+                            ${differenceSignee} kgCO₂e
+
+                            <br>
+
+                            Écart absolu :
+                            ${difference} kgCO₂e
+
+                        </p>
+
+                    </div>
+
+                `;
+
+            }
+
+        }
+
+
+    </script>
+
+
+</body>
+
+</html>
