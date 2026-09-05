@@ -1,0 +1,998 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Évaluation mensuelle | Passeport Carbone</title>
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+
+<body>
+
+
+<header class="navbar">
+
+    <div class="logo">
+        <span>🌿</span>
+        Passeport Carbone
+    </div>
+
+    <a
+        href="index.html"
+        class="nav-button"
+    >
+        Accueil
+    </a>
+
+</header>
+
+
+
+<main class="form-page">
+
+
+    <div class="progress-container">
+
+        <div class="progress-info">
+
+            <span>
+                Bilan carbone mensuel
+            </span>
+
+            <strong>
+                Étape 1 sur 2
+            </strong>
+
+        </div>
+
+
+        <div class="progress-bar">
+
+            <div
+                class="progress-fill"
+                style="width: 50%;"
+            ></div>
+
+        </div>
+
+    </div>
+
+
+
+    <section class="form-intro">
+
+        <span class="section-label">
+            🌱 ÉVALUATION MENSUELLE
+        </span>
+
+
+        <h1>
+            Mesurez votre
+            <span>empreinte.</span>
+        </h1>
+
+
+        <p>
+            Renseignez les informations de votre PME et
+            les principales consommations du mois évalué.
+            Le formulaire s'adapte automatiquement à votre
+            secteur d'activité.
+        </p>
+
+    </section>
+
+
+
+    <!-- ================================
+         IDENTIFICATION
+         ================================ -->
+
+    <section class="form-card">
+
+        <div class="form-header">
+
+            <span class="form-number">
+                01
+            </span>
+
+            <h2>
+                Votre entreprise
+            </h2>
+
+            <p>
+                Ces informations permettront d'identifier
+                votre rapport mensuel.
+            </p>
+
+        </div>
+
+
+
+        <div class="form-group">
+
+            <label for="nom">
+                Nom de la PME
+            </label>
+
+            <input
+                type="text"
+                id="nom"
+                placeholder="Ex. Faso Transformation"
+            >
+
+        </div>
+
+
+
+        <div class="form-group">
+
+            <label for="mois">
+                Mois évalué
+            </label>
+
+            <input
+                type="month"
+                id="mois"
+            >
+
+        </div>
+
+
+
+        <div class="form-group">
+
+            <label for="secteur">
+                Secteur d'activité
+            </label>
+
+            <select id="secteur">
+
+                <option value="">
+                    Sélectionnez votre secteur
+                </option>
+
+                <option value="agroalimentaire">
+                    Agroalimentaire et transformation locale
+                </option>
+
+                <option value="btp">
+                    BTP et matériaux
+                </option>
+
+                <option value="industrie">
+                    Industrie manufacturière
+                </option>
+
+                <option value="commerce">
+                    Commerce, transport et logistique
+                </option>
+
+                <option value="agriculture">
+                    Agriculture et élevage
+                </option>
+
+            </select>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ================================
+         SOURCES
+         ================================ -->
+
+    <section
+        class="form-card"
+        id="sources"
+        style="display:none;"
+    >
+
+        <div class="form-header">
+
+            <span class="form-number">
+                02
+            </span>
+
+            <h2>
+                Vos émissions du mois
+            </h2>
+
+            <p id="description">
+                Sélectionnez votre secteur.
+            </p>
+
+        </div>
+
+
+
+        <!-- AGROALIMENTAIRE -->
+
+        <div
+            id="agroalimentaire"
+            style="display:none;"
+        >
+
+            <div class="form-notice">
+
+                <span class="notice-icon">
+                    🌾
+                </span>
+
+                <div>
+
+                    <strong>
+                        Agroalimentaire
+                    </strong>
+
+                    <p>
+                        Principales sources : biomasse,
+                        charbon, butane et déchets organiques.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="form-group">
+
+                <label for="bois">
+                    🪵 Bois de chauffe
+                </label>
+
+                <input
+                    type="number"
+                    id="bois"
+                    min="0"
+                    step="0.01"
+                    placeholder="0"
+                >
+
+                <small>
+                    kg consommés pendant le mois
+                </small>
+
+            </div>
+
+
+
+            <div class="form-group">
+
+                <label for="charbon">
+                    🪨 Charbon de bois
+                </label>
+
+                <input
+                    type="number"
+                    id="charbon"
+                    min="0"
+                    step="0.01"
+                    placeholder="0"
+                >
+
+                <small>
+                    kg consommés pendant le mois
+                </small>
+
+            </div>
+
+
+
+            <div class="form-group">
+
+                <label for="butane">
+                    🔥 Butane / GPL
+                </label>
+
+                <input
+                    type="number"
+                    id="butane"
+                    min="0"
+                    step="0.01"
+                    placeholder="0"
+                >
+
+                <small>
+                    kg consommés pendant le mois
+                </small>
+
+            </div>
+
+
+
+            <div class="form-group">
+
+                <label for="dechets">
+                    🗑️ Déchets organiques
+                </label>
+
+                <input
+                    type="number"
+                    id="dechets"
+                    min="0"
+                    step="0.01"
+                    placeholder="0"
+                >
+
+                <small>
+                    kg de déchets produits pendant le mois
+                </small>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- BTP -->
+
+        <div
+            id="btp"
+            style="display:none;"
+        >
+
+            <div class="form-notice">
+
+                <span class="notice-icon">
+                    🏗️
+                </span>
+
+                <div>
+
+                    <strong>
+                        BTP et matériaux
+                    </strong>
+
+                    <p>
+                        Principales sources : diesel,
+                        biomasse et ciment.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="form-group">
+
+                <label for="dieselBtp">
+                    ⛽ Gasoil / Diesel
+                </label>
+
+                <input
+                    type="number"
+                    id="dieselBtp"
+                    min="0"
+                    step="0.01"
+                    placeholder="0"
+                >
+
+                <small>
+                    litres consommés pendant le mois
+                </small>
+
+            </div>
+
+
+
+            <div class="form-group">
+
+                <label for="boisBtp">
+                    🪵 Bois / biomasse
+                </label>
+
+                <input
+                    type="number"
+                    id="boisBtp"
+                    min="0"
+                    step="0.01"
+                    placeholder="0"
+                >
+
+                <small>
+                    kg consommés pendant le mois
+                </small>
+
+            </div>
+
+
+
+            <div class="form-group">
+
+                <label for="cimentBtp">
+                    🧱 Ciment utilisé
+                </label>
+
+                <input
+                    type="number"
+                    id="cimentBtp"
+                    min="0"
+                    step="0.01"
+                    placeholder="0"
+                >
+
+                <small>
+                    kg de ciment utilisés pendant le mois
+                </small>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- INDUSTRIE -->
+
+        <div
+            id="industrie"
+            style="display:none;"
+        >
+
+            <div class="form-notice">
+
+                <span class="notice-icon">
+                    🏭
+                </span>
+
+                <div>
+
+                    <strong>
+                        Industrie manufacturière
+                    </strong>
+
+                    <p>
+                        Principales sources : électricité,
+                        groupes électrogènes et fluides frigorigènes.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="form-group">
+
+                <label for="electricite">
+                    ⚡ Électricité
+                </label>
+
+                <input
+                    type="number"
+                    id="electricite"
+                    min="0"
+                    step="0.01"
+                    placeholder="0"
+                >
+
+                <small>
+                    kWh consommés pendant le mois
+                </small>
+
+            </div>
+
+
+
+            <div class="form-group">
+
+                <label for="dieselIndustrie">
+                    ⛽ Diesel des groupes électrogènes
+                </label>
+
+                <input
+                    type="number"
+                    id="dieselIndustrie"
+                    min="0"
+                    step="0.01"
+                    placeholder="0"
+                >
+
+                <small>
+                    litres consommés pendant le mois
+                </small>
+
+            </div>
+
+
+
+            <div class="form-group">
+
+                <label for="fluideIndustrie">
+                    ❄️ Fluide frigorigène rechargé
+                </label>
+
+                <input
+                    type="number"
+                    id="fluideIndustrie"
+                    min="0"
+                    step="0.01"
+                    placeholder="0"
+                >
+
+                <small>
+                    kg rechargés pendant le mois
+                </small>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- COMMERCE -->
+
+        <div
+            id="commerce"
+            style="display:none;"
+        >
+
+            <div class="form-notice">
+
+                <span class="notice-icon">
+                    🚚
+                </span>
+
+                <div>
+
+                    <strong>
+                        Commerce, transport et logistique
+                    </strong>
+
+                    <p>
+                        Principales sources : essence,
+                        diesel et fluides frigorigènes.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="form-group">
+
+                <label for="essence">
+                    ⛽ Essence
+                </label>
+
+                <input
+                    type="number"
+                    id="essence"
+                    min="0"
+                    step="0.01"
+                    placeholder="0"
+                >
+
+                <small>
+                    litres consommés pendant le mois
+                </small>
+
+            </div>
+
+
+
+            <div class="form-group">
+
+                <label for="dieselCommerce">
+                    🚛 Gasoil / Diesel
+                </label>
+
+                <input
+                    type="number"
+                    id="dieselCommerce"
+                    min="0"
+                    step="0.01"
+                    placeholder="0"
+                >
+
+                <small>
+                    litres consommés pendant le mois
+                </small>
+
+            </div>
+
+
+
+            <div class="form-group">
+
+                <label for="fluideCommerce">
+                    ❄️ Fluide frigorigène rechargé
+                </label>
+
+                <input
+                    type="number"
+                    id="fluideCommerce"
+                    min="0"
+                    step="0.01"
+                    placeholder="0"
+                >
+
+                <small>
+                    kg rechargés pendant le mois
+                </small>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- AGRICULTURE -->
+
+        <div
+            id="agriculture"
+            style="display:none;"
+        >
+
+            <div class="form-notice">
+
+                <span class="notice-icon">
+                    🌱
+                </span>
+
+                <div>
+
+                    <strong>
+                        Agriculture et élevage
+                    </strong>
+
+                    <p>
+                        Principales sources : élevage,
+                        fumier et engrais azotés.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="form-group">
+
+                <label for="animaux">
+                    🐄 Animaux d'élevage
+                </label>
+
+                <input
+                    type="number"
+                    id="animaux"
+                    min="0"
+                    step="1"
+                    placeholder="0"
+                >
+
+                <small>
+                    nombre moyen d'animaux pendant le mois
+                </small>
+
+            </div>
+
+
+
+            <div class="form-group">
+
+                <label for="fumier">
+                    ♻️ Fumier
+                </label>
+
+                <input
+                    type="number"
+                    id="fumier"
+                    min="0"
+                    step="0.01"
+                    placeholder="0"
+                >
+
+                <small>
+                    kg de fumier gérés pendant le mois
+                </small>
+
+            </div>
+
+
+
+            <div class="form-group">
+
+                <label for="engrais">
+                    🌾 Engrais azotés
+                </label>
+
+                <input
+                    type="number"
+                    id="engrais"
+                    min="0"
+                    step="0.01"
+                    placeholder="0"
+                >
+
+                <small>
+                    kg utilisés pendant le mois
+                </small>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ================================
+         ACTION
+         ================================ -->
+
+    <section
+        class="form-card"
+        id="action"
+        style="display:none;"
+    >
+
+        <div class="form-actions">
+
+            <a
+                href="index.html"
+                class="back-button"
+            >
+                ← Retour
+            </a>
+
+
+            <button
+                type="button"
+                id="calculer"
+                class="primary-button"
+            >
+                Calculer mon bilan →
+            </button>
+
+        </div>
+
+    </section>
+
+
+</main>
+
+
+
+<script>
+
+const secteur =
+    document.getElementById("secteur");
+
+const sources =
+    document.getElementById("sources");
+
+const action =
+    document.getElementById("action");
+
+const description =
+    document.getElementById("description");
+
+
+const secteurs = [
+    "agroalimentaire",
+    "btp",
+    "industrie",
+    "commerce",
+    "agriculture"
+];
+
+
+secteur.addEventListener(
+    "change",
+    function () {
+
+        secteurs.forEach(
+            function (nom) {
+
+                document.getElementById(nom)
+                    .style.display = "none";
+
+            }
+        );
+
+
+        if (!this.value) {
+
+            sources.style.display = "none";
+            action.style.display = "none";
+
+            return;
+
+        }
+
+
+        sources.style.display = "block";
+        action.style.display = "block";
+
+
+        document.getElementById(this.value)
+            .style.display = "block";
+
+
+        const textes = {
+
+            agroalimentaire:
+                "Renseignez les principales consommations liées à la transformation et à la production.",
+
+            btp:
+                "Renseignez les consommations de carburant et de matériaux du mois.",
+
+            industrie:
+                "Renseignez les consommations énergétiques et les recharges de fluides.",
+
+            commerce:
+                "Renseignez les consommations de carburant et les recharges de fluides.",
+
+            agriculture:
+                "Renseignez les principales données concernant l'élevage et les intrants agricoles."
+
+        };
+
+
+        description.textContent =
+            textes[this.value];
+
+    }
+);
+
+
+
+document
+    .getElementById("calculer")
+    .addEventListener(
+        "click",
+        function () {
+
+
+            const nom =
+                document
+                    .getElementById("nom")
+                    .value
+                    .trim();
+
+
+            const mois =
+                document
+                    .getElementById("mois")
+                    .value;
+
+
+            const secteurChoisi =
+                secteur.value;
+
+
+            if (
+                !nom ||
+                !mois ||
+                !secteurChoisi
+            ) {
+
+                alert(
+                    "Veuillez renseigner le nom de la PME, le mois et le secteur d'activité."
+                );
+
+                return;
+
+            }
+
+
+            const champs = {
+
+                bois:
+                    "bois",
+
+                charbon:
+                    "charbon",
+
+                butane:
+                    "butane",
+
+                dechets:
+                    "dechets",
+
+                dieselBtp:
+                    "dieselBtp",
+
+                boisBtp:
+                    "boisBtp",
+
+                cimentBtp:
+                    "cimentBtp",
+
+                electricite:
+                    "electricite",
+
+                dieselIndustrie:
+                    "dieselIndustrie",
+
+                fluideIndustrie:
+                    "fluideIndustrie",
+
+                essence:
+                    "essence",
+
+                dieselCommerce:
+                    "dieselCommerce",
+
+                fluideCommerce:
+                    "fluideCommerce",
+
+                animaux:
+                    "animaux",
+
+                fumier:
+                    "fumier",
+
+                engrais:
+                    "engrais"
+
+            };
+
+
+            const donnees = {
+
+                nom: nom,
+
+                mois: mois,
+
+                secteur: secteurChoisi,
+
+                valeurs: {}
+
+            };
+
+
+            Object.keys(champs).forEach(
+                function (cle) {
+
+                    const element =
+                        document.getElementById(
+                            champs[cle]
+                        );
+
+
+                    donnees.valeurs[cle] =
+                        element
+                            ? Number(element.value) || 0
+                            : 0;
+
+                }
+            );
+
+
+            localStorage.setItem(
+
+                "passeportCarboneEvaluation",
+
+                JSON.stringify(donnees)
+
+            );
+
+
+            window.location.href =
+                "resultats.html";
+
+        }
+    );
+
+</script>
+
+
+</body>
+
+  </html>
