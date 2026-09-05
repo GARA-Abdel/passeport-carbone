@@ -10,7 +10,7 @@
         content="width=device-width, initial-scale=1.0"
     >
 
-    <title>Rapport carbone mensuel | Passeport Carbone</title>
+    <title>Résultats | Passeport Carbone</title>
 
     <link rel="stylesheet" href="style.css">
 
@@ -42,13 +42,13 @@
 
 
     <!-- ================================
-         EN-TÊTE DU RAPPORT
+         EN-TÊTE
          ================================ -->
 
     <section class="results-header">
 
         <span class="section-label">
-            🌍 RAPPORT CARBONE MENSUEL
+            🌍 RÉSULTATS DU BILAN CARBONE
         </span>
 
         <h1>
@@ -137,7 +137,7 @@
 
 
     <!-- ================================
-         REPARTITION
+         RÉPARTITION
          ================================ -->
 
     <section class="result-card">
@@ -257,13 +257,13 @@
             ← Nouvelle évaluation
         </a>
 
-        <button
-            type="button"
+
+        <a
+            href="rapport.html"
             class="primary-button"
-            onclick="window.print()"
         >
-            🖨️ Imprimer / enregistrer
-        </button>
+            📄 Voir mon rapport mensuel →
+        </a>
 
     </section>
 
@@ -280,7 +280,7 @@
 
 
 /* =========================================
-   RECUPERATION DES DONNEES
+   RÉCUPÉRATION DES DONNÉES
    ========================================= */
 
 const donnees =
@@ -292,7 +292,7 @@ const donnees =
 
 
 /* =========================================
-   VERIFICATION
+   VÉRIFICATION
    ========================================= */
 
 if (!donnees) {
@@ -331,7 +331,7 @@ if (donnees) {
 
 
 /* =========================================
-   CALCUL
+   CALCUL DU TOTAL
    ========================================= */
 
 function calculerTotal(donnees) {
@@ -432,7 +432,9 @@ function calculerTotal(donnees) {
     ) {
 
         total +=
-            calculEssence(v.essence);
+            calculEssence(
+                v.essence
+            );
 
         total +=
             calculDiesel(
@@ -452,9 +454,9 @@ function calculerTotal(donnees) {
     ) {
 
         /*
-         * Ces catégories nécessitent
-         * actuellement des données
-         * supplémentaires.
+         * Les catégories agricoles
+         * nécessitent actuellement
+         * des données supplémentaires.
          */
 
     }
@@ -633,7 +635,7 @@ function calculEssence(
 
 
 /* =========================================
-   CALCUL ELECTRICITE
+   CALCUL ÉLECTRICITÉ
    ========================================= */
 
 function calculElectricite(
@@ -653,7 +655,7 @@ function calculElectricite(
 
 
 /* =========================================
-   AFFICHAGE DU RESULTAT
+   AFFICHAGE DU RÉSULTAT
    ========================================= */
 
 function afficherResultat(
@@ -690,7 +692,7 @@ function afficherResultat(
 
 
 /* =========================================
-   NIVEAU D'EMISSION
+   NIVEAU D'ÉMISSION
    ========================================= */
 
 function afficherNiveau(
@@ -704,9 +706,7 @@ function afficherNiveau(
 
 
     /*
-     * Ces seuils sont des seuils de
-     * prototype et non des normes
-     * réglementaires.
+     * Seuils indicatifs du prototype.
      */
 
     if (total < 500) {
@@ -734,7 +734,7 @@ function afficherNiveau(
 
 
 /* =========================================
-   REPARTITION
+   RÉPARTITION
    ========================================= */
 
 function afficherRepartition(
@@ -1083,3 +1083,6 @@ function afficherConseils(
 </body>
 
 </html>
+
+
+
