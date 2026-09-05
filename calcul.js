@@ -1,26 +1,31 @@
 /* =========================================
    PASSEPORT CARBONE
-   CALCUL DU BILAN CARBONE MENSUEL
+   MOTEUR DE CALCUL MENSUEL
    ========================================= */
 
 
 /* =========================================
-   OUTIL — RÉSULTAT NON CALCULABLE
+   OUTIL — VALEUR NUMÉRIQUE
    ========================================= */
 
-function resultatNonCalculable(message) {
+function nombre(valeur) {
 
-    return {
-        emission: 0,
-        calculable: false,
-        message: message
-    };
+    const resultat = Number(valeur);
+
+    if (
+        !Number.isFinite(resultat) ||
+        resultat < 0
+    ) {
+        return 0;
+    }
+
+    return resultat;
 
 }
 
 
 /* =========================================
-   OUTIL — CONVERSION CARBURANT
+   CALCUL COMBUSTIBLE
    ========================================= */
 
 function calculerCombustible(
@@ -28,202 +33,183 @@ function calculerCombustible(
     facteur
 ) {
 
-    if (!facteur || !quantite || quantite <= 0) {
+    quantite = nombre(quantite);
 
-        return {
-            emission: 0,
-            calculable: true
-        };
 
+    if (
+        !facteur ||
+        quantite === 0
+    ) {
+        return 0;
     }
 
 
+    let energieTJ = 0;
+
+
     /*
-     * Conversion litres → TJ
+     * Carburants saisis en litres
      */
 
     if (
-        facteur.unite === "litre" &&
-        facteur.conversionVolumeMasse > 0 &&
-        facteur.NCV > 0
+        facteur.unite === "litre" ||
+        facteur.unite === "litres"
     ) {
+
+        if (
+            !facteur.conversionVolumeMasse ||
+            !facteur.NCV
+        ) {
+            return 0;
+        }
+
 
         const masseTonnes =
             quantite /
             facteur.conversionVolumeMasse;
 
 
-        const energieTJ =
+        energieTJ =
             masseTonnes *
             (facteur.NCV / 1000);
-
-
-        const CO2 =
-            energieTJ *
-            facteur.facteurCO2;
-
-
-        const CH4 =
-            energieTJ *
-            facteur.facteurCH4;
-
-
-        const N2O =
-            energieTJ *
-            facteur.facteurN2O;
-
-
-        const CO2e =
-            CO2 +
-            (CH4 * GWP_BURKINA.CH4) +
-            (N2O * GWP_BURKINA.N2O);
-
-
-        return {
-
-            emission: CO2e,
-
-            CO2: CO2,
-            CH4: CH4,
-            N2O: N2O,
-
-            energieTJ: energieTJ,
-
-            calculable: true
-
-        };
 
     }
 
 
     /*
-     * Conversion kg → TJ
+     * Combustibles saisis en kg
      */
 
-    if (
-        facteur.unite === "kg" &&
-        facteur.NCV > 0
+    else if (
+        facteur.unite === "kg"
     ) {
 
+        if (!facteur.NCV) {
+            return 0;
+        }
+
+
         const masseGg =
-            quantite / 1000000;
+            quantite /
+            1000000;
 
 
-        const energieTJ =
+        energieTJ =
             masseGg *
             facteur.NCV;
-
-
-        const CO2 =
-            energieTJ *
-            facteur.facteurCO2;
-
-
-        const CH4 =
-            energieTJ *
-            facteur.facteurCH4;
-
-
-        const N2O =
-            energieTJ *
-            facteur.facteurN2O;
-
-
-        const CO2e =
-            CO2 +
-            (CH4 * GWP_BURKINA.CH4) +
-            (N2O * GWP_BURKINA.N2O);
-
-
-        return {
-
-            emission: CO2e,
-
-            CO2: CO2,
-            CH4: CH4,
-            N2O: N2O,
-
-            energieTJ: energieTJ,
-
-            calculable: true
-
-        };
 
     }
 
 
-    return resultatNonCalculable(
-        "Conversion impossible avec les données disponibles."
+    /*
+     * Conversion m³
+     */
+
+    else if (
+        facteur.unite === "m3" ||
+        facteur.unite === "m³"
+    ) {
+
+        if (
+            !facteur.conversionM3VersTJ
+        ) {
+            return 0;
+        }
+
+
+        energieTJ =
+            quantite *
+            facteur.conversionM3VersTJ;
+
+    }
+
+
+    if (
+        !Number.isFinite(energieTJ) ||
+        energieTJ <= 0
+    ) {
+        return 0;
+    }
+
+
+    const CO2 =
+        energieTJ *
+        (facteur.facteurCO2 || 0);
+
+
+    const CH4 =
+        energieTJ *
+        (facteur.facteurCH4 || 0);
+
+
+    const N2O =
+        energieTJ *
+        (facteur.facteurN2O || 0);
+
+
+    const CO2e =
+        CO2 +
+        (
+            CH4 *
+            GWP_BURKINA.CH4
+        ) +
+        (
+            N2O *
+            GWP_BURKINA.N2O
+        );
+
+
+    return CO2e;
+
+}
+
+
+/* =========================================
+   CALCUL ÉLECTRICITÉ
+   ========================================= */
+
+function calculerElectricite(
+    kWh
+) {
+
+    kWh =
+        nombre(kWh);
+
+
+    if (
+        kWh === 0 ||
+        !FACTEUR_ELECTRICITE
+    ) {
+        return 0;
+    }
+
+
+    return (
+        kWh *
+        FACTEUR_ELECTRICITE.facteur
     );
 
 }
 
 
 /* =========================================
-   ÉLECTRICITÉ
-   ========================================= */
-
-function calculerElectricite(kWh) {
-
-    if (!kWh || kWh <= 0) {
-
-        return {
-            emission: 0,
-            calculable: true
-        };
-
-    }
-
-
-    if (
-        !FACTEUR_ELECTRICITE ||
-        !FACTEUR_ELECTRICITE.facteur
-    ) {
-
-        return resultatNonCalculable(
-            "Facteur d'émission électrique indisponible."
-        );
-
-    }
-
-
-    const emission =
-        kWh *
-        FACTEUR_ELECTRICITE.facteur;
-
-
-    return {
-
-        emission: emission,
-
-        CO2: emission,
-
-        calculable: true,
-
-        facteur:
-            FACTEUR_ELECTRICITE.facteur
-
-    };
-
-}
-
-
-/* =========================================
-   FLUIDE FRIGORIGÈNE
+   CALCUL FLUIDE FRIGORIGÈNE
    ========================================= */
 
 function calculerFluide(
     quantite,
-    type = "r134a"
+    type
 ) {
 
-    if (!quantite || quantite <= 0) {
+    quantite =
+        nombre(quantite);
 
-        return {
-            emission: 0,
-            calculable: true
-        };
 
+    if (
+        quantite === 0 ||
+        !type
+    ) {
+        return 0;
     }
 
 
@@ -232,330 +218,140 @@ function calculerFluide(
 
 
     if (!fluide) {
-
-        return resultatNonCalculable(
-            "Facteur du fluide frigorigène indisponible."
-        );
-
+        return 0;
     }
 
 
-    const emission =
+    return (
         quantite *
-        fluide.facteur;
-
-
-    return {
-
-        emission: emission,
-
-        CO2e: emission,
-
-        calculable: true,
-
-        facteur:
-            fluide.facteur
-
-    };
-
-}
-
-
-/* =========================================
-   AGRICULTURE — ÉLEVAGE
-   =========================================
-
-   Pour cette première version,
-   les facteurs spécifiques au type
-   d'animal doivent être documentés
-   avant d'être utilisés.
-
-   On ne crée donc pas de fausse précision.
-   ========================================= */
-
-function calculerElevage(animaux) {
-
-    if (!animaux || animaux <= 0) {
-
-        return {
-            emission: 0,
-            calculable: true
-        };
-
-    }
-
-
-    return resultatNonCalculable(
-        "Facteur d'émission spécifique au type d'élevage à documenter."
+        fluide.facteur
     );
 
 }
 
 
 /* =========================================
-   AGRICULTURE — FUMIER
+   ÉVALUATION AGROALIMENTAIRE
    ========================================= */
 
-function calculerFumier(quantite) {
+function calculerAgroalimentaire(
+    valeurs
+) {
 
-    if (!quantite || quantite <= 0) {
-
-        return {
-            emission: 0,
-            calculable: true
-        };
-
-    }
+    const emissions = {};
 
 
-    return resultatNonCalculable(
-        "Facteur d'émission du traitement du fumier à documenter."
-    );
-
-}
-
-
-/* =========================================
-   AGRICULTURE — ENGRAIS AZOTÉS
-   ========================================= */
-
-function calculerEngrais(quantite) {
-
-    if (!quantite || quantite <= 0) {
-
-        return {
-            emission: 0,
-            calculable: true
-        };
-
-    }
-
-
-    return resultatNonCalculable(
-        "Facteur d'émission des engrais azotés à documenter."
-    );
-
-}
-
-
-/* =========================================
-   DÉCHETS ORGANIQUES
-   ========================================= */
-
-function calculerDechets(quantite) {
-
-    if (!quantite || quantite <= 0) {
-
-        return {
-            emission: 0,
-            calculable: true
-        };
-
-    }
-
-
-    return resultatNonCalculable(
-        "Le mode de traitement des déchets doit être précisé."
-    );
-
-}
-
-
-/* =========================================
-   CALCUL AGROALIMENTAIRE
-   ========================================= */
-
-function calculerAgroalimentaire(valeurs) {
-
-    const bois =
+    emissions.bois =
         calculerCombustible(
             valeurs.bois,
-            FACTEURS_COMBUSTIBLES.fioul
+            {
+                unite: "kg",
+                NCV: 15,
+                facteurCO2: 112000,
+                facteurCH4: 30,
+                facteurN2O: 4
+            }
         );
 
 
-    /*
-     * Le charbon et le bois nécessitent
-     * des facteurs spécifiques adaptés
-     * à la biomasse.
-     *
-     * Ils restent donc non calculés
-     * jusqu'à validation des facteurs.
-     */
-
-    let charbon =
-        resultatNonCalculable(
-            "Facteur du charbon de bois à documenter."
+    emissions.charbon =
+        calculerCombustible(
+            valeurs.charbon,
+            {
+                unite: "kg",
+                NCV: 29,
+                facteurCO2: 94600,
+                facteurCH4: 10,
+                facteurN2O: 1.5
+            }
         );
 
 
-    if (!valeurs.charbon) {
-
-        charbon = {
-            emission: 0,
-            calculable: true
-        };
-
-    }
-
-
-    /*
-     * Pour le bois, le facteur fioul ne doit
-     * finalement PAS être utilisé.
-     *
-     * On annule donc ce calcul provisoire.
-     */
-
-    if (valeurs.bois > 0) {
-
-        charbon = charbon;
-
-    }
-
-
-    const butane =
+    emissions.butane =
         calculerCombustible(
             valeurs.butane,
             FACTEURS_COMBUSTIBLES.propane
         );
 
 
-    const dechets =
-        calculerDechets(
-            valeurs.dechets
-        );
+    /*
+     * Les déchets organiques ne sont pas
+     * automatiquement convertis en CO₂e.
+     *
+     * Leur traitement doit être connu.
+     */
+
+    emissions.dechets = 0;
 
 
-    return {
-
-        emissions: {
-
-            bois: 0,
-
-            charbon:
-                charbon.emission,
-
-            butane:
-                butane.emission,
-
-            dechets:
-                dechets.emission
-
-        },
-
-        calculabilite: {
-
-            bois: false,
-
-            charbon:
-                charbon.calculable,
-
-            butane:
-                butane.calculable,
-
-            dechets:
-                dechets.calculable
-
-        },
-
-        total:
-            charbon.emission +
-            butane.emission +
-            dechets.emission
-
-    };
+    return emissions;
 
 }
 
 
 /* =========================================
-   CALCUL BTP
+   ÉVALUATION BTP
    ========================================= */
 
-function calculerBTP(valeurs) {
+function calculerBTP(
+    valeurs
+) {
 
-    const diesel =
+    const emissions = {};
+
+
+    emissions.diesel =
         calculerCombustible(
             valeurs.dieselBtp,
             FACTEURS_COMBUSTIBLES.diesel
         );
 
 
-    const bois =
-        resultatNonCalculable(
-            "Facteur de la biomasse utilisée dans les briques à documenter."
+    emissions.bois =
+        calculerCombustible(
+            valeurs.boisBtp,
+            {
+                unite: "kg",
+                NCV: 15,
+                facteurCO2: 112000,
+                facteurCH4: 30,
+                facteurN2O: 4
+            }
         );
 
 
-    const ciment =
-        resultatNonCalculable(
-            "Facteur d'émission du ciment à documenter."
-        );
+    /*
+     * Le ciment est déclaré mais n'est pas
+     * encore calculé faute de facteur retenu
+     * dans notre modèle.
+     */
+
+    emissions.ciment = 0;
 
 
-    if (!valeurs.boisBtp) {
-
-        bois.calculable = true;
-
-    }
-
-
-    if (!valeurs.cimentBtp) {
-
-        ciment.calculable = true;
-
-    }
-
-
-    return {
-
-        emissions: {
-
-            diesel:
-                diesel.emission,
-
-            bois:
-                bois.emission,
-
-            ciment:
-                ciment.emission
-
-        },
-
-        calculabilite: {
-
-            diesel:
-                diesel.calculable,
-
-            bois:
-                bois.calculable,
-
-            ciment:
-                ciment.calculable
-
-        },
-
-        total:
-            diesel.emission
-
-    };
+    return emissions;
 
 }
 
 
 /* =========================================
-   CALCUL INDUSTRIE
+   ÉVALUATION INDUSTRIE
    ========================================= */
 
-function calculerIndustrie(valeurs) {
+function calculerIndustrie(
+    valeurs
+) {
 
-    const electricite =
+    const emissions = {};
+
+
+    emissions.electricite =
         calculerElectricite(
             valeurs.electricite
         );
 
 
-    const diesel =
+    emissions.diesel =
         calculerCombustible(
             valeurs.dieselIndustrie,
             FACTEURS_COMBUSTIBLES.diesel
@@ -563,117 +359,311 @@ function calculerIndustrie(valeurs) {
 
 
     /*
-     * Le type de fluide n'est pas encore
-     * demandé dans le formulaire.
+     * Le fluide frigorigène nécessite de connaître
+     * précisément le type de fluide.
      *
-     * On utilise donc R-134a uniquement
-     * comme valeur technique provisoire.
+     * Le formulaire actuel ne le demande pas.
      */
 
-    const fluide =
-        calculerFluide(
-            valeurs.fluideIndustrie,
-            "r134a"
-        );
+    emissions.fluide = 0;
 
 
-    return {
-
-        emissions: {
-
-            electricite:
-                electricite.emission,
-
-            diesel:
-                diesel.emission,
-
-            fluide:
-                fluide.emission
-
-        },
-
-        calculabilite: {
-
-            electricite:
-                electricite.calculable,
-
-            diesel:
-                diesel.calculable,
-
-            fluide:
-                fluide.calculable
-
-        },
-
-        total:
-            electricite.emission +
-            diesel.emission +
-            fluide.emission
-
-    };
+    return emissions;
 
 }
 
 
 /* =========================================
-   CALCUL COMMERCE
+   ÉVALUATION COMMERCE
    ========================================= */
 
-function calculerCommerce(valeurs) {
+function calculerCommerce(
+    valeurs
+) {
 
-    const essence =
+    const emissions = {};
+
+
+    emissions.essence =
         calculerCombustible(
             valeurs.essence,
             FACTEURS_COMBUSTIBLES.essence
         );
 
 
-    const diesel =
+    emissions.diesel =
         calculerCombustible(
             valeurs.dieselCommerce,
             FACTEURS_COMBUSTIBLES.diesel
         );
 
 
-    const fluide =
-        calculerFluide(
-            valeurs.fluideCommerce,
-            "r134a"
-        );
+    /*
+     * Le type de fluide n'est pas demandé
+     * dans le formulaire actuel.
+     */
+
+    emissions.fluide = 0;
+
+
+    return emissions;
+
+}
+
+
+/* =========================================
+   ÉVALUATION AGRICULTURE / ÉLEVAGE
+   ========================================= */
+
+function calculerAgriculture(
+    valeurs
+) {
+
+    const emissions = {};
+
+
+    /*
+     * Le nombre d'animaux dépend fortement
+     * de l'espèce.
+     *
+     * Sans distinction bovins / ovins / caprins
+     * etc., nous ne faisons pas de calcul
+     * automatique pour éviter une fausse précision.
+     */
+
+    emissions.animaux = 0;
+
+
+    /*
+     * Même principe pour le fumier.
+     */
+
+    emissions.fumier = 0;
+
+
+    /*
+     * Les engrais azotés nécessitent une
+     * méthodologie précise concernant la quantité
+     * d'azote réellement appliquée.
+     */
+
+    emissions.engrais = 0;
+
+
+    return emissions;
+
+}
+
+
+/* =========================================
+   CALCUL SELON LE SECTEUR
+   ========================================= */
+
+function calculerEmissionsSecteur(
+    secteur,
+    valeurs
+) {
+
+    switch (secteur) {
+
+
+        case "agroalimentaire":
+
+            return calculerAgroalimentaire(
+                valeurs
+            );
+
+
+        case "btp":
+
+            return calculerBTP(
+                valeurs
+            );
+
+
+        case "industrie":
+
+            return calculerIndustrie(
+                valeurs
+            );
+
+
+        case "commerce":
+
+            return calculerCommerce(
+                valeurs
+            );
+
+
+        case "agriculture":
+
+            return calculerAgriculture(
+                valeurs
+            );
+
+
+        default:
+
+            return {};
+
+    }
+
+}
+
+
+/* =========================================
+   CONSEILS PAR SECTEUR
+   ========================================= */
+
+const CONSEILS_SECTEURS = {
+
+
+    agroalimentaire: [
+
+        "Réduire progressivement la consommation de bois et de charbon lorsque des solutions énergétiques plus efficaces sont disponibles.",
+
+        "Améliorer le rendement des foyers, fours et équipements de cuisson.",
+
+        "Éviter l'accumulation prolongée des déchets organiques et privilégier une gestion adaptée.",
+
+        "Suivre chaque mois les consommations de combustibles afin d'identifier les principales sources d'émissions."
+
+    ],
+
+
+    btp: [
+
+        "Optimiser les déplacements des engins et des camions afin de réduire la consommation de diesel.",
+
+        "Entretenir régulièrement les engins de chantier pour limiter les consommations inutiles.",
+
+        "Évaluer progressivement l'utilisation de matériaux et procédés moins émetteurs.",
+
+        "Suivre mensuellement la consommation de carburant des différents équipements."
+
+    ],
+
+
+    industrie: [
+
+        "Surveiller régulièrement la consommation d'électricité des équipements.",
+
+        "Réduire l'utilisation des groupes électrogènes lorsque des alternatives sont disponibles.",
+
+        "Entretenir les équipements afin d'améliorer leur efficacité énergétique.",
+
+        "Assurer un suivi des systèmes de climatisation et des fluides frigorigènes."
+
+    ],
+
+
+    commerce: [
+
+        "Optimiser les itinéraires et les déplacements des véhicules.",
+
+        "Limiter les trajets à vide et regrouper les livraisons lorsque cela est possible.",
+
+        "Entretenir régulièrement les véhicules afin de réduire leur consommation.",
+
+        "Contrôler régulièrement les équipements frigorifiques et leurs fluides."
+
+    ],
+
+
+    agriculture: [
+
+        "Améliorer la gestion du fumier et des effluents d'élevage.",
+
+        "Optimiser l'utilisation des engrais azotés.",
+
+        "Suivre séparément les différents types d'animaux élevés afin d'améliorer progressivement la précision du bilan.",
+
+        "Mettre en place un suivi mensuel des consommations et des pratiques agricoles."
+
+    ]
+
+};
+
+
+/* =========================================
+   NIVEAUX D'ÉMISSION
+   ========================================= */
+
+function determinerNiveauEmission(
+    totalKg
+) {
+
+    totalKg =
+        nombre(totalKg);
+
+
+    /*
+     * Seuils provisoires du prototype.
+     *
+     * Ils servent à orienter les conseils
+     * et ne constituent pas une norme nationale.
+     */
+
+    if (totalKg < 100) {
+
+        return {
+
+            niveau: "faible",
+
+            titre:
+                "Émissions relativement faibles",
+
+            message:
+                "Le niveau d'émission calculé est relativement faible pour le périmètre déclaré. Continuez à suivre vos consommations chaque mois."
+
+        };
+
+    }
+
+
+    if (totalKg < 1000) {
+
+        return {
+
+            niveau: "modere",
+
+            titre:
+                "Émissions à surveiller",
+
+            message:
+                "Les émissions calculées nécessitent un suivi régulier. Identifiez les principales sources et recherchez progressivement des possibilités de réduction."
+
+        };
+
+    }
+
+
+    if (totalKg < 5000) {
+
+        return {
+
+            niveau: "eleve",
+
+            titre:
+                "Émissions élevées",
+
+            message:
+                "Le niveau d'émission calculé est important. Il est recommandé d'identifier les principales sources et de mettre en place des actions de réduction prioritaires."
+
+        };
+
+    }
 
 
     return {
 
-        emissions: {
+        niveau: "tres-eleve",
 
-            essence:
-                essence.emission,
+        titre:
+            "Émissions très élevées",
 
-            diesel:
-                diesel.emission,
-
-            fluide:
-                fluide.emission
-
-        },
-
-        calculabilite: {
-
-            essence:
-                essence.calculable,
-
-            diesel:
-                diesel.calculable,
-
-            fluide:
-                fluide.calculable
-
-        },
-
-        total:
-            essence.emission +
-            diesel.emission +
-            fluide.emission
+        message:
+            "Le niveau d'émission calculé est très important. Une analyse approfondie des principales sources et un plan d'action prioritaire sont recommandés."
 
     };
 
@@ -681,63 +671,40 @@ function calculerCommerce(valeurs) {
 
 
 /* =========================================
-   CALCUL AGRICULTURE
+   GÉNÉRATION DES CONSEILS
    ========================================= */
 
-function calculerAgriculture(valeurs) {
+function genererConseils(
+    secteur,
+    niveau
+) {
 
-    const animaux =
-        calculerElevage(
-            valeurs.animaux
+    const conseils =
+        CONSEILS_SECTEURS[secteur]
+        ? [
+            ...CONSEILS_SECTEURS[secteur]
+        ]
+        : [];
+
+
+    /*
+     * Conseil supplémentaire lorsque
+     * le niveau est élevé.
+     */
+
+    if (
+        niveau === "eleve" ||
+        niveau === "tres-eleve"
+    ) {
+
+        conseils.unshift(
+            "Priorité : identifier la source qui représente la plus grande part des émissions et agir en premier sur celle-ci."
         );
 
-
-    const fumier =
-        calculerFumier(
-            valeurs.fumier
-        );
+    }
 
 
-    const engrais =
-        calculerEngrais(
-            valeurs.engrais
-        );
-
-
-    return {
-
-        emissions: {
-
-            animaux:
-                animaux.emission,
-
-            fumier:
-                fumier.emission,
-
-            engrais:
-                engrais.emission
-
-        },
-
-        calculabilite: {
-
-            animaux:
-                animaux.calculable,
-
-            fumier:
-                fumier.calculable,
-
-            engrais:
-                engrais.calculable
-
-        },
-
-        total:
-            animaux.emission +
-            fumier.emission +
-            engrais.emission
-
-    };
+    return conseils;
 
 }
 
@@ -746,12 +713,12 @@ function calculerAgriculture(valeurs) {
    FONCTION PRINCIPALE
    ========================================= */
 
-function calculerBilanMensuel(donnees) {
+function calculerBilanMensuel(
+    donnees
+) {
 
     if (!donnees) {
-
         return null;
-
     }
 
 
@@ -759,78 +726,143 @@ function calculerBilanMensuel(donnees) {
         donnees.valeurs || {};
 
 
-    let resultat;
+    const secteur =
+        donnees.secteur;
 
 
-    switch (donnees.secteur) {
+    /*
+     * Calcul spécifique au secteur.
+     */
 
-        case "agroalimentaire":
+    const emissions =
+        calculerEmissionsSecteur(
+            secteur,
+            valeurs
+        );
 
-            resultat =
-                calculerAgroalimentaire(
-                    valeurs
+
+    /*
+     * Total.
+     */
+
+    let totalKgCO2e = 0;
+
+
+    Object.keys(
+        emissions
+    ).forEach(
+        function(cle) {
+
+            const valeur =
+                nombre(
+                    emissions[cle]
                 );
 
-            break;
+
+            totalKgCO2e +=
+                valeur;
+
+        }
+    );
 
 
-        case "btp":
+    /*
+     * Conversion kg → tonne.
+     */
 
-            resultat =
-                calculerBTP(
-                    valeurs
+    const totalTCO2e =
+        totalKgCO2e /
+        1000;
+
+
+    /*
+     * Calculabilité.
+     */
+
+    const calculabilite = {};
+
+
+    Object.keys(
+        valeurs
+    ).forEach(
+        function(cle) {
+
+            const quantite =
+                nombre(
+                    valeurs[cle]
                 );
 
-            break;
+
+            if (quantite > 0) {
+
+                calculabilite[cle] =
+                    emissions[cle] > 0;
+
+            }
+
+        }
+    );
 
 
-        case "industrie":
+    /*
+     * Ajout des catégories connues
+     * mais non calculées.
+     */
 
-            resultat =
-                calculerIndustrie(
-                    valeurs
-                );
+    if (
+        secteur === "agroalimentaire"
+    ) {
 
-            break;
-
-
-        case "commerce":
-
-            resultat =
-                calculerCommerce(
-                    valeurs
-                );
-
-            break;
-
-
-        case "agriculture":
-
-            resultat =
-                calculerAgriculture(
-                    valeurs
-                );
-
-            break;
-
-
-        default:
-
-            return null;
+        calculabilite.dechets =
+            false;
 
     }
 
 
-    /*
-     * Conversion kgCO2e → tCO2e
-     */
+    if (
+        secteur === "btp"
+    ) {
 
-    const totalKgCO2e =
-        resultat.total;
+        calculabilite.ciment =
+            false;
+
+    }
 
 
-    const totalTCO2e =
-        totalKgCO2e / 1000;
+    if (
+        secteur === "industrie"
+    ) {
+
+        calculabilite.fluide =
+            false;
+
+    }
+
+
+    if (
+        secteur === "commerce"
+    ) {
+
+        calculabilite.fluide =
+            false;
+
+    }
+
+
+    if (
+        secteur === "agriculture"
+    ) {
+
+        calculabilite.animaux =
+            false;
+
+        calculabilite.fumier =
+            false;
+
+        calculabilite.engrais =
+            false;
+
+    }
 
 
     return {
@@ -842,31 +874,19 @@ function calculerBilanMensuel(donnees) {
             donnees.mois,
 
         secteur:
-            donnees.secteur,
-
+            secteur,
 
         emissions:
-            resultat.emissions,
-
+            emissions,
 
         calculabilite:
-            resultat.calculabilite,
-
+            calculabilite,
 
         totalKgCO2e:
             totalKgCO2e,
 
-
         totalTCO2e:
-            totalTCO2e,
-
-
-        unite:
-            "kgCO2e",
-
-
-        periode:
-            "mensuelle"
+            totalTCO2e
 
     };
 
@@ -874,179 +894,7 @@ function calculerBilanMensuel(donnees) {
 
 
 /* =========================================
-   ANALYSE DU NIVEAU D'ÉMISSION
-   ========================================= */
-
-function determinerNiveauEmission(
-    totalKgCO2e
-) {
-
-    if (totalKgCO2e < 1000) {
-
-        return {
-
-            niveau: "faible",
-
-            titre: "Émissions faibles",
-
-            message:
-                "Le niveau d'émission calculé est relativement faible pour le mois évalué."
-
-        };
-
-    }
-
-
-    if (totalKgCO2e < 5000) {
-
-        return {
-
-            niveau: "modere",
-
-            titre: "Émissions modérées",
-
-            message:
-                "Les émissions méritent une attention particulière et peuvent être réduites."
-
-        };
-
-    }
-
-
-    if (totalKgCO2e < 10000) {
-
-        return {
-
-            niveau: "eleve",
-
-            titre: "Émissions élevées",
-
-            message:
-                "Le niveau d'émission est élevé. Des mesures de réduction sont recommandées."
-
-        };
-
-    }
-
-
-    return {
-
-        niveau: "tres-eleve",
-
-        titre: "Émissions très élevées",
-
-        message:
-            "Le niveau d'émission est très élevé. Une analyse approfondie des principales sources est recommandée."
-
-    };
-
-}
-
-
-/* =========================================
-   CONSEILS
-   ========================================= */
-
-function genererConseils(
-    secteur,
-    niveau
-) {
-
-    const conseils = [];
-
-
-    if (
-        niveau === "eleve" ||
-        niveau === "tres-eleve"
-    ) {
-
-        conseils.push(
-            "Identifier les principales sources d'émission du mois."
-        );
-
-        conseils.push(
-            "Réduire autant que possible la consommation de combustibles fossiles."
-        );
-
-    }
-
-
-    switch (secteur) {
-
-        case "agroalimentaire":
-
-            conseils.push(
-                "Optimiser l'utilisation du bois, du charbon et du GPL dans les équipements de cuisson."
-            );
-
-            conseils.push(
-                "Améliorer la gestion et le traitement des déchets organiques."
-            );
-
-            break;
-
-
-        case "btp":
-
-            conseils.push(
-                "Optimiser les déplacements des engins et des camions."
-            );
-
-            conseils.push(
-                "Réduire la consommation de diesel lorsque cela est possible."
-            );
-
-            break;
-
-
-        case "industrie":
-
-            conseils.push(
-                "Surveiller la consommation électrique mensuelle."
-            );
-
-            conseils.push(
-                "Limiter l'utilisation des groupes électrogènes."
-            );
-
-            break;
-
-
-        case "commerce":
-
-            conseils.push(
-                "Optimiser les trajets des véhicules de livraison."
-            );
-
-            conseils.push(
-                "Entretenir régulièrement les véhicules."
-            );
-
-            break;
-
-
-        case "agriculture":
-
-            conseils.push(
-                "Améliorer la gestion du fumier."
-            );
-
-            conseils.push(
-                "Optimiser l'utilisation des engrais azotés."
-            );
-
-            break;
-
-    }
-
-
-    return conseils;
-
-}
-
-
-/* =========================================
-   EXPOSITION
+   EXPOSITION DU MOTEUR
    ========================================= */
 
 window.PasseportCarboneCalcul = {
