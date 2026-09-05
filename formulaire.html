@@ -1,0 +1,1161 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Évaluation mensuelle | Passeport Carbone</title>
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+
+<body>
+
+
+    <!-- ================================
+         NAVIGATION
+         ================================ -->
+
+    <header class="navbar">
+
+        <div class="logo">
+
+            <span>🌿</span>
+
+            Passeport Carbone
+
+        </div>
+
+
+        <a
+            href="index.html"
+            class="nav-button"
+        >
+            Accueil
+        </a>
+
+    </header>
+
+
+
+    <!-- ================================
+         CONTENU
+         ================================ -->
+
+    <main class="form-page">
+
+
+        <!-- PROGRESSION -->
+
+        <div class="progress-container">
+
+            <div class="progress-info">
+
+                <span>
+                    Bilan carbone mensuel
+                </span>
+
+                <strong>
+                    Étape 1 sur 2
+                </strong>
+
+            </div>
+
+
+            <div class="progress-bar">
+
+                <div
+                    class="progress-fill"
+                    style="width: 50%;"
+                ></div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- INTRODUCTION -->
+
+        <section class="form-intro">
+
+            <span class="section-label">
+
+                🌱 ÉVALUATION MENSUELLE
+
+            </span>
+
+
+            <h1>
+
+                Parlons de votre
+                <span>activité.</span>
+
+            </h1>
+
+
+            <p>
+
+                Renseignez quelques informations sur votre PME
+                afin que nous puissions adapter l'évaluation
+                à votre secteur d'activité.
+
+            </p>
+
+        </section>
+
+
+
+        <!-- IDENTIFICATION -->
+
+        <section class="form-card">
+
+
+            <div class="form-header">
+
+                <span class="form-number">
+                    01
+                </span>
+
+
+                <h2>
+                    Identification
+                </h2>
+
+
+                <p>
+                    Ces informations permettent d'identifier
+                    votre évaluation mensuelle.
+                </p>
+
+            </div>
+
+
+
+            <!-- NOM -->
+
+            <div class="form-group">
+
+                <label for="nom">
+
+                    Nom de la PME
+
+                </label>
+
+
+                <input
+                    type="text"
+                    id="nom"
+                    placeholder="Ex. Faso Transformation"
+                    required
+                >
+
+            </div>
+
+
+
+            <!-- MOIS -->
+
+            <div class="form-group">
+
+                <label for="mois">
+
+                    Mois évalué
+
+                </label>
+
+
+                <input
+                    type="month"
+                    id="mois"
+                    required
+                >
+
+            </div>
+
+
+
+            <!-- SECTEUR -->
+
+            <div class="form-group">
+
+                <label for="secteur">
+
+                    Secteur d'activité
+
+                </label>
+
+
+                <select
+                    id="secteur"
+                    required
+                >
+
+                    <option value="">
+                        Sélectionnez votre secteur
+                    </option>
+
+
+                    <option value="agroalimentaire">
+
+                        Agroalimentaire et transformation locale
+
+                    </option>
+
+
+                    <option value="btp">
+
+                        BTP et matériaux
+
+                    </option>
+
+
+                    <option value="industrie">
+
+                        Industrie manufacturière
+
+                    </option>
+
+
+                    <option value="commerce">
+
+                        Commerce, transport et logistique
+
+                    </option>
+
+
+                    <option value="agriculture">
+
+                        Agriculture et élevage
+
+                    </option>
+
+                </select>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- SOURCES D'ÉMISSION -->
+
+        <section
+            class="form-card"
+            id="sources-section"
+            style="display: none;"
+        >
+
+
+            <div class="form-header">
+
+                <span class="form-number">
+                    02
+                </span>
+
+
+                <h2>
+                    Sources d'émission
+                </h2>
+
+
+                <p id="description-secteur">
+
+                    Sélectionnez votre secteur pour afficher
+                    les sources pertinentes.
+
+                </p>
+
+            </div>
+
+
+
+            <!-- ================================
+                 AGROALIMENTAIRE
+                 ================================ -->
+
+            <div
+                id="bloc-agroalimentaire"
+                class="secteur-bloc"
+                style="display: none;"
+            >
+
+
+                <div class="form-notice">
+
+                    <span class="notice-icon">
+                        🌾
+                    </span>
+
+
+                    <div>
+
+                        <strong>
+                            Agroalimentaire et transformation locale
+                        </strong>
+
+
+                        <p>
+                            Renseignez les consommations
+                            principales liées à votre activité.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="form-group">
+
+                    <label for="bois">
+                        🪵 Bois de chauffe
+                    </label>
+
+                    <input
+                        type="number"
+                        id="bois"
+                        min="0"
+                        step="0.01"
+                        placeholder="Quantité mensuelle"
+                    >
+
+                    <small>
+                        Unité : kg
+                    </small>
+
+                </div>
+
+
+
+                <div class="form-group">
+
+                    <label for="charbon">
+                        🪨 Charbon de bois
+                    </label>
+
+                    <input
+                        type="number"
+                        id="charbon"
+                        min="0"
+                        step="0.01"
+                        placeholder="Quantité mensuelle"
+                    >
+
+                    <small>
+                        Unité : kg
+                    </small>
+
+                </div>
+
+
+
+                <div class="form-group">
+
+                    <label for="butane-agro">
+                        🔥 Butane / GPL
+                    </label>
+
+                    <input
+                        type="number"
+                        id="butane-agro"
+                        min="0"
+                        step="0.01"
+                        placeholder="Quantité mensuelle"
+                    >
+
+                    <small>
+                        Unité : kg
+                    </small>
+
+                </div>
+
+
+
+                <div class="form-group">
+
+                    <label for="dechets-agro">
+                        🗑️ Déchets organiques
+                    </label>
+
+                    <input
+                        type="number"
+                        id="dechets-agro"
+                        min="0"
+                        step="0.01"
+                        placeholder="Quantité mensuelle"
+                    >
+
+                    <small>
+                        Unité : kg
+                    </small>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- ================================
+                 BTP
+                 ================================ -->
+
+            <div
+                id="bloc-btp"
+                class="secteur-bloc"
+                style="display: none;"
+            >
+
+
+                <div class="form-notice">
+
+                    <span class="notice-icon">
+                        🏗️
+                    </span>
+
+
+                    <div>
+
+                        <strong>
+                            BTP et matériaux
+                        </strong>
+
+
+                        <p>
+                            Renseignez les principales consommations
+                            énergétiques de votre activité.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="form-group">
+
+                    <label for="diesel-btp">
+                        ⛽ Gasoil / Diesel
+                    </label>
+
+                    <input
+                        type="number"
+                        id="diesel-btp"
+                        min="0"
+                        step="0.01"
+                        placeholder="Consommation mensuelle"
+                    >
+
+                    <small>
+                        Unité : litres
+                    </small>
+
+                </div>
+
+
+
+                <div class="form-group">
+
+                    <label for="bois-btp">
+                        🪵 Bois / biomasse
+                    </label>
+
+                    <input
+                        type="number"
+                        id="bois-btp"
+                        min="0"
+                        step="0.01"
+                        placeholder="Quantité mensuelle"
+                    >
+
+                    <small>
+                        Unité : kg
+                    </small>
+
+                </div>
+
+
+
+                <div class="form-group">
+
+                    <label for="ciment-btp">
+                        🧱 Ciment utilisé
+                    </label>
+
+                    <input
+                        type="number"
+                        id="ciment-btp"
+                        min="0"
+                        step="0.01"
+                        placeholder="Quantité mensuelle"
+                    >
+
+                    <small>
+                        Unité : kg
+                    </small>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- ================================
+                 INDUSTRIE
+                 ================================ -->
+
+            <div
+                id="bloc-industrie"
+                class="secteur-bloc"
+                style="display: none;"
+            >
+
+
+                <div class="form-notice">
+
+                    <span class="notice-icon">
+                        🏭
+                    </span>
+
+
+                    <div>
+
+                        <strong>
+                            Industrie manufacturière
+                        </strong>
+
+
+                        <p>
+                            Renseignez les consommations énergétiques
+                            et les éventuelles recharges de fluides.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="form-group">
+
+                    <label for="diesel-industrie">
+                        ⛽ Diesel des groupes électrogènes
+                    </label>
+
+                    <input
+                        type="number"
+                        id="diesel-industrie"
+                        min="0"
+                        step="0.01"
+                        placeholder="Consommation mensuelle"
+                    >
+
+                    <small>
+                        Unité : litres
+                    </small>
+
+                </div>
+
+
+
+                <div class="form-group">
+
+                    <label for="electricite-industrie">
+                        ⚡ Électricité consommée
+                    </label>
+
+                    <input
+                        type="number"
+                        id="electricite-industrie"
+                        min="0"
+                        step="0.01"
+                        placeholder="Consommation mensuelle"
+                    >
+
+                    <small>
+                        Unité : kWh
+                    </small>
+
+                </div>
+
+
+
+                <div class="form-group">
+
+                    <label for="fluide-industrie">
+                        ❄️ Fluide frigorigène rechargé
+                    </label>
+
+                    <input
+                        type="number"
+                        id="fluide-industrie"
+                        min="0"
+                        step="0.01"
+                        placeholder="Quantité mensuelle"
+                    >
+
+                    <small>
+                        Unité : kg
+                    </small>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- ================================
+                 COMMERCE
+                 ================================ -->
+
+            <div
+                id="bloc-commerce"
+                class="secteur-bloc"
+                style="display: none;"
+            >
+
+
+                <div class="form-notice">
+
+                    <span class="notice-icon">
+                        🚚
+                    </span>
+
+
+                    <div>
+
+                        <strong>
+                            Commerce, transport et logistique
+                        </strong>
+
+
+                        <p>
+                            Renseignez les consommations de carburant
+                            et les éventuelles recharges de fluides.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="form-group">
+
+                    <label for="essence-commerce">
+                        ⛽ Essence
+                    </label>
+
+                    <input
+                        type="number"
+                        id="essence-commerce"
+                        min="0"
+                        step="0.01"
+                        placeholder="Consommation mensuelle"
+                    >
+
+                    <small>
+                        Unité : litres
+                    </small>
+
+                </div>
+
+
+
+                <div class="form-group">
+
+                    <label for="diesel-commerce">
+                        🚛 Gasoil / Diesel
+                    </label>
+
+                    <input
+                        type="number"
+                        id="diesel-commerce"
+                        min="0"
+                        step="0.01"
+                        placeholder="Consommation mensuelle"
+                    >
+
+                    <small>
+                        Unité : litres
+                    </small>
+
+                </div>
+
+
+
+                <div class="form-group">
+
+                    <label for="fluide-commerce">
+                        ❄️ Fluide frigorigène rechargé
+                    </label>
+
+                    <input
+                        type="number"
+                        id="fluide-commerce"
+                        min="0"
+                        step="0.01"
+                        placeholder="Quantité mensuelle"
+                    >
+
+                    <small>
+                        Unité : kg
+                    </small>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- ================================
+                 AGRICULTURE
+                 ================================ -->
+
+            <div
+                id="bloc-agriculture"
+                class="secteur-bloc"
+                style="display: none;"
+            >
+
+
+                <div class="form-notice">
+
+                    <span class="notice-icon">
+                        🌱
+                    </span>
+
+
+                    <div>
+
+                        <strong>
+                            Agriculture et élevage
+                        </strong>
+
+
+                        <p>
+                            Renseignez les informations principales
+                            concernant l'élevage et les intrants agricoles.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="form-group">
+
+                    <label for="animaux">
+                        🐄 Nombre d'animaux d'élevage
+                    </label>
+
+                    <input
+                        type="number"
+                        id="animaux"
+                        min="0"
+                        step="1"
+                        placeholder="Nombre moyen sur le mois"
+                    >
+
+                    <small>
+                        Nombre d'animaux
+                    </small>
+
+                </div>
+
+
+
+                <div class="form-group">
+
+                    <label for="fumier">
+                        ♻️ Gestion du fumier
+                    </label>
+
+                    <input
+                        type="number"
+                        id="fumier"
+                        min="0"
+                        step="0.01"
+                        placeholder="Quantité mensuelle"
+                    >
+
+                    <small>
+                        Unité : kg
+                    </small>
+
+                </div>
+
+
+
+                <div class="form-group">
+
+                    <label for="engrais">
+                        🌾 Engrais azotés
+                    </label>
+
+                    <input
+                        type="number"
+                        id="engrais"
+                        min="0"
+                        step="0.01"
+                        placeholder="Quantité mensuelle"
+                    >
+
+                    <small>
+                        Unité : kg
+                    </small>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ACTION -->
+
+        <section
+            class="form-card"
+            id="action-section"
+            style="display: none;"
+        >
+
+
+            <div class="form-actions">
+
+                <a
+                    href="index.html"
+                    class="back-button"
+                >
+                    ← Retour
+                </a>
+
+
+                <button
+                    type="button"
+                    id="continuer"
+                    class="primary-button"
+                >
+
+                    Calculer mon bilan →
+
+                </button>
+
+            </div>
+
+        </section>
+
+
+    </main>
+
+
+
+    <!-- ================================
+         JAVASCRIPT
+         ================================ -->
+
+    <script>
+
+
+        const secteur =
+            document.getElementById("secteur");
+
+
+        const sourcesSection =
+            document.getElementById("sources-section");
+
+
+        const actionSection =
+            document.getElementById("action-section");
+
+
+        const descriptionSecteur =
+            document.getElementById("description-secteur");
+
+
+        const blocs = {
+
+            agroalimentaire:
+                document.getElementById("bloc-agroalimentaire"),
+
+            btp:
+                document.getElementById("bloc-btp"),
+
+            industrie:
+                document.getElementById("bloc-industrie"),
+
+            commerce:
+                document.getElementById("bloc-commerce"),
+
+            agriculture:
+                document.getElementById("bloc-agriculture")
+
+        };
+
+
+        const descriptions = {
+
+            agroalimentaire:
+                "Principales sources : biomasse, charbon, butane et déchets organiques.",
+
+            btp:
+                "Principales sources : diesel, biomasse et utilisation de ciment.",
+
+            industrie:
+                "Principales sources : groupes électrogènes, électricité et fluides frigorigènes.",
+
+            commerce:
+                "Principales sources : essence, diesel et fluides frigorigènes.",
+
+            agriculture:
+                "Principales sources : élevage, fumier et engrais azotés."
+
+        };
+
+
+        secteur.addEventListener(
+            "change",
+            function () {
+
+                Object.values(blocs).forEach(
+                    bloc => bloc.style.display = "none"
+                );
+
+
+                if (!this.value) {
+
+                    sourcesSection.style.display = "none";
+
+                    actionSection.style.display = "none";
+
+                    return;
+
+                }
+
+
+                sourcesSection.style.display = "block";
+
+                actionSection.style.display = "block";
+
+
+                blocs[this.value].style.display = "block";
+
+
+                descriptionSecteur.textContent =
+                    descriptions[this.value];
+
+            }
+        );
+
+
+
+        document
+            .getElementById("continuer")
+            .addEventListener(
+                "click",
+                function () {
+
+
+                    const nom =
+                        document
+                            .getElementById("nom")
+                            .value
+                            .trim();
+
+
+                    const mois =
+                        document
+                            .getElementById("mois")
+                            .value;
+
+
+                    const secteurChoisi =
+                        secteur.value;
+
+
+                    if (
+                        !nom ||
+                        !mois ||
+                        !secteurChoisi
+                    ) {
+
+                        alert(
+                            "Veuillez renseigner le nom de la PME, le mois et le secteur d'activité."
+                        );
+
+                        return;
+
+                    }
+
+
+                    const donnees = {
+
+                        nom: nom,
+
+                        mois: mois,
+
+                        secteur: secteurChoisi,
+
+
+                        bois:
+                            Number(
+                                document
+                                    .getElementById("bois")
+                                    ?.value || 0
+                            ),
+
+
+                        charbon:
+                            Number(
+                                document
+                                    .getElementById("charbon")
+                                    ?.value || 0
+                            ),
+
+
+                        butaneAgro:
+                            Number(
+                                document
+                                    .getElementById("butane-agro")
+                                    ?.value || 0
+                            ),
+
+
+                        dechetsAgro:
+                            Number(
+                                document
+                                    .getElementById("dechets-agro")
+                                    ?.value || 0
+                            ),
+
+
+                        dieselBtp:
+                            Number(
+                                document
+                                    .getElementById("diesel-btp")
+                                    ?.value || 0
+                            ),
+
+
+                        boisBtp:
+                            Number(
+                                document
+                                    .getElementById("bois-btp")
+                                    ?.value || 0
+                            ),
+
+
+                        cimentBtp:
+                            Number(
+                                document
+                                    .getElementById("ciment-btp")
+                                    ?.value || 0
+                            ),
+
+
+                        dieselIndustrie:
+                            Number(
+                                document
+                                    .getElementById("diesel-industrie")
+                                    ?.value || 0
+                            ),
+
+
+                        electriciteIndustrie:
+                            Number(
+                                document
+                                    .getElementById("electricite-industrie")
+                                    ?.value || 0
+                            ),
+
+
+                        fluideIndustrie:
+                            Number(
+                                document
+                                    .getElementById("fluide-industrie")
+                                    ?.value || 0
+                            ),
+
+
+                        essenceCommerce:
+                            Number(
+                                document
+                                    .getElementById("essence-commerce")
+                                    ?.value || 0
+                            ),
+
+
+                        dieselCommerce:
+                            Number(
+                                document
+                                    .getElementById("diesel-commerce")
+                                    ?.value || 0
+                            ),
+
+
+                        fluideCommerce:
+                            Number(
+                                document
+                                    .getElementById("fluide-commerce")
+                                    ?.value || 0
+                            ),
+
+
+                        animaux:
+                            Number(
+                                document
+                                    .getElementById("animaux")
+                                    ?.value || 0
+                            ),
+
+
+                        fumier:
+                            Number(
+                                document
+                                    .getElementById("fumier")
+                                    ?.value || 0
+                            ),
+
+
+                        engrais:
+                            Number(
+                                document
+                                    .getElementById("engrais")
+                                    ?.value || 0
+                            )
+
+                    };
+
+
+                    localStorage.setItem(
+
+                        "passeportCarboneEvaluation",
+
+                        JSON.stringify(donnees)
+
+                    );
+
+
+                    window.location.href =
+                        "resultats.html";
+
+                }
+            );
+
+
+    </script>
+
+
+</body>
+
+</html>
