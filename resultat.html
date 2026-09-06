@@ -20,12 +20,20 @@
 <body>
 
 
+<!-- =========================================
+     NAVIGATION
+     ========================================= -->
+
 <header class="navbar">
 
     <div class="logo">
+
         <span>🌿</span>
+
         Passeport Carbone
+
     </div>
+
 
     <a
         href="index.html"
@@ -38,109 +46,137 @@
 
 
 
-<main class="results-page">
+<!-- =========================================
+     CONTENU
+     ========================================= -->
+
+<main class="form-page">
 
 
-    <!-- ================================
-         EN-TÊTE
-         ================================ -->
+    <!-- =========================================
+         PROGRESSION
+         ========================================= -->
 
-    <section class="results-header">
+    <div class="progress-container">
+
+        <div class="progress-info">
+
+            <span>
+                Parcours d'évaluation
+            </span>
+
+            <strong>
+                Étape 3 sur 3
+            </strong>
+
+        </div>
+
+
+        <div class="progress-bar">
+
+            <div
+                class="progress-fill"
+                style="width: 100%;"
+            ></div>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- =========================================
+         INTRODUCTION
+         ========================================= -->
+
+    <section class="form-intro">
 
         <span class="section-label">
-            🌍 RÉSULTATS DU BILAN CARBONE
+            ÉTAPE 3 — RÉSULTATS
         </span>
+
 
         <h1>
             Votre bilan
             <span>carbone.</span>
         </h1>
 
-        <p id="intro">
 
-            Analyse des émissions enregistrées
-            pour votre PME.
-
+        <p id="message-resultat">
+            Analyse de vos données d'émission...
         </p>
 
     </section>
 
 
 
-    <!-- ================================
-         IDENTIFICATION
-         ================================ -->
+    <!-- =========================================
+         RÉSULTAT PRINCIPAL
+         ========================================= -->
 
-    <section class="result-card">
+    <section class="form-card">
 
-        <div class="result-company">
+        <div class="form-header">
 
-            <div>
-
-                <span class="result-label">
-                    ENTREPRISE
-                </span>
-
-                <h2 id="nomEntreprise">
-                    —
-                </h2>
-
-            </div>
-
-
-            <div>
-
-                <span class="result-label">
-                    PÉRIODE
-                </span>
-
-                <strong id="periode">
-                    —
-                </strong>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-
-    <!-- ================================
-         TOTAL
-         ================================ -->
-
-    <section class="total-card">
-
-        <span class="result-label">
-            ÉMISSIONS ESTIMÉES DU MOIS
-        </span>
-
-        <div class="total-value">
-
-            <strong id="totalEmission">
-                —
-            </strong>
-
-            <span>
-                kgCO₂e
+            <span class="form-number">
+                RÉSULTAT
             </span>
 
+
+            <h2>
+                🌍 Émissions estimées
+            </h2>
+
+
+            <p>
+                Résultat calculé à partir des données
+                renseignées lors de l'évaluation détaillée.
+            </p>
+
         </div>
 
-        <p id="niveauEmission">
-            —
-        </p>
+
+        <div
+            style="
+                text-align:center;
+                padding:25px 10px;
+            "
+        >
+
+            <div
+                id="total-carbone"
+                style="
+                    font-size:52px;
+                    font-weight:800;
+                    color:#267a42;
+                    line-height:1.1;
+                "
+            >
+                0
+            </div>
+
+
+            <div
+                style="
+                    margin-top:8px;
+                    color:#68746c;
+                    font-size:15px;
+                "
+            >
+                kgCO₂e estimés
+            </div>
+
+        </div>
 
     </section>
 
 
 
-    <!-- ================================
+    <!-- =========================================
          RÉPARTITION
-         ================================ -->
+         ========================================= -->
 
-    <section class="result-card">
+    <section class="form-card">
 
         <div class="form-header">
 
@@ -148,21 +184,29 @@
                 01
             </span>
 
+
             <h2>
                 Répartition des émissions
             </h2>
 
+
             <p>
-                Voici les principales sources d'émissions
-                identifiées pour le mois évalué.
+                Contribution estimée des principales
+                sources d'émission.
             </p>
 
         </div>
 
 
-        <div id="repartition">
+        <div
+            id="repartition"
+            style="
+                display:grid;
+                gap:18px;
+            "
+        >
 
-            <!-- Généré automatiquement -->
+            <!-- Généré par JavaScript -->
 
         </div>
 
@@ -170,11 +214,11 @@
 
 
 
-    <!-- ================================
-         CONSEILS
-         ================================ -->
+    <!-- =========================================
+         INFORMATIONS DE L'ÉVALUATION
+         ========================================= -->
 
-    <section class="result-card">
+    <section class="form-card">
 
         <div class="form-header">
 
@@ -182,21 +226,23 @@
                 02
             </span>
 
-            <h2>
-                Conseils et conduite à tenir
-            </h2>
 
-            <p>
-                Des recommandations adaptées au niveau
-                d'émission estimé.
-            </p>
+            <h2>
+                Informations de l'évaluation
+            </h2>
 
         </div>
 
 
-        <div id="conseils">
+        <div
+            id="informations"
+            style="
+                display:grid;
+                gap:12px;
+            "
+        >
 
-            <!-- Généré automatiquement -->
+            <!-- Généré par JavaScript -->
 
         </div>
 
@@ -204,66 +250,69 @@
 
 
 
-    <!-- ================================
-         LIMITES
-         ================================ -->
+    <!-- =========================================
+         SOURCES NON CALCULÉES
+         ========================================= -->
 
-    <section class="result-card">
+    <section class="form-card">
 
-        <div class="form-header">
+        <div class="form-notice">
 
-            <span class="form-number">
-                03
+            <span class="notice-icon">
+                🔬
             </span>
 
-            <h2>
-                À propos de cette estimation
-            </h2>
+
+            <div>
+
+                <strong>
+                    À propos de l'estimation
+                </strong>
+
+
+                <p>
+                    Certaines sources ne sont pas encore
+                    calculées automatiquement dans cette
+                    version du prototype, notamment les
+                    déchets, certains réseaux de chaleur ou
+                    de froid et certaines données agricoles.
+                    Elles nécessitent des informations
+                    supplémentaires ou des facteurs adaptés
+                    au contexte national.
+                </p>
+
+            </div>
 
         </div>
-
-
-        <p class="result-note">
-
-            Ce rapport constitue une estimation
-            simplifiée des émissions de gaz à effet
-            de serre à partir des informations
-            déclarées par la PME.
-
-            <br><br>
-
-            Les résultats dépendent des facteurs
-            d'émission et des données disponibles.
-            Ils ne constituent pas nécessairement
-            un bilan carbone réglementaire ou un
-            audit environnemental.
-
-        </p>
 
     </section>
 
 
 
-    <!-- ================================
+    <!-- =========================================
          ACTIONS
-         ================================ -->
+         ========================================= -->
 
-    <section class="result-actions">
+    <section class="form-card">
 
-        <a
-            href="evaluation.html"
-            class="secondary-button"
-        >
-            ← Nouvelle évaluation
-        </a>
+        <div class="form-actions">
+
+            <a
+                href="detail.html"
+                class="back-button"
+            >
+                ← Modifier
+            </a>
 
 
-        <a
-            href="rapport.html"
-            class="primary-button"
-        >
-            📄 Voir mon rapport mensuel →
-        </a>
+            <a
+                href="index.html"
+                class="primary-button"
+            >
+                Nouvelle évaluation
+            </a>
+
+        </div>
 
     </section>
 
@@ -272,810 +321,609 @@
 
 
 
-<script src="facteurs.js"></script>
-<script src="calcul.js"></script>
+<!-- =========================================
+     FACTEURS D'ÉMISSION
+     ========================================= -->
 
+<script src="facteurs.js"></script>
+
+
+
+<!-- =========================================
+     JAVASCRIPT
+     ========================================= -->
 
 <script>
 
-
-/* =========================================
-   RÉCUPÉRATION DES DONNÉES
-   ========================================= */
-
-const donnees =
-    JSON.parse(
-        localStorage.getItem(
-            "passeportCarboneEvaluation"
-        )
-    );
+document.addEventListener(
+    "DOMContentLoaded",
+    function () {
 
 
-/* =========================================
-   VÉRIFICATION
-   ========================================= */
+        /* =====================================
+           RÉCUPÉRATION DES DONNÉES
+           ===================================== */
 
-if (!donnees) {
-
-    document.getElementById(
-        "intro"
-    ).textContent =
-        "Aucune évaluation disponible.";
-
-}
-
-
-/* =========================================
-   AFFICHAGE ENTREPRISE
-   ========================================= */
-
-if (donnees) {
-
-    document.getElementById(
-        "nomEntreprise"
-    ).textContent =
-        donnees.nom || "PME";
-
-
-    document.getElementById(
-        "periode"
-    ).textContent =
-        donnees.mois || "—";
-
-
-    afficherResultat(
-        donnees
-    );
-
-}
-
-
-/* =========================================
-   CALCUL DU TOTAL
-   ========================================= */
-
-function calculerTotal(donnees) {
-
-    let total = 0;
-
-
-    const v =
-        donnees.valeurs || {};
-
-
-    /* -------------------------------
-       AGROALIMENTAIRE
-       ------------------------------- */
-
-    if (
-        donnees.secteur ===
-        "agroalimentaire"
-    ) {
-
-        total +=
-            calculBois(v.bois);
-
-        total +=
-            calculCharbon(v.charbon);
-
-        total +=
-            calculGPL(v.butane);
-
-        /*
-         * Les déchets ne sont pas encore
-         * intégrés car leur traitement
-         * n'est pas précisé.
-         */
-
-    }
-
-
-    /* -------------------------------
-       BTP
-       ------------------------------- */
-
-    if (
-        donnees.secteur ===
-        "btp"
-    ) {
-
-        total +=
-            calculDiesel(v.dieselBtp);
-
-        total +=
-            calculBois(v.boisBtp);
-
-        /*
-         * Le ciment reste hors calcul
-         * tant qu'un facteur documenté
-         * n'est pas retenu.
-         */
-
-    }
-
-
-    /* -------------------------------
-       INDUSTRIE
-       ------------------------------- */
-
-    if (
-        donnees.secteur ===
-        "industrie"
-    ) {
-
-        total +=
-            calculElectricite(
-                v.electricite
+        const donneesBrutes =
+            localStorage.getItem(
+                "passeportCarboneDetail"
             );
 
-        total +=
-            calculDiesel(
-                v.dieselIndustrie
+
+        if (!donneesBrutes) {
+
+            document.getElementById(
+                "message-resultat"
+            ).textContent =
+                "Aucune évaluation détaillée n'a été trouvée. Veuillez effectuer l'évaluation.";
+
+            document.getElementById(
+                "total-carbone"
+            ).textContent =
+                "—";
+
+            return;
+
+        }
+
+
+        let donnees;
+
+
+        try {
+
+            donnees =
+                JSON.parse(donneesBrutes);
+
+        }
+
+        catch (erreur) {
+
+            console.error(erreur);
+
+            document.getElementById(
+                "message-resultat"
+            ).textContent =
+                "Impossible de lire les données de l'évaluation.";
+
+            document.getElementById(
+                "total-carbone"
+            ).textContent =
+                "—";
+
+            return;
+
+        }
+
+
+
+        /* =====================================
+           FONCTION DE CALCUL
+           ===================================== */
+
+        function calculCombustible(
+            quantite,
+            facteur
+        ) {
+
+            if (
+                !facteur ||
+                !Number.isFinite(quantite) ||
+                quantite <= 0
+            ) {
+
+                return 0;
+
+            }
+
+
+            /*
+             * Les facteurs sont en kg/TJ.
+             *
+             * NCV :
+             * TJ/Gg
+             *
+             * conversion :
+             * kg/TJ × TJ/Gg × kg × conversion
+             *
+             * On utilise directement la relation :
+             *
+             * énergie(TJ)
+             * =
+             * masse(kg) × NCV / 1 000 000
+             */
+
+            let energieTJ = 0;
+
+
+            /*
+             * Pour les combustibles vendus au litre,
+             * conversionVolumeMasse est en kg/m³.
+             *
+             * 1 litre = 0,001 m³
+             */
+
+            if (
+                facteur.unite === "litre"
+            ) {
+
+                const masse =
+                    quantite *
+                    facteur.conversionVolumeMasse /
+                    1000;
+
+
+                energieTJ =
+                    masse *
+                    facteur.NCV /
+                    1000000;
+
+            }
+
+
+            /*
+             * Pour les combustibles exprimés directement
+             * en kilogrammes.
+             */
+
+            else if (
+                facteur.unite === "kg"
+            ) {
+
+                energieTJ =
+                    quantite *
+                    facteur.NCV /
+                    1000000;
+
+            }
+
+
+            const co2 =
+                energieTJ *
+                facteur.facteurCO2;
+
+
+            const ch4 =
+                energieTJ *
+                facteur.facteurCH4;
+
+
+            const n2o =
+                energieTJ *
+                facteur.facteurN2O;
+
+
+            return (
+                co2 * GWP_BURKINA.CO2 +
+                ch4 * GWP_BURKINA.CH4 +
+                n2o * GWP_BURKINA.N2O
             );
 
-        /*
-         * Le fluide est conservé pour
-         * une évolution ultérieure lorsque
-         * le type exact du fluide sera demandé.
-         */
-
-    }
+        }
 
 
-    /* -------------------------------
-       COMMERCE
-       ------------------------------- */
 
-    if (
-        donnees.secteur ===
-        "commerce"
-    ) {
+        /* =====================================
+           ÉLECTRICITÉ
+           ===================================== */
 
-        total +=
-            calculEssence(
-                v.essence
+        const electricite =
+            Number(
+                donnees.electricite || 0
             );
 
-        total +=
-            calculDiesel(
-                v.dieselCommerce
+
+        const emissionsElectricite =
+            electricite *
+            FACTEUR_ELECTRICITE.facteur;
+
+
+
+        /* =====================================
+           ESSENCE
+           ===================================== */
+
+        const essence =
+            Number(
+                donnees.vehicules?.essence || 0
             );
 
-    }
 
+        const emissionsEssence =
+            calculCombustible(
+                essence,
+                FACTEURS_COMBUSTIBLES.essence
+            );
 
-    /* -------------------------------
-       AGRICULTURE
-       ------------------------------- */
 
-    if (
-        donnees.secteur ===
-        "agriculture"
-    ) {
 
-        /*
-         * Les catégories agricoles
-         * nécessitent actuellement
-         * des données supplémentaires.
-         */
+        /* =====================================
+           DIESEL
+           ===================================== */
 
-    }
+        const diesel =
+            Number(
+                donnees.vehicules?.diesel || 0
+            );
 
 
-    return total;
+        const emissionsDiesel =
+            calculCombustible(
+                diesel,
+                FACTEURS_COMBUSTIBLES.diesel
+            );
 
-}
 
 
-/* =========================================
-   CALCUL BOIS
-   ========================================= */
+        /* =====================================
+           COMBUSTIBLE FIXE
+           ===================================== */
 
-function calculBois(
-    quantite
-) {
+        const combustible =
+            donnees.combustibles || {};
 
-    const q =
-        Number(quantite) || 0;
 
+        let emissionsCombustible =
+            0;
 
-    if (
-        q <= 0 ||
-        !FACTEUR_BOIS
-    ) {
 
-        return 0;
+        if (
+            combustible.type === "fioul"
+        ) {
 
-    }
-
-
-    const energie =
-        convertirKgVersTJ(
-            q,
-            FACTEUR_BOIS.NCV
-        );
-
-
-    const CO2 =
-        energie *
-        FACTEUR_BOIS.facteurCO2;
-
-
-    const CH4 =
-        energie *
-        FACTEUR_BOIS.facteurCH4;
-
-
-    const N2O =
-        energie *
-        FACTEUR_BOIS.facteurN2O;
-
-
-    return (
-        CO2 +
-        CH4 * GWP_BURKINA.CH4 +
-        N2O * GWP_BURKINA.N2O
-    );
-
-}
-
-
-/* =========================================
-   CALCUL CHARBON
-   ========================================= */
-
-function calculCharbon(
-    quantite
-) {
-
-    const q =
-        Number(quantite) || 0;
-
-
-    if (
-        q <= 0 ||
-        !FACTEUR_CHARBON
-    ) {
-
-        return 0;
-
-    }
-
-
-    const energie =
-        convertirKgVersTJ(
-            q,
-            FACTEUR_CHARBON.NCV
-        );
-
-
-    const CO2 =
-        energie *
-        FACTEUR_CHARBON.facteurCO2;
-
-
-    const CH4 =
-        energie *
-        FACTEUR_CHARBON.facteurCH4;
-
-
-    const N2O =
-        energie *
-        FACTEUR_CHARBON.facteurN2O;
-
-
-    return (
-        CO2 +
-        CH4 * GWP_BURKINA.CH4 +
-        N2O * GWP_BURKINA.N2O
-    );
-
-}
-
-
-/* =========================================
-   CALCUL GPL
-   ========================================= */
-
-function calculGPL(
-    quantite
-) {
-
-    const resultat =
-        calculerEmissionsCombustible(
-            Number(quantite) || 0,
-            "kg",
-            FACTEURS_COMBUSTIBLES.propane
-        );
-
-
-    return resultat.CO2e || 0;
-
-}
-
-
-/* =========================================
-   CALCUL DIESEL
-   ========================================= */
-
-function calculDiesel(
-    quantite
-) {
-
-    const resultat =
-        calculerEmissionsCarburant(
-            Number(quantite) || 0,
-            FACTEURS_COMBUSTIBLES.diesel
-        );
-
-
-    return resultat.CO2e || 0;
-
-}
-
-
-/* =========================================
-   CALCUL ESSENCE
-   ========================================= */
-
-function calculEssence(
-    quantite
-) {
-
-    const resultat =
-        calculerEmissionsCarburant(
-            Number(quantite) || 0,
-            FACTEURS_COMBUSTIBLES.essence
-        );
-
-
-    return resultat.CO2e || 0;
-
-}
-
-
-/* =========================================
-   CALCUL ÉLECTRICITÉ
-   ========================================= */
-
-function calculElectricite(
-    quantite
-) {
-
-    const resultat =
-        calculerEmissionElectricite(
-            Number(quantite) || 0,
-            "reseau"
-        );
-
-
-    return resultat.emission || 0;
-
-}
-
-
-/* =========================================
-   AFFICHAGE DU RÉSULTAT
-   ========================================= */
-
-function afficherResultat(
-    donnees
-) {
-
-    const total =
-        calculerTotal(donnees);
-
-
-    document.getElementById(
-        "totalEmission"
-    ).textContent =
-        total.toFixed(2);
-
-
-    afficherNiveau(
-        total
-    );
-
-
-    afficherRepartition(
-        donnees,
-        total
-    );
-
-
-    afficherConseils(
-        donnees,
-        total
-    );
-
-}
-
-
-/* =========================================
-   NIVEAU D'ÉMISSION
-   ========================================= */
-
-function afficherNiveau(
-    total
-) {
-
-    const element =
-        document.getElementById(
-            "niveauEmission"
-        );
-
-
-    /*
-     * Seuils indicatifs du prototype.
-     */
-
-    if (total < 500) {
-
-        element.textContent =
-            "🟢 Niveau faible — continuez à suivre vos consommations.";
-
-    }
-
-    else if (total < 2000) {
-
-        element.textContent =
-            "🟠 Niveau modéré — plusieurs sources peuvent être réduites.";
-
-    }
-
-    else {
-
-        element.textContent =
-            "🔴 Niveau élevé — une action prioritaire est recommandée.";
-
-    }
-
-}
-
-
-/* =========================================
-   RÉPARTITION
-   ========================================= */
-
-function afficherRepartition(
-    donnees,
-    total
-) {
-
-    const zone =
-        document.getElementById(
-            "repartition"
-        );
-
-
-    zone.innerHTML = "";
-
-
-    const v =
-        donnees.valeurs || {};
-
-
-    const lignes = [];
-
-
-    if (
-        donnees.secteur ===
-        "agroalimentaire"
-    ) {
-
-        lignes.push(
-            [
-                "Bois de chauffe",
-                calculBois(v.bois)
-            ]
-        );
-
-        lignes.push(
-            [
-                "Charbon de bois",
-                calculCharbon(v.charbon)
-            ]
-        );
-
-        lignes.push(
-            [
-                "GPL / Butane",
-                calculGPL(v.butane)
-            ]
-        );
-
-    }
-
-
-    if (
-        donnees.secteur ===
-        "btp"
-    ) {
-
-        lignes.push(
-            [
-                "Diesel",
-                calculDiesel(v.dieselBtp)
-            ]
-        );
-
-        lignes.push(
-            [
-                "Bois / biomasse",
-                calculBois(v.boisBtp)
-            ]
-        );
-
-    }
-
-
-    if (
-        donnees.secteur ===
-        "industrie"
-    ) {
-
-        lignes.push(
-            [
-                "Électricité",
-                calculElectricite(
-                    v.electricite
-                )
-            ]
-        );
-
-        lignes.push(
-            [
-                "Diesel",
-                calculDiesel(
-                    v.dieselIndustrie
-                )
-            ]
-        );
-
-    }
-
-
-    if (
-        donnees.secteur ===
-        "commerce"
-    ) {
-
-        lignes.push(
-            [
-                "Essence",
-                calculEssence(
-                    v.essence
-                )
-            ]
-        );
-
-        lignes.push(
-            [
-                "Diesel",
-                calculDiesel(
-                    v.dieselCommerce
-                )
-            ]
-        );
-
-    }
-
-
-    lignes.forEach(
-        function (ligne) {
-
-            const nom =
-                ligne[0];
-
-            const valeur =
-                ligne[1];
-
-
-            const div =
-                document.createElement(
-                    "div"
+            emissionsCombustible =
+                calculCombustible(
+                    Number(
+                        combustible.quantite || 0
+                    ),
+                    FACTEURS_COMBUSTIBLES.fioul
                 );
 
-
-            div.className =
-                "result-line";
+        }
 
 
-            const pourcentage =
-                total > 0
-                    ? (
-                        valeur /
-                        total *
-                        100
-                    )
-                    : 0;
+        else if (
+            combustible.type === "propane"
+        ) {
+
+            emissionsCombustible =
+                calculCombustible(
+                    Number(
+                        combustible.quantite || 0
+                    ),
+                    FACTEURS_COMBUSTIBLES.propane
+                );
+
+        }
 
 
-            div.innerHTML = `
+        /*
+         * Le gaz naturel n'est pas calculé ici
+         * car aucun facteur correspondant n'est
+         * défini dans facteurs.js.
+         */
 
-                <div>
+        else {
 
-                    <strong>
-                        ${nom}
-                    </strong>
+            emissionsCombustible = 0;
 
-                    <span>
-                        ${valeur.toFixed(2)}
-                        kgCO₂e
+        }
+
+
+
+        /* =====================================
+           FLUIDE FRIGORIGÈNE
+           ===================================== */
+
+        const fluide =
+            donnees.fluidesFrigorigenes || {};
+
+
+        let emissionsFluide =
+            0;
+
+
+        if (
+            fluide.recharge === "oui" &&
+            fluide.type
+        ) {
+
+            const facteurFluide =
+                FACTEURS_FRIGORIGENES[
+                    fluide.type
+                ];
+
+
+            if (facteurFluide) {
+
+                emissionsFluide =
+                    Number(
+                        fluide.quantite || 0
+                    ) *
+                    facteurFluide.facteur;
+
+            }
+
+        }
+
+
+
+        /* =====================================
+           BOIS / CHARBON / AUTRES
+           ===================================== */
+
+        /*
+         * Ces sources ne sont normalement pas
+         * renseignées dans detail.html.
+         *
+         * Elles sont donc conservées à zéro ici.
+         */
+
+
+
+        /* =====================================
+           TOTAL
+           ===================================== */
+
+        const total =
+            emissionsElectricite +
+            emissionsEssence +
+            emissionsDiesel +
+            emissionsCombustible +
+            emissionsFluide;
+
+
+
+        /* =====================================
+           AFFICHAGE TOTAL
+           ===================================== */
+
+        document.getElementById(
+            "total-carbone"
+        ).textContent =
+            total.toLocaleString(
+                "fr-FR",
+                {
+                    maximumFractionDigits: 2
+                }
+            );
+
+
+        document.getElementById(
+            "message-resultat"
+        ).textContent =
+            "Votre estimation a été calculée à partir des données disponibles.";
+
+
+
+        /* =====================================
+           RÉPARTITION
+           ===================================== */
+
+        const repartition =
+            document.getElementById(
+                "repartition"
+            );
+
+
+        const sources = [
+
+            {
+                nom: "⚡ Électricité",
+                valeur: emissionsElectricite
+            },
+
+            {
+                nom: "⛽ Essence",
+                valeur: emissionsEssence
+            },
+
+            {
+                nom: "🚛 Diesel / Gasoil",
+                valeur: emissionsDiesel
+            },
+
+            {
+                nom: "🔥 Combustible fixe",
+                valeur: emissionsCombustible
+            },
+
+            {
+                nom: "❄️ Fluide frigorigène",
+                valeur: emissionsFluide
+            }
+
+        ];
+
+
+
+        sources.forEach(
+            function (source) {
+
+                const pourcentage =
+                    total > 0
+                        ? (
+                            source.valeur /
+                            total
+                        ) * 100
+                        : 0;
+
+
+                const bloc =
+                    document.createElement(
+                        "div"
+                    );
+
+
+                bloc.innerHTML = `
+
+                    <div
+                        style="
+                            display:flex;
+                            justify-content:space-between;
+                            gap:15px;
+                            margin-bottom:6px;
+                            font-size:14px;
+                        "
+                    >
+
+                        <strong>
+                            ${source.nom}
+                        </strong>
+
+                        <span>
+                            ${source.valeur.toLocaleString(
+                                "fr-FR",
+                                {
+                                    maximumFractionDigits:2
+                                }
+                            )}
+                            kgCO₂e
+                        </span>
+
+                    </div>
+
+
+                    <div
+                        style="
+                            height:8px;
+                            background:#dfe8e0;
+                            border-radius:20px;
+                            overflow:hidden;
+                        "
+                    >
+
+                        <div
+                            style="
+                                width:${pourcentage}%;
+                                height:100%;
+                                background:#318049;
+                                border-radius:20px;
+                            "
+                        ></div>
+
+                    </div>
+
+
+                    <small
+                        style="
+                            display:block;
+                            margin-top:5px;
+                            color:#7a857d;
+                        "
+                    >
+                        ${pourcentage.toFixed(1)} %
+                    </small>
+
+                `;
+
+
+                repartition.appendChild(
+                    bloc
+                );
+
+            }
+        );
+
+
+
+        /* =====================================
+           INFORMATIONS
+           ===================================== */
+
+        const informations =
+            document.getElementById(
+                "informations"
+            );
+
+
+        const infos = [
+
+            [
+                "Source électrique",
+                donnees.sourceElectricite || "—"
+            ],
+
+            [
+                "Combustible fixe",
+                donnees.combustibles?.type || "—"
+            ],
+
+            [
+                "Recharge frigorigène",
+                donnees.fluidesFrigorigenes?.recharge || "—"
+            ],
+
+            [
+                "Réseau chaleur / froid",
+                donnees.reseauChaleurFroid?.utilise || "—"
+            ],
+
+            [
+                "Déchets déclarés",
+                `${Number(
+                    donnees.dechets || 0
+                ).toLocaleString(
+                    "fr-FR"
+                )} kg`
+            ]
+
+        ];
+
+
+        infos.forEach(
+            function (info) {
+
+                const ligne =
+                    document.createElement(
+                        "div"
+                    );
+
+
+                ligne.style.display =
+                    "flex";
+
+                ligne.style.justifyContent =
+                    "space-between";
+
+                ligne.style.gap =
+                    "20px";
+
+                ligne.style.padding =
+                    "12px 0";
+
+                ligne.style.borderBottom =
+                    "1px solid #edf1ed";
+
+
+                ligne.innerHTML = `
+
+                    <span
+                        style="
+                            color:#68746c;
+                        "
+                    >
+                        ${info[0]}
                     </span>
 
-                </div>
+                    <strong>
+                        ${info[1]}
+                    </strong>
 
-                <div class="bar">
-
-                    <i
-                        style="width:${pourcentage}%"
-                    ></i>
-
-                </div>
-
-            `;
+                `;
 
 
-            zone.appendChild(
-                div
-            );
-
-        }
-    );
-
-}
-
-
-/* =========================================
-   CONSEILS
-   ========================================= */
-
-function afficherConseils(
-    donnees,
-    total
-) {
-
-    const zone =
-        document.getElementById(
-            "conseils"
-        );
-
-
-    zone.innerHTML = "";
-
-
-    const conseils = [];
-
-
-    if (
-        total < 500
-    ) {
-
-        conseils.push(
-            "Continuez à suivre régulièrement vos consommations afin d'identifier les évolutions de votre empreinte."
-        );
-
-    }
-
-    else if (
-        total < 2000
-    ) {
-
-        conseils.push(
-            "Identifiez votre principale source d'émission et cherchez en priorité à réduire cette consommation."
-        );
-
-        conseils.push(
-            "Mettez en place un suivi mensuel afin de mesurer l'évolution de vos émissions."
-        );
-
-    }
-
-    else {
-
-        conseils.push(
-            "Une action prioritaire est recommandée sur les principales sources d'émission identifiées."
-        );
-
-        conseils.push(
-            "Étudiez les possibilités de réduction de la consommation de carburant, d'énergie ou de biomasse selon votre activité."
-        );
-
-        conseils.push(
-            "Réalisez un nouveau bilan le mois suivant afin de mesurer les progrès réalisés."
-        );
-
-    }
-
-
-    if (
-        donnees.secteur ===
-        "agroalimentaire"
-    ) {
-
-        conseils.push(
-            "Lorsque cela est possible, améliorez l'efficacité des foyers et fours et réduisez progressivement la dépendance aux combustibles fortement émetteurs."
-        );
-
-    }
-
-
-    if (
-        donnees.secteur ===
-        "btp"
-    ) {
-
-        conseils.push(
-            "Optimisez les déplacements des engins et des camions afin de réduire la consommation de diesel."
-        );
-
-    }
-
-
-    if (
-        donnees.secteur ===
-        "industrie"
-    ) {
-
-        conseils.push(
-            "Surveillez la consommation électrique et l'utilisation des groupes électrogènes."
-        );
-
-    }
-
-
-    if (
-        donnees.secteur ===
-        "commerce"
-    ) {
-
-        conseils.push(
-            "Optimisez les déplacements et l'organisation des livraisons afin de réduire la consommation de carburant."
-        );
-
-    }
-
-
-    conseils.forEach(
-        function (texte) {
-
-            const div =
-                document.createElement(
-                    "div"
+                informations.appendChild(
+                    ligne
                 );
 
-
-            div.className =
-                "form-notice";
-
-
-            div.innerHTML = `
-
-                <span class="notice-icon">
-                    ✓
-                </span>
-
-                <div>
-
-                    <p>
-                        ${texte}
-                    </p>
-
-                </div>
-
-            `;
+            }
+        );
 
 
-            zone.appendChild(
-                div
-            );
+    }
 
-        }
-    );
-
-}
-
+);
 
 </script>
 
@@ -1083,6 +931,3 @@ function afficherConseils(
 </body>
 
 </html>
-
-
-
