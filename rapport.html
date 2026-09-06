@@ -1,206 +1,254 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Rapport carbone mensuel | Passeport Carbone</title>
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+
+<body>
+
+
+<header class="navbar">
+
+    <div class="logo">
+        <span>🌿</span>
+        Passeport Carbone
+    </div>
+
+    <a
+        href="index.html"
+        class="nav-button"
+    >
+        Accueil
+    </a>
+
+</header>
 
 
 
-
-<meta charset="UTF-8">
-
-<meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
->
-
-<title>Rapport carbone mensuel | Passeport Carbone</title>
-
-<link rel="stylesheet" href="style.css">
+<main class="results-page">
 
 
+    <!-- ================================
+         EN-TÊTE
+         ================================ -->
 
+    <section class="results-header">
 
-
-
-<div class="logo">
-    <span>🌿</span>
-    Passeport Carbone
-</div>
-
-<a
-    href="index.html"
-    class="nav-button"
->
-    Accueil
-</a>
-
-
-
-
-
-<!-- ================================
-     EN-TÊTE DU RAPPORT
-     ================================ -->
-
-<section class="form-intro">
-
-    <span class="section-label">
-        🌍 RAPPORT CARBONE MENSUEL
-    </span>
-
-    <h1>
-        Votre bilan
-        <span>carbone.</span>
-    </h1>
-
-    <p>
-        Voici une synthèse des émissions estimées
-        pour votre PME durant le mois évalué.
-    </p>
-
-</section>
-
-
-
-<!-- ================================
-     IDENTIFICATION
-     ================================ -->
-
-<section class="form-card">
-
-    <div class="form-header">
-
-        <span class="form-number">
-            01
+        <span class="section-label">
+            🌍 RAPPORT CARBONE MENSUEL
         </span>
 
-        <h2>
-            Identification de la PME
-        </h2>
+        <h1>
+            Votre bilan
+            <span>carbone.</span>
+        </h1>
 
-    </div>
-
-
-    <div id="identification">
-
-        Chargement des informations...
-
-    </div>
-
-</section>
-
-
-
-<!-- ================================
-     TOTAL
-     ================================ -->
-
-<section class="form-card">
-
-    <div class="form-header">
-
-        <span class="form-number">
-            02
-        </span>
-
-        <h2>
-            Émission totale
-        </h2>
-
-    </div>
-
-
-    <div class="carbon-circle">
-
-        <strong id="totalTonne">
-            —
-        </strong>
-
-        <small>
-            tCO₂e
-        </small>
-
-    </div>
-
-
-    <p id="niveauEmission">
-        Analyse en cours...
-    </p>
-
-</section>
-
-
-
-<!-- ================================
-     DÉTAIL DES ÉMISSIONS
-     ================================ -->
-
-<section class="form-card">
-
-    <div class="form-header">
-
-        <span class="form-number">
-            03
-        </span>
-
-        <h2>
-            Détail des émissions
-        </h2>
-
-        <p>
-            Répartition estimée des principales sources
-            d'émissions de votre activité.
+        <p id="intro">
+            Synthèse des émissions estimées
+            pour votre PME.
         </p>
 
-    </div>
-
-
-    <div id="detailsEmissions">
-
-        Chargement...
-
-    </div>
-
-</section>
+    </section>
 
 
 
-<!-- ================================
-     CONSEILS
-     ================================ -->
+    <!-- ================================
+         IDENTIFICATION
+         ================================ -->
 
-<section class="form-card">
+    <section class="result-card">
 
-    <div class="form-header">
+        <div class="form-header">
 
-        <span class="form-number">
-            04
+            <span class="form-number">
+                01
+            </span>
+
+            <h2>
+                Identification de la PME
+            </h2>
+
+        </div>
+
+
+        <div id="identification">
+
+            Chargement...
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ================================
+         TOTAL
+         ================================ -->
+
+    <section class="total-card">
+
+        <span class="result-label">
+            ÉMISSIONS TOTALES DU MOIS
         </span>
 
-        <h2>
-            Conseils et conduite à tenir
-        </h2>
 
-    </div>
+        <div class="total-value">
 
+            <strong id="totalEmission">
+                —
+            </strong>
 
-    <div id="conseils">
+            <span>
+                kgCO₂e
+            </span>
 
-        Analyse en cours...
-
-    </div>
-
-</section>
+        </div>
 
 
+        <p id="niveauEmission">
+            Analyse en cours...
+        </p>
 
-<!-- ================================
-     ACTIONS
-     ================================ -->
+    </section>
 
-<section class="form-card">
 
-    <div class="form-actions">
+
+    <!-- ================================
+         RÉPARTITION
+         ================================ -->
+
+    <section class="result-card">
+
+        <div class="form-header">
+
+            <span class="form-number">
+                02
+            </span>
+
+            <h2>
+                Répartition des émissions
+            </h2>
+
+            <p>
+                Principales sources d'émissions
+                identifiées pour le mois évalué.
+            </p>
+
+        </div>
+
+
+        <div id="detailsEmissions">
+
+            Chargement...
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ================================
+         CONSEILS
+         ================================ -->
+
+    <section class="result-card">
+
+        <div class="form-header">
+
+            <span class="form-number">
+                03
+            </span>
+
+            <h2>
+                Conseils et conduite à tenir
+            </h2>
+
+            <p>
+                Recommandations adaptées au niveau
+                d'émission estimé et au secteur
+                d'activité.
+            </p>
+
+        </div>
+
+
+        <div id="conseils">
+
+            Analyse en cours...
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ================================
+         MÉTHODOLOGIE
+         ================================ -->
+
+    <section class="result-card">
+
+        <div class="form-header">
+
+            <span class="form-number">
+                04
+            </span>
+
+            <h2>
+                À propos de cette estimation
+            </h2>
+
+        </div>
+
+
+        <p class="result-note">
+
+            Cette estimation est calculée à partir
+            des données déclarées par la PME et des
+            facteurs d'émission intégrés au prototype.
+
+            <br><br>
+
+            Certaines sources peuvent ne pas être
+            calculées lorsque les données nécessaires
+            ou les facteurs d'émission appropriés
+            ne sont pas disponibles.
+
+            <br><br>
+
+            Ce rapport constitue un outil d'estimation
+            et de suivi. Il ne constitue pas, à lui seul,
+            un bilan carbone réglementaire ni un audit
+            environnemental.
+
+        </p>
+
+    </section>
+
+
+
+    <!-- ================================
+         ACTIONS
+         ================================ -->
+
+    <section class="result-actions">
 
         <a
             href="evaluation.html"
-            class="back-button"
+            class="secondary-button"
         >
             ← Nouvelle évaluation
         </a>
@@ -211,27 +259,1124 @@
             class="primary-button"
             onclick="window.print()"
         >
-            Imprimer / Enregistrer en PDF →
+            🖨️ Imprimer
         </button>
 
-    </div>
-
-</section>
+    </section>
 
 
-
-
-
-<div class="logo">
-    🌿 Passeport Carbone
-</div>
-
-<p>
-    Prototype de recherche — 2026
-</p>
+</main>
 
 
 
+<!-- ================================
+     SCRIPTS
+     ================================ -->
+
+<script src="facteurs.js"></script>
+<script src="calcul.js"></script>
 
 
+<script>
 
+
+/* =========================================
+   RÉCUPÉRATION DES DONNÉES
+   ========================================= */
+
+const donnees =
+    JSON.parse(
+        localStorage.getItem(
+            "passeportCarboneEvaluation"
+        )
+    );
+
+
+/* =========================================
+   VÉRIFICATION
+   ========================================= */
+
+if (!donnees) {
+
+    document.getElementById(
+        "intro"
+    ).textContent =
+        "Aucune évaluation disponible.";
+
+    document.getElementById(
+        "identification"
+    ).innerHTML = `
+        <div class="form-notice">
+            <span class="notice-icon">⚠️</span>
+            <div>
+                <strong>Aucune donnée trouvée</strong>
+                <p>
+                    Veuillez effectuer une nouvelle
+                    évaluation mensuelle.
+                </p>
+            </div>
+        </div>
+    `;
+
+}
+else {
+
+    afficherRapport(donnees);
+
+}
+
+
+/* =========================================
+   AFFICHAGE PRINCIPAL
+   ========================================= */
+
+function afficherRapport(
+    donnees
+) {
+
+    const nom =
+        donnees.nom ||
+        "PME non renseignée";
+
+
+    const mois =
+        donnees.mois ||
+        "Non renseigné";
+
+
+    const secteur =
+        donnees.secteur ||
+        "Non renseigné";
+
+
+    /* ================================
+       IDENTIFICATION
+       ================================ */
+
+    document.getElementById(
+        "identification"
+    ).innerHTML = `
+
+        <div class="result-company">
+
+            <div>
+
+                <span class="result-label">
+                    ENTREPRISE
+                </span>
+
+                <h2>
+                    ${echapperHTML(nom)}
+                </h2>
+
+            </div>
+
+
+            <div>
+
+                <span class="result-label">
+                    MOIS ÉVALUÉ
+                </span>
+
+                <strong>
+                    ${echapperHTML(formatterMois(mois))}
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <div class="form-notice">
+
+            <span class="notice-icon">
+                🏢
+            </span>
+
+            <div>
+
+                <strong>
+                    Secteur d'activité
+                </strong>
+
+                <p>
+                    ${echapperHTML(
+                        nomSecteur(secteur)
+                    )}
+                </p>
+
+            </div>
+
+        </div>
+
+    `;
+
+
+    /* ================================
+       CALCUL
+       ================================ */
+
+    const resultats =
+        calculerResultats(donnees);
+
+
+    const total =
+        resultats.total;
+
+
+    /* ================================
+       TOTAL
+       ================================ */
+
+    document.getElementById(
+        "totalEmission"
+    ).textContent =
+        total.toFixed(2);
+
+
+    afficherNiveau(total);
+
+
+    /* ================================
+       DÉTAILS
+       ================================ */
+
+    afficherDetails(
+        resultats.lignes,
+        total
+    );
+
+
+    /* ================================
+       CONSEILS
+       ================================ */
+
+    afficherConseils(
+        donnees,
+        resultats,
+        total
+    );
+
+}
+
+
+/* =========================================
+   CALCUL DES RÉSULTATS
+   ========================================= */
+
+function calculerResultats(
+    donnees
+) {
+
+    const v =
+        donnees.valeurs || {};
+
+
+    const lignes = [];
+
+
+    /* ================================
+       AGROALIMENTAIRE
+       ================================ */
+
+    if (
+        donnees.secteur ===
+        "agroalimentaire"
+    ) {
+
+        ajouterLigne(
+            lignes,
+            "Bois de chauffe",
+            calculBois(v.bois)
+        );
+
+
+        ajouterLigne(
+            lignes,
+            "Charbon de bois",
+            calculCharbon(v.charbon)
+        );
+
+
+        ajouterLigne(
+            lignes,
+            "GPL / Butane",
+            calculGPL(v.butane)
+        );
+
+    }
+
+
+    /* ================================
+       BTP
+       ================================ */
+
+    if (
+        donnees.secteur ===
+        "btp"
+    ) {
+
+        ajouterLigne(
+            lignes,
+            "Diesel / Gasoil",
+            calculDiesel(v.dieselBtp)
+        );
+
+
+        ajouterLigne(
+            lignes,
+            "Bois / Biomasse",
+            calculBois(v.boisBtp)
+        );
+
+    }
+
+
+    /* ================================
+       INDUSTRIE
+       ================================ */
+
+    if (
+        donnees.secteur ===
+        "industrie"
+    ) {
+
+        ajouterLigne(
+            lignes,
+            "Électricité",
+            calculElectricite(v.electricite)
+        );
+
+
+        ajouterLigne(
+            lignes,
+            "Diesel des groupes électrogènes",
+            calculDiesel(v.dieselIndustrie)
+        );
+
+    }
+
+
+    /* ================================
+       COMMERCE
+       ================================ */
+
+    if (
+        donnees.secteur ===
+        "commerce"
+    ) {
+
+        ajouterLigne(
+            lignes,
+            "Essence",
+            calculEssence(v.essence)
+        );
+
+
+        ajouterLigne(
+            lignes,
+            "Diesel / Gasoil",
+            calculDiesel(v.dieselCommerce)
+        );
+
+    }
+
+
+    /* ================================
+       AGRICULTURE
+       ================================ */
+
+    if (
+        donnees.secteur ===
+        "agriculture"
+    ) {
+
+        /*
+         * Ces données ne sont pas encore
+         * suffisamment documentées pour
+         * produire une estimation fiable
+         * dans le prototype.
+         */
+
+    }
+
+
+    let total = 0;
+
+
+    lignes.forEach(
+        function (ligne) {
+
+            total +=
+                ligne.valeur;
+
+        }
+    );
+
+
+    return {
+
+        lignes:
+            lignes,
+
+        total:
+            total
+
+    };
+
+}
+
+
+/* =========================================
+   AJOUT D'UNE LIGNE
+   ========================================= */
+
+function ajouterLigne(
+    lignes,
+    nom,
+    valeur
+) {
+
+    const nombre =
+        Number(valeur) || 0;
+
+
+    lignes.push({
+
+        nom:
+            nom,
+
+        valeur:
+            nombre
+
+    });
+
+}
+
+
+/* =========================================
+   CALCUL BOIS
+   ========================================= */
+
+function calculBois(
+    quantite
+) {
+
+    const q =
+        Number(quantite) || 0;
+
+
+    if (
+        q <= 0 ||
+        typeof FACTEUR_BOIS === "undefined"
+    ) {
+
+        return 0;
+
+    }
+
+
+    const energie =
+        convertirKgVersTJ(
+            q,
+            FACTEUR_BOIS.NCV
+        );
+
+
+    const CO2 =
+        energie *
+        FACTEUR_BOIS.facteurCO2;
+
+
+    const CH4 =
+        energie *
+        FACTEUR_BOIS.facteurCH4;
+
+
+    const N2O =
+        energie *
+        FACTEUR_BOIS.facteurN2O;
+
+
+    return (
+
+        CO2 +
+
+        CH4 *
+        GWP_BURKINA.CH4 +
+
+        N2O *
+        GWP_BURKINA.N2O
+
+    );
+
+}
+
+
+/* =========================================
+   CALCUL CHARBON
+   ========================================= */
+
+function calculCharbon(
+    quantite
+) {
+
+    const q =
+        Number(quantite) || 0;
+
+
+    if (
+        q <= 0 ||
+        typeof FACTEUR_CHARBON === "undefined"
+    ) {
+
+        return 0;
+
+    }
+
+
+    const energie =
+        convertirKgVersTJ(
+            q,
+            FACTEUR_CHARBON.NCV
+        );
+
+
+    const CO2 =
+        energie *
+        FACTEUR_CHARBON.facteurCO2;
+
+
+    const CH4 =
+        energie *
+        FACTEUR_CHARBON.facteurCH4;
+
+
+    const N2O =
+        energie *
+        FACTEUR_CHARBON.facteurN2O;
+
+
+    return (
+
+        CO2 +
+
+        CH4 *
+        GWP_BURKINA.CH4 +
+
+        N2O *
+        GWP_BURKINA.N2O
+
+    );
+
+}
+
+
+/* =========================================
+   CALCUL GPL
+   ========================================= */
+
+function calculGPL(
+    quantite
+) {
+
+    if (
+        typeof FACTEURS_COMBUSTIBLES ===
+        "undefined"
+    ) {
+
+        return 0;
+
+    }
+
+
+    const resultat =
+        calculerEmissionsCombustible(
+
+            Number(quantite) || 0,
+
+            "kg",
+
+            FACTEURS_COMBUSTIBLES.propane
+
+        );
+
+
+    return (
+        Number(resultat.CO2e) || 0
+    );
+
+}
+
+
+/* =========================================
+   CALCUL DIESEL
+   ========================================= */
+
+function calculDiesel(
+    quantite
+) {
+
+    if (
+        typeof FACTEURS_COMBUSTIBLES ===
+        "undefined"
+    ) {
+
+        return 0;
+
+    }
+
+
+    const resultat =
+        calculerEmissionsCarburant(
+
+            Number(quantite) || 0,
+
+            FACTEURS_COMBUSTIBLES.diesel
+
+        );
+
+
+    return (
+        Number(resultat.CO2e) || 0
+    );
+
+}
+
+
+/* =========================================
+   CALCUL ESSENCE
+   ========================================= */
+
+function calculEssence(
+    quantite
+) {
+
+    if (
+        typeof FACTEURS_COMBUSTIBLES ===
+        "undefined"
+    ) {
+
+        return 0;
+
+    }
+
+
+    const resultat =
+        calculerEmissionsCarburant(
+
+            Number(quantite) || 0,
+
+            FACTEURS_COMBUSTIBLES.essence
+
+        );
+
+
+    return (
+        Number(resultat.CO2e) || 0
+    );
+
+}
+
+
+/* =========================================
+   CALCUL ÉLECTRICITÉ
+   ========================================= */
+
+function calculElectricite(
+    quantite
+) {
+
+    if (
+        typeof FACTEUR_ELECTRICITE ===
+        "undefined"
+    ) {
+
+        return 0;
+
+    }
+
+
+    const resultat =
+        calculerEmissionElectricite(
+
+            Number(quantite) || 0,
+
+            "reseau"
+
+        );
+
+
+    return (
+        Number(resultat.emission) || 0
+    );
+
+}
+
+
+/* =========================================
+   AFFICHAGE DES DÉTAILS
+   ========================================= */
+
+function afficherDetails(
+    lignes,
+    total
+) {
+
+    const zone =
+        document.getElementById(
+            "detailsEmissions"
+        );
+
+
+    zone.innerHTML = "";
+
+
+    if (
+        lignes.length === 0
+    ) {
+
+        zone.innerHTML = `
+
+            <div class="form-notice">
+
+                <span class="notice-icon">
+                    ℹ️
+                </span>
+
+                <div>
+
+                    <strong>
+                        Aucune émission calculable
+                    </strong>
+
+                    <p>
+                        Les données renseignées ne
+                        permettent pas encore de calculer
+                        une émission avec les facteurs
+                        actuellement disponibles.
+                    </p>
+
+                </div>
+
+            </div>
+
+        `;
+
+        return;
+
+    }
+
+
+    lignes.forEach(
+        function (ligne) {
+
+            const pourcentage =
+                total > 0
+                    ? (
+                        ligne.valeur /
+                        total *
+                        100
+                    )
+                    : 0;
+
+
+            const div =
+                document.createElement(
+                    "div"
+                );
+
+
+            div.className =
+                "result-line";
+
+
+            div.innerHTML = `
+
+                <div>
+
+                    <strong>
+                        ${echapperHTML(ligne.nom)}
+                    </strong>
+
+                    <span>
+                        ${ligne.valeur.toFixed(2)}
+                        kgCO₂e
+                    </span>
+
+                </div>
+
+
+                <div class="bar">
+
+                    <i
+                        style="width:${Math.min(
+                            pourcentage,
+                            100
+                        )}%"
+                    ></i>
+
+                </div>
+
+
+                <small>
+                    ${pourcentage.toFixed(1)} %
+                </small>
+
+            `;
+
+
+            zone.appendChild(
+                div
+            );
+
+        }
+    );
+
+}
+
+
+/* =========================================
+   NIVEAU D'ÉMISSION
+   ========================================= */
+
+function afficherNiveau(
+    total
+) {
+
+    const element =
+        document.getElementById(
+            "niveauEmission"
+        );
+
+
+    if (
+        total < 500
+    ) {
+
+        element.textContent =
+            "🟢 Niveau faible — continuez à suivre régulièrement vos consommations.";
+
+    }
+
+    else if (
+        total < 2000
+    ) {
+
+        element.textContent =
+            "🟠 Niveau modéré — une réduction des principales sources est recommandée.";
+
+    }
+
+    else {
+
+        element.textContent =
+            "🔴 Niveau élevé — une action prioritaire est recommandée.";
+
+    }
+
+}
+
+
+/* =========================================
+   CONSEILS
+   ========================================= */
+
+function afficherConseils(
+    donnees,
+    resultats,
+    total
+) {
+
+    const zone =
+        document.getElementById(
+            "conseils"
+        );
+
+
+    zone.innerHTML = "";
+
+
+    const conseils = [];
+
+
+    /* ================================
+       NIVEAU GLOBAL
+       ================================ */
+
+    if (
+        total < 500
+    ) {
+
+        conseils.push(
+            "Continuez à suivre mensuellement vos consommations afin de détecter rapidement toute augmentation."
+        );
+
+    }
+
+    else if (
+        total < 2000
+    ) {
+
+        conseils.push(
+            "Identifiez la source qui représente la plus grande part de vos émissions et cherchez en priorité à réduire cette consommation."
+        );
+
+
+        conseils.push(
+            "Mettez en place un suivi mensuel des consommations afin de mesurer l'évolution de votre empreinte."
+        );
+
+    }
+
+    else {
+
+        conseils.push(
+            "Le niveau d'émission estimé est élevé. Une action prioritaire sur les principales sources identifiées est recommandée."
+        );
+
+
+        conseils.push(
+            "Analysez les possibilités de réduire la consommation de carburant, d'électricité ou de biomasse selon votre activité."
+        );
+
+
+        conseils.push(
+            "Réalisez une nouvelle évaluation le mois suivant afin de mesurer l'évolution des émissions."
+        );
+
+    }
+
+
+    /* ================================
+       CONSEILS PAR SECTEUR
+       ================================ */
+
+    if (
+        donnees.secteur ===
+        "agroalimentaire"
+    ) {
+
+        conseils.push(
+            "Améliorez l'efficacité des équipements de cuisson ou de transformation et réduisez progressivement la consommation de combustibles lorsque cela est possible."
+        );
+
+    }
+
+
+    if (
+        donnees.secteur ===
+        "btp"
+    ) {
+
+        conseils.push(
+            "Optimisez les déplacements des engins et des véhicules afin de réduire la consommation de diesel."
+        );
+
+    }
+
+
+    if (
+        donnees.secteur ===
+        "industrie"
+    ) {
+
+        conseils.push(
+            "Surveillez régulièrement la consommation électrique et l'utilisation des groupes électrogènes."
+        );
+
+    }
+
+
+    if (
+        donnees.secteur ===
+        "commerce"
+    ) {
+
+        conseils.push(
+            "Optimisez les déplacements, les livraisons et l'utilisation des véhicules afin de réduire la consommation de carburant."
+        );
+
+    }
+
+
+    if (
+        donnees.secteur ===
+        "agriculture"
+    ) {
+
+        conseils.push(
+            "Améliorez le suivi des intrants et des pratiques d'élevage afin de mieux identifier les principales sources d'émissions."
+        );
+
+    }
+
+
+    /* ================================
+       AFFICHAGE
+       ================================ */
+
+    conseils.forEach(
+        function (texte) {
+
+            const div =
+                document.createElement(
+                    "div"
+                );
+
+
+            div.className =
+                "form-notice";
+
+
+            div.innerHTML = `
+
+                <span class="notice-icon">
+                    ✓
+                </span>
+
+                <div>
+
+                    <p>
+                        ${echapperHTML(texte)}
+                    </p>
+
+                </div>
+
+            `;
+
+
+            zone.appendChild(
+                div
+            );
+
+        }
+    );
+
+}
+
+
+/* =========================================
+   NOM DU SECTEUR
+   ========================================= */
+
+function nomSecteur(
+    secteur
+) {
+
+    const secteurs = {
+
+        agroalimentaire:
+            "Agroalimentaire et transformation locale",
+
+        btp:
+            "BTP et matériaux",
+
+        industrie:
+            "Industrie manufacturière",
+
+        commerce:
+            "Commerce, transport et logistique",
+
+        agriculture:
+            "Agriculture et élevage"
+
+    };
+
+
+    return (
+        secteurs[secteur] ||
+        "Secteur non renseigné"
+    );
+
+}
+
+
+/* =========================================
+   FORMATAGE DU MOIS
+   ========================================= */
+
+function formatterMois(
+    valeur
+) {
+
+    if (
+        !valeur ||
+        !valeur.includes("-")
+    ) {
+
+        return valeur;
+
+    }
+
+
+    const parties =
+        valeur.split("-");
+
+
+    if (
+        parties.length !== 2
+    ) {
+
+        return valeur;
+
+    }
+
+
+    const date =
+        new Date(
+            Number(parties[0]),
+            Number(parties[1]) - 1
+        );
+
+
+    return date.toLocaleDateString(
+        "fr-FR",
+        {
+            month: "long",
+            year: "numeric"
+        }
+    );
+
+}
+
+
+/* =========================================
+   PROTECTION DU TEXTE AFFICHÉ
+   ========================================= */
+
+function echapperHTML(
+    texte
+) {
+
+    return String(texte)
+        .replace(
+            /&/g,
+            "&amp;"
+        )
+        .replace(
+            /</g,
+            "&lt;"
+        )
+        .replace(
+            />/g,
+            "&gt;"
+        )
+        .replace(
+            /"/g,
+            "&quot;"
+        )
+        .replace(
+            /'/g,
+            "&#039;"
+        );
+
+}
+
+
+</script>
+
+
+</body>
+
+</html>
