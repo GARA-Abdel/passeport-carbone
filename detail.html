@@ -1,980 +1,121 @@
 <!DOCTYPE html>
 <html lang="fr">
-
 <head>
-    <meta charset="UTF-8">
-
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
-
-    <title>Évaluation détaillée | Passeport Carbone</title>
-
-    <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Évaluation détaillée | Passeport Carbone</title>
+<link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
 <header class="navbar">
-
-    <div class="logo">
-        <span>🌿</span>
-        Passeport Carbone
-    </div>
-
-    <a href="index.html" class="nav-button">
-        Accueil
-    </a>
-
+    <div class="logo"><span>🌿</span> Passeport Carbone</div>
+    <a href="index.html" class="nav-button">Accueil</a>
 </header>
-
 
 <main class="form-page">
 
     <div class="progress-container">
-
         <div class="progress-info">
-
-            <span>
-                Parcours d'évaluation
-            </span>
-
-            <strong>
-                Étape 2 sur 3
-            </strong>
-
+            <span>Parcours d'évaluation</span>
+            <strong>Étape 2 sur 3</strong>
         </div>
-
-        <div class="progress-bar">
-
-            <div
-                class="progress-fill"
-                style="width: 66.66%;"
-            ></div>
-
-        </div>
-
+        <div class="progress-bar"><div class="progress-fill" style="width:66.66%"></div></div>
     </div>
 
-
     <section class="form-intro">
-
-        <span class="section-label">
-            ÉTAPE 2 — ÉVALUATION DÉTAILLÉE
-        </span>
-
-        <h1>
-            Approfondissez votre
-            <span>évaluation.</span>
-        </h1>
-
-        <p>
-            Cette seconde évaluation recueille davantage
-            d'informations afin de comparer son niveau
-            de précision avec l'évaluation simplifiée.
-        </p>
-
+        <span class="section-label">ÉTAPE 2 — COMPLÉMENTS</span>
+        <h1>Améliorez votre <span>évaluation.</span></h1>
+        <p>Cette étape est facultative. Elle permet d'ajouter des sources complémentaires si elles s'appliquent à votre activité. Laissez vide ce qui ne vous concerne pas.</p>
     </section>
 
-
-    <form id="detail-form" class="form-card">
-
-
-        <!-- ================================
-             01 — ÉLECTRICITÉ
-             ================================ -->
-
+    <!-- RÉCAP ÉTAPE 1 -->
+    <section class="form-card">
         <div class="form-header">
-
-            <span class="form-number">
-                01
-            </span>
-
-            <h2>
-                ⚡ Électricité
-            </h2>
-
-            <p>
-                Indiquez votre consommation électrique
-                et sa principale source.
-            </p>
-
+            <span class="form-number">01</span>
+            <h2>Récapitulatif du mois</h2>
+            <p>Vérifiez les informations saisies à l'étape 1.</p>
         </div>
+        <div id="recap" style="display:grid;gap:10px"></div>
+    </section>
 
-
-        <div class="form-group">
-
-            <label for="electricite">
-                Consommation électrique (kWh)
-            </label>
-
-            <input
-                type="number"
-                id="electricite"
-                min="0"
-                step="any"
-                placeholder="Ex. 12000"
-                required
-            >
-
-        </div>
-
-
-        <div class="form-group">
-
-            <label for="source-electricite">
-                Source principale
-            </label>
-
-            <select
-                id="source-electricite"
-                required
-            >
-
-                <option value="">
-                    Sélectionnez une source
-                </option>
-
-                <option value="reseau">
-                    Réseau électrique
-                </option>
-
-                <option value="solaire">
-                    Solaire
-                </option>
-
-                <option value="mixte">
-                    Mixte
-                </option>
-
-                <option value="autre">
-                    Autre
-                </option>
-
-            </select>
-
-        </div>
-
-
-
-        <!-- ================================
-             02 — COMBUSTIBLES FIXES
-             ================================ -->
-
+    <!-- COMPLÉMENTS -->
+    <section class="form-card" id="complements-card" style="display:none">
         <div class="form-header">
-
-            <span class="form-number">
-                02
-            </span>
-
-            <h2>
-                🔥 Combustibles fixes
-            </h2>
-
-            <p>
-                Indiquez les combustibles utilisés
-                pour les installations fixes.
-            </p>
-
+            <span class="form-number">02</span>
+            <h2>Sources complémentaires</h2>
+            <p id="complements-help">Sources additionnelles pertinentes pour votre activité.</p>
         </div>
-
-
-        <div class="form-group">
-
-            <label for="type-combustible">
-                Type de combustible
-            </label>
-
-            <select
-                id="type-combustible"
-                required
-            >
-
-                <option value="">
-                    Aucun / non renseigné
-                </option>
-
-                <option value="gaz-naturel">
-                    Gaz naturel
-                </option>
-
-                <option value="fioul">
-                    Fioul
-                </option>
-
-                <option value="propane">
-                    Propane / GPL
-                </option>
-
-                <option value="autre">
-                    Autre
-                </option>
-
-            </select>
-
-        </div>
-
-
-        <div class="form-group">
-
-            <label for="quantite-combustible">
-                Quantité consommée
-            </label>
-
-            <input
-                type="number"
-                id="quantite-combustible"
-                min="0"
-                step="any"
-                placeholder="Ex. 500"
-            >
-
-        </div>
-
-
-        <div class="form-group">
-
-            <label for="unite-combustible">
-                Unité
-            </label>
-
-            <select id="unite-combustible">
-
-                <option value="litres">
-                    Litres
-                </option>
-
-                <option value="kg">
-                    Kilogrammes
-                </option>
-
-                <option value="m3">
-                    Mètres cubes
-                </option>
-
-            </select>
-
-        </div>
-
-
-
-        <!-- ================================
-             03 — TRANSPORT
-             ================================ -->
-
-        <div class="form-header">
-
-            <span class="form-number">
-                03
-            </span>
-
-            <h2>
-                🚗 Carburants des véhicules
-            </h2>
-
-            <p>
-                Indiquez les consommations annuelles
-                d'essence et de diesel.
-            </p>
-
-        </div>
-
-
-        <div class="form-group">
-
-            <label for="essence">
-                Essence (litres)
-            </label>
-
-            <input
-                type="number"
-                id="essence"
-                min="0"
-                step="any"
-                placeholder="Ex. 2000"
-                required
-            >
-
-        </div>
-
-
-        <div class="form-group">
-
-            <label for="diesel">
-                Diesel / Gasoil (litres)
-            </label>
-
-            <input
-                type="number"
-                id="diesel"
-                min="0"
-                step="any"
-                placeholder="Ex. 3000"
-                required
-            >
-
-        </div>
-
-
-
-        <!-- ================================
-             04 — FLUIDES FRIGORIGÈNES
-             ================================ -->
-
-        <div class="form-header">
-
-            <span class="form-number">
-                04
-            </span>
-
-            <h2>
-                ❄️ Fluides frigorigènes
-            </h2>
-
-            <p>
-                Indiquez si une recharge de fluide
-                frigorigène a été effectuée.
-            </p>
-
-        </div>
-
-
-        <div class="form-group">
-
-            <label for="fluide-frigorifique">
-                Recharge de fluide ?
-            </label>
-
-            <select
-                id="fluide-frigorifique"
-                required
-            >
-
-                <option value="">
-                    Sélectionnez une réponse
-                </option>
-
-                <option value="oui">
-                    Oui
-                </option>
-
-                <option value="non">
-                    Non
-                </option>
-
-                <option value="inconnu">
-                    Je ne sais pas
-                </option>
-
-            </select>
-
-        </div>
-
-
-        <div
-            id="fluide-details"
-            style="display:none;"
-        >
-
-            <div class="form-group">
-
-                <label for="type-fluide">
-                    Type de fluide
-                </label>
-
-                <select id="type-fluide">
-
-                    <option value="">
-                        Sélectionnez un fluide
-                    </option>
-
-                    <option value="r134a">
-                        R-134a
-                    </option>
-
-                    <option value="r404a">
-                        R-404A
-                    </option>
-
-                    <option value="r32">
-                        R-32
-                    </option>
-
-                    <option value="autre">
-                        Autre / inconnu
-                    </option>
-
-                </select>
-
-            </div>
-
-
-            <div class="form-group">
-
-                <label for="quantite-fluide">
-                    Quantité rechargée (kg)
-                </label>
-
-                <input
-                    type="number"
-                    id="quantite-fluide"
-                    min="0"
-                    step="any"
-                    placeholder="Ex. 2"
-                >
-
-            </div>
-
-        </div>
-
-
-
-        <!-- ================================
-             05 — CHALEUR / FROID
-             ================================ -->
-
-        <div class="form-header">
-
-            <span class="form-number">
-                05
-            </span>
-
-            <h2>
-                ♨️ Chaleur / froid acheté
-            </h2>
-
-            <p>
-                Indiquez si l'entreprise achète de la
-                chaleur ou du froid auprès d'un réseau.
-            </p>
-
-        </div>
-
-
-        <div class="form-group">
-
-            <label for="reseau-energie">
-                Utilisation d'un réseau ?
-            </label>
-
-            <select
-                id="reseau-energie"
-                required
-            >
-
-                <option value="">
-                    Sélectionnez une réponse
-                </option>
-
-                <option value="oui">
-                    Oui
-                </option>
-
-                <option value="non">
-                    Non
-                </option>
-
-            </select>
-
-        </div>
-
-
-        <div
-            id="reseau-details"
-            style="display:none;"
-        >
-
-            <div class="form-group">
-
-                <label for="quantite-reseau">
-                    Quantité consommée
-                </label>
-
-                <input
-                    type="number"
-                    id="quantite-reseau"
-                    min="0"
-                    step="any"
-                    placeholder="Ex. 1000"
-                >
-
-            </div>
-
-
-            <div class="form-group">
-
-                <label for="unite-reseau">
-                    Unité
-                </label>
-
-                <select id="unite-reseau">
-
-                    <option value="kWh">
-                        kWh
-                    </option>
-
-                </select>
-
-            </div>
-
-        </div>
-
-
-
-        <!-- ================================
-             06 — DÉCHETS
-             ================================ -->
-
-        <div class="form-header">
-
-            <span class="form-number">
-                06
-            </span>
-
-            <h2>
-                🗑️ Déchets
-            </h2>
-
-            <p>
-                Indiquez la quantité annuelle approximative
-                de déchets produits.
-            </p>
-
-        </div>
-
-
-        <div class="form-group">
-
-            <label for="dechets">
-                Déchets produits (kg)
-            </label>
-
-            <input
-                type="number"
-                id="dechets"
-                min="0"
-                step="any"
-                placeholder="Ex. 500"
-                required
-            >
-
-        </div>
-
-
-
-        <!-- ================================
-             INFORMATION
-             ================================ -->
-
-        <div class="form-notice">
-
-            <span class="notice-icon">
-                🔬
-            </span>
-
-            <div>
-
-                <strong>
-                    Objectif de cette étape
-                </strong>
-
-                <p>
-                    Cette évaluation permet de recueillir
-                    davantage de données afin de comparer
-                    les résultats avec l'évaluation simplifiée.
-                </p>
-
-            </div>
-
-        </div>
-
-
-
-        <!-- ================================
-             ACTIONS
-             ================================ -->
-
+        <div id="complements-container"></div>
+    </section>
+
+    <!-- ACTIONS -->
+    <section class="form-card" id="actions-card">
         <div class="form-actions">
-
-            <a
-                href="simple.html"
-                class="back-button"
-            >
-                ← Retour
-            </a>
-
-            <button
-                type="submit"
-                class="primary-button"
-            >
-                Voir les résultats →
-            </button>
-
+            <a href="formulaire.html" class="back-button">← Modifier l'étape 1</a>
+            <button type="button" id="valider" class="primary-button">Voir mon rapport →</button>
         </div>
-
-    </form>
+        <p style="margin-top:14px;font-size:13px;color:#7a857d;text-align:center">
+            Vous pouvez aussi <a href="rapport.html" style="color:#267a42;text-decoration:underline">passer directement au rapport</a> sans rien compléter.
+        </p>
+    </section>
 
 </main>
 
-
-
+<script src="facteurs.js"></script>
+<script src="sources.js"></script>
 <script>
+(function () {
 
-const form = document.getElementById("detail-form");
-
-const rechargeFluide =
-    document.getElementById("fluide-frigorifique");
-
-const fluideDetails =
-    document.getElementById("fluide-details");
-
-const reseauEnergie =
-    document.getElementById("reseau-energie");
-
-const reseauDetails =
-    document.getElementById("reseau-details");
-
-
-
-/* =========================================
-   AFFICHAGE FLUIDE FRIGORIGÈNE
-   ========================================= */
-
-rechargeFluide.addEventListener(
-    "change",
-    function () {
-
-        fluideDetails.style.display =
-            this.value === "oui"
-                ? "block"
-                : "none";
-
+    /* Charger étape 1 */
+    const stored = localStorage.getItem("passeportCarboneEvaluation");
+    if (!stored) {
+        window.location.href = "formulaire.html";
+        return;
     }
-);
 
+    let donnees;
+    try { donnees = JSON.parse(stored); }
+    catch { window.location.href = "formulaire.html"; return; }
 
-
-/* =========================================
-   AFFICHAGE RÉSEAU
-   ========================================= */
-
-reseauEnergie.addEventListener(
-    "change",
-    function () {
-
-        reseauDetails.style.display =
-            this.value === "oui"
-                ? "block"
-                : "none";
-
+    if (!donnees.secteur) {
+        window.location.href = "formulaire.html";
+        return;
     }
-);
 
-
-
-/* =========================================
-   SOUMISSION
-   ========================================= */
-
-form.addEventListener(
-    "submit",
-    function (event) {
-
-        event.preventDefault();
-
-
-
-        /* ================================
-           RÉCUPÉRATION DES VALEURS
-           ================================ */
-
-        const electricite =
-            document.getElementById("electricite").value;
-
-        const sourceElectricite =
-            document.getElementById("source-electricite").value;
-
-        const typeCombustible =
-            document.getElementById("type-combustible").value;
-
-        const quantiteCombustible =
-            document.getElementById("quantite-combustible").value;
-
-        const uniteCombustible =
-            document.getElementById("unite-combustible").value;
-
-        const essence =
-            document.getElementById("essence").value;
-
-        const diesel =
-            document.getElementById("diesel").value;
-
-        const fluideFrigorifique =
-            document.getElementById("fluide-frigorifique").value;
-
-        const typeFluide =
-            document.getElementById("type-fluide").value;
-
-        const quantiteFluide =
-            document.getElementById("quantite-fluide").value;
-
-        const reseauEnergieValue =
-            document.getElementById("reseau-energie").value;
-
-        const quantiteReseau =
-            document.getElementById("quantite-reseau").value;
-
-        const uniteReseau =
-            document.getElementById("unite-reseau").value;
-
-        const dechets =
-            document.getElementById("dechets").value;
-
-
-
-        /* ================================
-           VALIDATION PRINCIPALE
-           ================================ */
-
-        if (
-            electricite === "" ||
-            sourceElectricite === "" ||
-            typeCombustible === "" ||
-            essence === "" ||
-            diesel === "" ||
-            fluideFrigorifique === "" ||
-            reseauEnergieValue === "" ||
-            dechets === ""
-        ) {
-
-            alert(
-                "Veuillez compléter les informations principales avant de continuer."
-            );
-
-            return;
-        }
-
-
-
-        /* ================================
-           VALIDATION COMBUSTIBLE
-           ================================ */
-
-        if (typeCombustible !== "") {
-
-            if (
-                quantiteCombustible === "" ||
-                uniteCombustible === ""
-            ) {
-
-                alert(
-                    "Veuillez renseigner la quantité et l'unité du combustible utilisé."
-                );
-
-                return;
-            }
-        }
-
-
-
-        /* ================================
-           VALIDATION FLUIDE
-           ================================ */
-
-        if (fluideFrigorifique === "oui") {
-
-            if (
-                typeFluide === "" ||
-                quantiteFluide === ""
-            ) {
-
-                alert(
-                    "Pour une recharge de fluide, veuillez indiquer le type et la quantité."
-                );
-
-                return;
-            }
-
-            if (Number(quantiteFluide) < 0) {
-
-                alert(
-                    "La quantité de fluide doit être positive ou nulle."
-                );
-
-                return;
-            }
-        }
-
-
-
-        /* ================================
-           VALIDATION RÉSEAU
-           ================================ */
-
-        if (reseauEnergieValue === "oui") {
-
-            if (
-                quantiteReseau === "" ||
-                uniteReseau === ""
-            ) {
-
-                alert(
-                    "Veuillez renseigner les informations du réseau."
-                );
-
-                return;
-            }
-        }
-
-
-
-        /* ================================
-           VÉRIFICATION DES NOMBRES
-           ================================ */
-
-        const valeurs = [
-
-            Number(electricite),
-
-            Number(essence),
-
-            Number(diesel),
-
-            Number(quantiteCombustible || 0),
-
-            Number(quantiteFluide || 0),
-
-            Number(quantiteReseau || 0),
-
-            Number(dechets)
-
-        ];
-
-
-        if (
-            valeurs.some(
-                valeur =>
-                    !Number.isFinite(valeur) ||
-                    valeur < 0
-            )
-        ) {
-
-            alert(
-                "Veuillez vérifier les quantités renseignées. Elles doivent être positives ou nulles."
-            );
-
-            return;
-        }
-
-
-
-        /* ================================
-           STRUCTURE DES DONNÉES
-           ================================ */
-
-        const donneesDetaillees = {
-
-            electricite:
-                Number(electricite),
-
-            sourceElectricite:
-                sourceElectricite,
-
-
-            combustibles: {
-
-                type:
-                    typeCombustible,
-
-                quantite:
-                    Number(
-                        quantiteCombustible || 0
-                    ),
-
-                unite:
-                    uniteCombustible
-
-            },
-
-
-            vehicules: {
-
-                essence:
-                    Number(essence),
-
-                diesel:
-                    Number(diesel)
-
-            },
-
-
-            fluidesFrigorigenes: {
-
-                type:
-                    typeFluide || null,
-
-                recharge:
-                    fluideFrigorifique,
-
-                quantite:
-                    Number(
-                        quantiteFluide || 0
-                    )
-
-            },
-
-
-            reseauChaleurFroid: {
-
-                utilise:
-                    reseauEnergieValue,
-
-                quantite:
-                    Number(
-                        quantiteReseau || 0
-                    ),
-
-                unite:
-                    uniteReseau || null
-
-            },
-
-
-            dechets:
-                Number(dechets)
-
-        };
-
-
-
-        /* ================================
-           SAUVEGARDE
-           ================================ */
-
-        localStorage.setItem(
-
-            "passeportCarboneDetail",
-
-            JSON.stringify(
-                donneesDetaillees
-            )
-
-        );
-
-
-
-        /* ================================
-           REDIRECTION
-           ================================ */
-
-        window.location.href =
-            "resultat.html";
-
+    /* Récap */
+    const $recap = document.getElementById("recap");
+    const lignes = [
+        ["PME", donnees.nom || "—"],
+        ["Mois", donnees.mois || "—"],
+        ["Secteur", SECTEURS_META[donnees.secteur]?.nom || donnees.secteur],
+        ["Sources saisies", String(Object.keys(donnees.valeurs || {}).length)]
+    ];
+    $recap.innerHTML = lignes.map(([k, v]) => `
+        <div style="display:flex;justify-content:space-between;gap:20px;padding:10px 0;border-bottom:1px solid #edf1ed">
+            <span style="color:#68746c">${k}</span>
+            <strong>${v}</strong>
+        </div>`).join("");
+
+    /* Compléments */
+    const complements = SECTEURS_COMPLEMENTS[donnees.secteur] || [];
+    const $ccard = document.getElementById("complements-card");
+    const $ccont = document.getElementById("complements-container");
+
+    if (complements.length > 0) {
+        $ccard.style.display = "block";
+        rendreListeSources($ccont, complements, null);
     }
-);
 
+    /* Valider */
+    document.getElementById("valider").addEventListener("click", function () {
+        const nouveaux = lireToutesLesSources($ccont);
+        donnees.valeurs = Object.assign({}, donnees.valeurs || {}, nouveaux);
+        localStorage.setItem("passeportCarboneEvaluation", JSON.stringify(donnees));
+        window.location.href = "rapport.html";
+    });
+
+})();
 </script>
-
 </body>
-                </html>
+</html>
