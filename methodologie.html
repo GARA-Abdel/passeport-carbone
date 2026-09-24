@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Méthodologie | Passeport Carbone</title>
+<link rel="stylesheet" href="style.css">
+<style>
+
+/* =========================================
+   MÉTHODOLOGIE — styles complémentaires
+   ========================================= */
+
+.methode-hero {
+    padding: 70px 7% 40px;
+    max-width: 1000px;
+    margin: auto;
+}
+
+.methode-hero h1 {
+    font-size: clamp(36px, 5vw, 54px);
+    line-height: 1.08;
+    margin: 14px 0 20px;
+    letter-spacing: -1.5px;
+}
+
+.methode-hero h1 span { color: #298044; }
+
+.methode-hero .lead {
+    max-width: 720px;
+    color: #5c6960;
+    font-size: 17px;
+    line-height: 1.6;
+}
+
+.methode-contenu {
+    width: min(900px, 92%);
+    margin: auto;
+    padding: 20px 0 90px;
+}
+
+.methode-contenu .form-card {
+    margin-bottom: 22px;
+}
+
+.methode-contenu h2 {
+    font-size: 24px;
+    margin-bottom: 8px;
+}
+
+.methode-contenu h3 {
+    font-size: 17px;
+    margin: 22px 0 8px;
+    color: #173d26;
+}
+
+.methode-contenu p {
+    color: #536057;
+    font-size: 15px;
+    line-height: 1.65;
+    margin-bottom: 12px;
+}
+
+.methode-contenu ul {
+    padding-left: 20px;
+    color: #536057;
+    font-size: 14px;
+    line-height: 1.7;
+}
+
+.methode-contenu li { margin-bottom: 6px; }
+
+.methode-contenu code {
+    background: #eef6ef;
+    padding: 2px 7px;
+    border-radius: 4px;
+    font-size: 13px;
+    color: #1f6d3a;
+    font-family: "SF Mono", Menlo, Consolas, monospace;
+}
+
+.methode-contenu .encart {
+    background: #eef6ef;
+    border: 1px solid #d6e7d8;
+    border-radius: 11px;
+    padding: 16px 18px;
+    margin: 14px 0;
+    font-size: 14px;
+    color: #2d4a36;
+}
+
+.methode-contenu .encart strong { color: #1f6d3a; }
+
+.methode-contenu .badge-statut {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-left: 6px;
+    vertical-align: middle;
+}
+
+.statut-default     { background: #e3f3e7; color: #1f6d3a; }
+.statut-reference   { background: #e3f3e7; color: #1f6d3a; }
+.statut-historique  { background: #fdf3d9; color: #8a6b13; }
+.statut-provisoire  { background: #fbe0d8; color: #a8442b; }
+
+/* Tableau facteurs */
+.facteurs-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+    margin-top: 14px;
+}
+.facteurs-table th {
+    text-align: left;
+    padding: 10px 8px;
+    border-bottom: 2px solid #dfe8e0;
+    color: #536057;
+    font-weight: 700;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+}
+.facteurs-table td {
+    padding: 11px 8px;
+    border-bottom: 1px solid #edf1ed;
+    vertical-align: top;
+    color: #3a4a3f;
+}
+.facteurs-table td:first-child { font-weight: 600; color: #173d26; }
+.facteurs-table .note-row {
+    font-size: 11px;
+    color: #8a938c;
+    font-style: italic;
+}
+
+.methode-nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 30px;
+}
+
+</style>
+</head>
+<body>
+
+<header class="navbar">
+    <div class="logo"><span>🌿</span> Passeport Carbone</div>
+    <nav>
+        <a href="index.html#accueil">Accueil</a>
+        <a href="index.html#objectif">Notre objectif</a>
+        <a href="index.html#fonctionnement">Fonctionnement</a>
+        <a href="methodologie.html">Méthodologie</a>
+    </nav>
+    <a href="formulaire.html" class="nav-button">Commencer</a>
+</header>
+
+<section class="methode-hero">
+    <span class="section-label">📖 MÉTHODOLOGIE</span>
+    <h1>Comment nous calculons<br>votre empreinte <span>carbone.</span></h1>
+    <p class="lead">
+        Passeport Carbone applique une méthode simple à utiliser, adaptée aux réalités
+        des PME burkinabè, et suffisamment rigoureuse pour produire des résultats
+        comparables dans le temps. Voici les principes, les sources et les limites.
+    </p>
+</section>
+
+<main class="methode-contenu">
+
+    <!-- 1. PRINCIPE -->
+    <section class="form-card">
+        <div class="form-header">
+            <span class="form-number">01</span>
+            <h2>Le principe de calcul</h2>
+        </div>
+        <p>
+            Chaque consommation ou activité déclarée est multipliée par un facteur d'émission
+            correspondant. Cette logique — <strong>donnée d'activité × facteur d'émission = kg CO₂e</strong> —
+            est au cœur des méthodes d'inventaire du GIEC/IPCC.
+        </p>
+        <div class="encart">
+            <strong>Exemple :</strong> 500 litres de diesel × 2,73 kg CO₂e par litre ≈ 1 365 kg CO₂e.
+        </div>
+        <p>
+            Les gaz à effet de serre produits (CO₂, CH₄, N₂O) sont convertis en
+            <strong>dioxyde de carbone équivalent (CO₂e)</strong> afin de pouvoir être additionnés
+            dans un seul résultat.
+        </p>
+        <p>
+            Les facteurs restent en interne, dans la base du calculateur. Les PME ne saisissent
+            que des unités familières : litres, kilowattheures, bouteilles, sacs, kilogrammes,
+            nombre d'animaux.
+        </p>
+    </section>
+
+    <!-- 2. SOURCES DOCUMENTAIRES -->
+    <section class="form-card">
+        <div class="form-header">
+            <span class="form-number">02</span>
+            <h2>Sources documentaires</h2>
+        </div>
+        <ul>
+            <li><strong>GIEC 2006</strong>, Lignes directrices pour les inventaires nationaux de gaz à effet de serre — Volume 2 (Énergie), Chapitre 3 : combustion stationnaire et mobile.</li>
+            <li><strong>GIEC 2006</strong>, Volume 4 (AFOLU), Chapitres 10 et 11 : fermentation entérique, gestion des déjections, sols agricoles.</li>
+            <li><strong>GHG Protocol</strong> — Stationary Combustion Guidance.</li>
+            <li><strong>IPCC AR4</strong> — Potentiels de réchauffement global sur 100 ans (CH₄ = 25, N₂O = 298).</li>
+            <li><strong>SONABEL / UNFCCC-WAPP</strong> — facteur du mix électrique burkinabè.</li>
+            <li><strong>FAO</strong> — élevage laitier au Burkina Faso.</li>
+        </ul>
+    </section>
+
+    <!-- 3. GWP -->
+    <section class="form-card">
+        <div class="form-header">
+            <span class="form-number">03</span>
+            <h2>Référentiel GWP</h2>
+        </div>
+        <p>
+            Passeport Carbone utilise le référentiel <strong>IPCC AR4</strong> sur un horizon de
+            100 ans, cohérent avec les potentiels de réchauffement global des fluides frigorigènes.
+        </p>
+        <table class="facteurs-table">
+            <thead>
+                <tr><th>Gaz</th><th>GWP (AR4)</th><th>Usage dans le calculateur</th></tr>
+            </thead>
+            <tbody>
+                <tr><td>CO₂</td><td>1</td><td>Carburants, combustibles, électricité</td></tr>
+                <tr><td>CH₄</td><td>25</td><td>Combustion, fermentation entérique</td></tr>
+                <tr><td>N₂O</td><td>298</td><td>Combustion, engrais azotés</td></tr>
+            </tbody>
+        </table>
+    </section>
+
+    <!-- 4. FACTEURS -->
+    <section class="form-card">
+        <div class="form-header">
+            <span class="form-number">04</span>
+            <h2>Facteurs d'émission utilisés</h2>
+            <p>Chaque facteur porte une année de référence, une source et un statut.</p>
+        </div>
+
+        <h3>Carburants et combustibles</h3>
+        <table class="facteurs-table">
+            <thead>
+                <tr><th>Combustible</th><th>CO₂</th><th>CH₄</th><th>N₂O</th></tr>
+            </thead>
+            <tbody>
+                <tr><td>Essence</td><td>69 300</td><td>33</td><td>3,2</td></tr>
+                <tr><td>Diesel — moteur</td><td>74 100</td><td>3,9</td><td>3,9</td></tr>
+                <tr><td>Diesel — stationnaire</td><td>74 100</td><td>3</td><td>0,6</td></tr>
+                <tr><td>GPL / Butane / Propane</td><td>63 100</td><td>5</td><td>0,1</td></tr>
+                <tr><td>Fioul lourd</td><td>77 400</td><td>3</td><td>0,6</td></tr>
+                <tr><td>Bois de chauffe</td><td>112 000</td><td>30</td><td>4</td></tr>
+                <tr><td>Charbon de bois</td><td>112 000</td><td>200</td><td>1</td></tr>
+            </tbody>
+        </table>
+        <p class="note-row" style="margin-top:8px;font-style:italic;font-size:12px;color:#8a938c">
+            Valeurs en kg de gaz par térajoule, sur pouvoir calorifique inférieur. Source : GIEC 2006.
+        </p>
+
+        <h3>Électricité <span class="badge-statut statut-reference">Référence</span></h3>
+        <p>
+            Facteur retenu : <code>0,569 kgCO₂e/kWh</code> — étude SONABEL 2018.
+            Le facteur historique de 2014 (<code>0,588 kgCO₂e/kWh</code>) est conservé pour
+            la traçabilité mais n'est pas utilisé comme valeur de référence.
+        </p>
+        <div class="encart">
+            <strong>Note :</strong> le facteur du réseau électrique évolue avec le temps,
+            les importations, la production thermique, l'hydroélectricité et les capacités
+            solaires. Il sera actualisé dès qu'une valeur récente et documentée sera disponible.
+        </div>
+
+        <h3>Fluides frigorigènes <span class="badge-statut statut-default">AR4</span></h3>
+        <table class="facteurs-table">
+            <thead>
+                <tr><th>Fluide</th><th>GWP (kgCO₂e/kg)</th></tr>
+            </thead>
+            <tbody>
+                <tr><td>R-134a</td><td>1 430</td></tr>
+                <tr><td>R-404A</td><td>3 922</td></tr>
+                <tr><td>R-32</td><td>675</td></tr>
+                <tr><td>R-410A</td><td>2 088</td></tr>
+                <tr><td>R-407C</td><td>1 774</td></tr>
+            </tbody>
+        </table>
+
+        <h3>Ciment <span class="badge-statut statut-provisoire">Provisoire</span></h3>
+        <p>
+            Facteur : <code>0,85 kgCO₂e/kg</code> — moyenne internationale du clinker.
+            Ce facteur est une <strong>approximation provisoire</strong>, à remplacer dès qu'un
+            facteur fournisseur ou régional représentatif du ciment commercialisé au
+            Burkina Faso sera disponible.
+        </p>
+
+        <h3>Élevage <span class="badge-statut statut-default">GIEC Tier 1</span></h3>
+        <p>
+            Fermentation entérique — valeurs annuelles divisées par 12 pour obtenir une
+            estimation mensuelle.
+        </p>
+        <table class="facteurs-table">
+            <thead>
+                <tr><th>Espèce</th><th>kgCO₂e/tête/an</th></tr>
+            </thead>
+            <tbody>
+                <tr><td>Bovins</td><td>775</td></tr>
+                <tr><td>Ovins</td><td>125</td></tr>
+                <tr><td>Caprins</td><td>125</td></tr>
+                <tr><td>Porcins</td><td>25</td></tr>
+            </tbody>
+        </table>
+
+        <h3>Engrais azotés</h3>
+        <p>
+            Les émissions sont calculées à partir de la quantité d'azote réellement appliquée,
+            convertie depuis la masse d'engrais et sa teneur en azote. L'urée est distinguée
+            car son application entraîne aussi des émissions directes de CO₂.
+        </p>
+    </section>
+
+    <!-- 5. CAS PARTICULIERS -->
+    <section class="form-card">
+        <div class="form-header">
+            <span class="form-number">05</span>
+            <h2>Cas particuliers</h2>
+        </div>
+
+        <h3>CO₂ biogénique</h3>
+        <p>
+            Le CO₂ issu de la combustion du bois et du charbon de bois provient du carbone
+            stocké dans la biomasse. Il est <strong>reporté séparément</strong> du total opérationnel.
+            En revanche, les émissions de CH₄ et N₂O associées restent comptées dans l'empreinte
+            opérationnelle, car elles ont un effet de réchauffement réel.
+        </p>
+
+        <h3>Déchets organiques</h3>
+        <p>
+            Le facteur d'émission dépend du mode de traitement (compostage, brûlage, mise en
+            décharge, alimentation animale, biodigesteur). Tant qu'aucun facteur représentatif
+            du contexte burkinabè n'est disponible, la pratique est enregistrée sans
+            quantification chiffrée.
+        </p>
+
+        <h3>Gestion du fumier</h3>
+        <p>
+            Comme pour les déchets, la quantification dépend du mode de gestion
+            (pâturage, tas, compost, fosse, épandage, biodigesteur) et de l'espèce animale.
+            La pratique est enregistrée, la quantification est en attente.
+        </p>
+
+        <h3>Réseaux de chaleur et de froid</h3>
+        <p>
+            Ces sources sont enregistrées mais non quantifiées tant qu'un facteur adapté
+            n'est pas documenté.
+        </p>
+
+        <h3>Fallback FCFA → kWh</h3>
+        <p>
+            Si une PME ne dispose que du montant payé en francs CFA, le calculateur fournit
+            une estimation à partir d'un tarif moyen. Cette estimation est
+            <strong>clairement identifiée comme estimée</strong> dans le rapport.
+        </p>
+    </section>
+
+    <!-- 6. QUALITÉ -->
+    <section class="form-card">
+        <div class="form-header">
+            <span class="form-number">06</span>
+            <h2>Qualité des données</h2>
+            <p>Chaque donnée mensuelle reçoit un niveau de qualité simple.</p>
+        </div>
+        <ul>
+            <li><strong>Confirmée</strong> — appuyée sur une facture, un reçu, un relevé de compteur, un bon de livraison ou une fiche technique.</li>
+            <li><strong>Déclarée</strong> — quantité renseignée sans justificatif.</li>
+            <li><strong>Estimée</strong> — calculée à partir d'un montant en francs CFA, d'un nombre de sacs ou d'une conversion locale.</li>
+            <li><strong>Manquante</strong> — source identifiée mais quantité indisponible.</li>
+        </ul>
+        <div class="encart">
+            Le rapport mensuel affiche non seulement le total en CO₂e, mais aussi la part
+            des émissions fondée sur des données confirmées, déclarées ou estimées. Cette
+            distinction évite de donner une fausse impression de précision.
+        </div>
+    </section>
+
+    <!-- 7. LIMITES -->
+    <section class="form-card">
+        <div class="form-header">
+            <span class="form-number">07</span>
+            <h2>Limites et statut du prototype</h2>
+        </div>
+        <p>
+            Passeport Carbone est un <strong>prototype de recherche</strong>. Le périmètre
+            couvre les sources d'émission les plus fréquentes et les plus significatives
+            pour les PME ciblées.
+        </p>
+        <p>
+            Certaines sources restent à documenter (ciment local, déchets organiques,
+            fumier, réseaux de chaleur/froid). Le facteur électrique devra être actualisé.
+            Les valeurs de conversion locales marquées « provisoire » (fagot de bois,
+            sac de charbon) seront affinées.
+        </p>
+        <p>
+            Ce rapport est un <strong>outil de suivi et d'aide à la décision</strong>.
+            Il ne constitue pas un bilan réglementaire ni un audit environnemental.
+        </p>
+    </section>
+
+    <!-- NAVIGATION -->
+    <section class="form-card">
+        <div class="methode-nav">
+            <a href="formulaire.html" class="primary-button">Commencer un bilan →</a>
+            <a href="index.html" class="secondary-button">Retour à l'accueil</a>
+        </div>
+    </section>
+
+</main>
+
+<footer>
+    <div class="logo">🌿 Passeport Carbone</div>
+    <p>Prototype de recherche — 2026</p>
+</footer>
+
+</body>
+</html>
