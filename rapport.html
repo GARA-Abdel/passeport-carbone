@@ -86,6 +86,7 @@
 .delta.up   { background: rgba(230,140,120,0.25); color: #ffe9e2; }
 .delta.flat { background: rgba(200,200,200,0.15); color: #f0f0f0; }
 
+/* Niveaux — vocabulaire descriptif */
 .niveau-badge {
     display: inline-flex;
     align-items: center;
@@ -96,10 +97,22 @@
     font-weight: 600;
     margin-bottom: 20px;
 }
-.niveau-faible     { background: #e3f3e7; color: #1f6d3a; }
-.niveau-modere     { background: #fdf3d9; color: #8a6b13; }
-.niveau-eleve      { background: #fbe0d8; color: #a8442b; }
-.niveau-tres-eleve { background: #f7cfc8; color: #8f2f1c; }
+.niveau-bas           { background: #e3f3e7; color: #1f6d3a; }
+.niveau-attendu       { background: #eef3f0; color: #3a5a44; }
+.niveau-au-dessus     { background: #fdf3d9; color: #8a6b13; }
+.niveau-significatif  { background: #fbe0d8; color: #a8442b; }
+
+.note-transparence {
+    margin-top: 22px;
+    padding: 14px 16px;
+    background: #f6f8f5;
+    border-left: 3px solid #b8c8bd;
+    border-radius: 6px;
+    font-size: 12px;
+    color: #536057;
+    line-height: 1.55;
+    font-style: italic;
+}
 
 .top3-item {
     display: grid;
@@ -254,6 +267,10 @@
 }
 .pdf-button:hover { background: #185c31; transform: translateY(-1px); }
 
+
+/* =========================================
+   IMPRESSION / PDF
+   ========================================= */
 
 @media print {
 
@@ -489,6 +506,22 @@ function formatActivite(d) {
 }
 
 
+/* =========================================
+   ÉQUIVALENCE CONCRÈTE
+   1 t CO2e ≈ 366 L de diesel brûlés
+   (facteur diesel moteur = 2,73 kg CO2e/L)
+   ========================================= */
+
+function equivalenceConcrete(totalKg) {
+    const litres = Math.round(totalKg / 2.73);
+    if (litres < 20) return null;
+    return {
+        litres: litres,
+        texte: `équivalent à environ ${litres.toLocaleString("fr-FR")} litres de diesel brûlés`
+    };
+}
+
+
 function rendreRapport(report, donnees, prev) {
 
     const totalOp = report.total_co2e_kg;
@@ -522,6 +555,13 @@ function rendreRapport(report, donnees, prev) {
                 <div class="txt">CO₂ biogénique (bois / charbon de bois) — reporté séparément du total opérationnel</div>
             </div>
         </div>` : "";
+
+    /* Équivalence concrète */
+    const eq = equivalenceConcrete(totalOp);
+    const eqHtml = eq ? `
+        <p style="color:#536057;font-size:13px;margin-top:16px;line-height:1.55">
+            Ordre de grandeur : ce bilan mensuel correspond à <strong>${eq.texte}</strong>.
+        </p>` : "";
 
     let top3Html = "";
     if (report.top3.length === 0) {
@@ -600,6 +640,7 @@ function rendreRapport(report, donnees, prev) {
             <p>${echapper(report.nom || "PME")} — ${echapper(formatMois(report.mois))} — ${echapper(nomSecteur(report.secteur))}</p>
         </section>
 
+        <!-- HERO -->
         <section class="report-hero">
             <div class="label">Émissions opérationnelles du mois</div>
             <div class="big-value">${formatKg(totalOp, true).replace(/ t$/, "")}<span class="big-unit">t CO₂e</span></div>
@@ -608,11 +649,17 @@ function rendreRapport(report, donnees, prev) {
             <div>${deltaHtml}</div>
         </section>
 
+        <!-- NIVEAU + TRANSPARENCE -->
         <section class="form-card">
             <div class="niveau-badge niveau-${niveau.niveau}">${niveau.titre}</div>
             <p style="color:#536057;font-size:14px;margin:0">${echapper(niveau.message)}</p>
+            ${eqHtml}
+            <div class="note-transparence">
+                Ces seuils sont indicatifs et sectoriels. Ils situent votre bilan par rapport à des ordres de grandeur d'activité usuels pour les PME burkinabè, mais ne constituent pas une norme nationale ni une évaluation de votre performance environnementale.
+            </div>
         </section>
 
+        <!-- TOP 3 -->
         <section class="form-card">
             <div class="form-header">
                 <span class="form-number">01</span>
@@ -622,6 +669,7 @@ function rendreRapport(report, donnees, prev) {
             ${top3Html}
         </section>
 
+        <!-- QUALITÉ -->
         <section class="form-card">
             <div class="form-header">
                 <span class="form-number">02</span>
@@ -631,6 +679,7 @@ function rendreRapport(report, donnees, prev) {
             ${qualiteHtml}
         </section>
 
+        <!-- ACTIONS -->
         <section class="form-card">
             <div class="form-header">
                 <span class="form-number">03</span>
@@ -640,6 +689,7 @@ function rendreRapport(report, donnees, prev) {
             ${actionsHtml}
         </section>
 
+        <!-- CONSEILS SECTEUR -->
         ${conseilsHtml ? `
         <section class="form-card">
             <div class="form-header">
@@ -649,6 +699,7 @@ function rendreRapport(report, donnees, prev) {
             ${conseilsHtml}
         </section>` : ""}
 
+        <!-- DÉTAIL -->
         <section class="form-card">
             <div class="form-header">
                 <span class="form-number">05</span>
@@ -674,6 +725,7 @@ function rendreRapport(report, donnees, prev) {
             </p>` : ""}
         </section>
 
+        <!-- MÉTHODO -->
         <section class="form-card">
             <div class="form-header">
                 <span class="form-number">06</span>
@@ -692,11 +744,13 @@ function rendreRapport(report, donnees, prev) {
             </p>
         </section>
 
+        <!-- SIGNATURE PRINT -->
         <div class="print-signature">
             <span>Passeport Carbone — Prototype de recherche</span>
             <span>Édité le ${dateImpression}</span>
         </div>
 
+        <!-- ACTIONS -->
         <section class="form-card no-print">
             <div class="form-actions">
                 <a href="detail.html" class="back-button">← Modifier les données</a>
