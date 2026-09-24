@@ -264,6 +264,16 @@ function calculerSource(sourceId, input) {
             break;
         }
 
+        case "fumier": {
+            /* La gestion du fumier est enregistrée mais pas encore quantifiée.
+               Les émissions dépendent du mode de gestion et de la espèce —
+               facteurs par filière à documenter avant tout calcul. */
+            base.co2e = 0;
+            base.note = "Pratique de gestion du fumier enregistrée. Quantification en attente de facteurs par filière.";
+            if (input.mode) base.mode_fumier = input.mode;
+            break;
+        }
+
         case "dechets": {
             const r = calculerDechets(input.masseKg, input.destination);
             base.co2e = 0;
@@ -287,14 +297,22 @@ function calculerSource(sourceId, input) {
 const ACTIONS_PAR_SOURCE = {
 
     "Diesel / Gasoil": "Suivez les litres par véhicule et par kilomètre. Réduisez les trajets à vide, entretenez les moteurs, regroupez les livraisons.",
+    "Diesel — véhicules": "Suivez les litres par véhicule et par kilomètre. Réduisez les trajets à vide, entretenez les moteurs, regroupez les livraisons.",
+    "Diesel — groupe électrogène / chaudière": "Vérifiez le rendement du groupe. Comparez avec un raccordement au réseau ou une alternative solaire si disponible.",
     "Essence": "Suivez les litres par véhicule. Optimisez les itinéraires, limitez les trajets à vide.",
-    "Électricité": "Relevez les kWh chaque mois. Identifiez les postes les plus énergivores (froid, moteurs, éclairage).",
+    "Électricité du réseau": "Relevez les kWh chaque mois. Identifiez les postes les plus énergivores (froid, moteurs, éclairage).",
+    "GPL / Butane": "Vérifiez l'état des brûleurs et des équipements. Comparez avec le bois ou le charbon selon votre approvisionnement.",
     "GPL / Butane / Propane": "Vérifiez l'état des brûleurs et des équipements. Comparez avec le bois ou le charbon selon votre approvisionnement.",
     "Bois de chauffe": "Réduisez les pertes de chaleur, optimisez les fours. Étudiez une comparaison avec le GPL.",
+    "Bois / biomasse (cuisson de briques)": "Réduisez les pertes de chaleur, optimisez les fours. Étudiez une comparaison avec d'autres combustibles.",
     "Charbon de bois": "Réduisez les pertes de chaleur, optimisez les fours. Étudiez une comparaison avec le GPL.",
     "Ciment (achats)": "Limitez les pertes de matériaux, optimisez les dosages, réduisez les trajets d'approvisionnement.",
-    "Fluide frigorigène": "Contrôlez l'étanchéité des installations. Conservez les fiches d'intervention pour suivre les recharges.",
-    "Élevage": "Améliorez la ration alimentaire et suivez la productivité. Documentez les pratiques d'élevage.",
+    "Fluides frigorigènes (recharges)": "Contrôlez l'étanchéité des installations. Conservez les fiches d'intervention pour suivre les recharges.",
+    "Fioul lourd / résiduel": "Vérifiez l'état des chaudières. Étudiez une alternative moins carbonée.",
+    "Bovins": "Améliorez la ration alimentaire et suivez la productivité. Documentez les pratiques d'élevage.",
+    "Ovins": "Améliorez la ration alimentaire et suivez la productivité. Documentez les pratiques d'élevage.",
+    "Caprins": "Améliorez la ration alimentaire et suivez la productivité. Documentez les pratiques d'élevage.",
+    "Porcins": "Améliorez la ration alimentaire et suivez la productivité. Documentez les pratiques d'élevage.",
     "Engrais azotés": "Fractionnez les apports, ajustez au besoin réel des cultures, privilégiez les périodes optimales."
 };
 
