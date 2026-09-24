@@ -1,524 +1,458 @@
 /* =========================================
    PASSEPORT CARBONE
-   FACTEURS D'EMISSION
+   BASE DE FACTEURS D'ÉMISSION
    Prototype de recherche — 2026
+   Référence méthodologique : cahier des charges
    ========================================= */
 
 
 /* =========================================
-   POTENTIELS DE RECHAUFFEMENT GLOBAL
+   POTENTIELS DE RÉCHAUFFEMENT GLOBAL (AR4, 100 ans)
    ========================================= */
 
 const GWP_BURKINA = {
-
     CO2: 1,
-
-    CH4: 28,
-
-    N2O: 265
-
+    CH4: 25,
+    N2O: 298,
+    reference: "IPCC AR4 — horizon 100 ans",
+    note: "Cohérent avec les GWP des fluides frigorigènes du prototype."
 };
 
 
 /* =========================================
-   COMBUSTIBLES
-   =========================================
-   
-   Les facteurs sont exprimés en kg de gaz
-   à effet de serre par TJ d'énergie.
-   
-   Le moteur de calcul effectue ensuite
-   les conversions nécessaires.
+   COMBUSTIBLES FOSSILES ET BIOMASSE
+   Facteurs GIEC 2006, Vol.2, Ch.3
+   NCV = pouvoir calorifique inférieur (MJ/kg)
+   densite = kg/L pour les liquides
    ========================================= */
 
 const FACTEURS_COMBUSTIBLES = {
 
-
-    /* -----------------------------------------
-       ESSENCE
-       ----------------------------------------- */
-
     essence: {
-
         nom: "Essence",
-
         unite: "litre",
-
-        facteurCO2: 69300,
-
-        facteurCH4: 33,
-
-        facteurN2O: 3.2,
-
-        uniteFacteur: "kg/TJ",
-
         NCV: 44.3,
-
-        conversionVolumeMasse: 1351,
-
-        source:
-            "Facteurs de référence GIEC 2006 / données nationales disponibles"
-
-    },
-
-
-    /* -----------------------------------------
-       DIESEL / GASOIL
-       ----------------------------------------- */
-
-    diesel: {
-
-        nom: "Gasoil / Diesel",
-
-        unite: "litre",
-
-        facteurCO2: 74100,
-
-        facteurCH4: 3.9,
-
-        facteurN2O: 3.9,
-
+        densite: 0.745,
+        facteurCO2: 69300,
+        facteurCH4: 33,
+        facteurN2O: 3.2,
         uniteFacteur: "kg/TJ",
-
-        NCV: 43.0,
-
-        conversionVolumeMasse: 1149,
-
-        source:
-            "Facteurs de référence GIEC 2006 / données nationales disponibles"
-
+        source: "GIEC 2006, Vol.2, Ch.3 — combustion mobile",
+        anneeReference: 2006,
+        perimetre: "Scope 1",
+        statut: "default",
+        usage: "moteur de véhicule"
     },
 
+    diesel_moteur: {
+        nom: "Diesel / Gasoil — moteur de véhicule",
+        unite: "litre",
+        NCV: 43.0,
+        densite: 0.845,
+        facteurCO2: 74100,
+        facteurCH4: 3.9,
+        facteurN2O: 3.9,
+        uniteFacteur: "kg/TJ",
+        source: "GIEC 2006, Vol.2, Ch.3, Table 3.2.2 (routes)",
+        anneeReference: 2006,
+        perimetre: "Scope 1",
+        statut: "default",
+        usage: "moteur"
+    },
 
-    /* -----------------------------------------
-       GPL / BUTANE
-       ----------------------------------------- */
+    diesel_groupe: {
+        nom: "Diesel — groupe électrogène / chaudière",
+        unite: "litre",
+        NCV: 43.0,
+        densite: 0.845,
+        facteurCO2: 74100,
+        facteurCH4: 3,
+        facteurN2O: 0.6,
+        uniteFacteur: "kg/TJ",
+        source: "GIEC 2006, Vol.2, Ch.3, Table 3.2.1 (stationnaire, autres secteurs)",
+        anneeReference: 2006,
+        perimetre: "Scope 1",
+        statut: "default",
+        usage: "stationnaire"
+    },
 
     propane: {
-
-        nom: "GPL / Butane",
-
+        nom: "GPL / Butane / Propane",
         unite: "kg",
-
-        facteurCO2: 63100,
-
-        facteurCH4: 5,
-
-        facteurN2O: 0.1,
-
-        uniteFacteur: "kg/TJ",
-
         NCV: 47.3,
-
-        conversionVolumeMasse: 0,
-
-        source:
-            "Facteurs de référence GIEC 2006 / données nationales disponibles"
-
+        densite: null,
+        facteurCO2: 63100,
+        facteurCH4: 5,
+        facteurN2O: 0.1,
+        uniteFacteur: "kg/TJ",
+        source: "GIEC 2006, Vol.2, Ch.3 — combustion stationnaire",
+        anneeReference: 2006,
+        perimetre: "Scope 1",
+        statut: "default"
     },
 
-
-    /* -----------------------------------------
-       FIOUL
-       ----------------------------------------- */
-
     fioul: {
-
-        nom: "Fioul",
-
-        unite: "litre",
-
-        facteurCO2: 77400,
-
-        facteurCH4: 3,
-
-        facteurN2O: 0.6,
-
-        uniteFacteur: "kg/TJ",
-
+        nom: "Fioul lourd / résiduel",
+        unite: "kg",
         NCV: 40.4,
+        densite: 0.950,
+        facteurCO2: 77400,
+        facteurCH4: 3,
+        facteurN2O: 0.6,
+        uniteFacteur: "kg/TJ",
+        source: "GIEC 2006, Vol.2, Ch.3 — combustion institutionnelle",
+        anneeReference: 2006,
+        perimetre: "Scope 1",
+        statut: "default"
+    },
 
-        conversionVolumeMasse: 1053,
+    bois: {
+        nom: "Bois de chauffe",
+        unite: "kg",
+        NCV: 15,
+        densite: null,
+        facteurCO2: 112000,
+        facteurCH4: 30,
+        facteurN2O: 4,
+        uniteFacteur: "kg/TJ",
+        source: "GIEC 2006, Vol.2, Ch.3 — biomasse solide",
+        anneeReference: 2006,
+        perimetre: "Scope 1 + biogénique",
+        statut: "default",
+        biogenique: true,
+        note: "Le CO2 est biogénique et reporté séparément. Seuls CH4 et N2O entrent dans le total opérationnel."
+    },
 
-        source:
-            "Facteurs de référence GIEC 2006"
-
+    charbon_bois: {
+        nom: "Charbon de bois",
+        unite: "kg",
+        NCV: 29,
+        densite: null,
+        facteurCO2: 112000,
+        facteurCH4: 200,
+        facteurN2O: 1,
+        uniteFacteur: "kg/TJ",
+        source: "GIEC 2006, Vol.2, Ch.3 — combustion institutionnelle (GHG Protocol)",
+        anneeReference: 2006,
+        perimetre: "Scope 1 + biogénique",
+        statut: "default",
+        biogenique: true,
+        note: "CO2 biogénique séparé. Ne couvre pas la fabrication du charbon, le transport du bois, ni la déforestation."
     }
 
 };
 
 
 /* =========================================
-   BIOMASSE — BOIS
-   =========================================
-   
-   Le bois est traité séparément car il est
-   utilisé directement dans plusieurs activités
-   des PME étudiées.
-   
-   Valeurs utilisées pour le prototype :
-   NCV = 15 TJ/Gg
+   ÉLECTRICITÉ — FACTEURS VERSIONNÉS
    ========================================= */
 
-const FACTEUR_BOIS = {
+const FACTEURS_ELECTRICITE = [
 
-    nom: "Bois de chauffe",
+    {
+        id: "reseau_2018",
+        nom: "Réseau électrique — référence 2018",
+        facteur: 0.569,
+        unite: "kgCO2e/kWh",
+        anneeReference: 2018,
+        zone: "Burkina Faso / SONABEL",
+        perimetre: "Scope 2 (location-based)",
+        statut: "reference",
+        source: "Étude mix électrique SONABEL 2018",
+        note: "Facteur de référence retenu pour le prototype. À actualiser dès qu'une valeur récente est disponible."
+    },
 
-    unite: "kg",
+    {
+        id: "reseau_2014",
+        nom: "Réseau électrique — historique 2014",
+        facteur: 0.588,
+        unite: "kgCO2e/kWh",
+        anneeReference: 2014,
+        zone: "Burkina Faso / WAPP",
+        perimetre: "Scope 2 (location-based)",
+        statut: "historique",
+        source: "UNFCCC / West African Power Pool",
+        note: "Ne pas présenter comme facteur officiel 2026. Conservé pour la traçabilité."
+    }
 
-    NCV: 15,
+];
 
-    facteurCO2: 112000,
+const FACTEUR_ELECTRICITE_PAR_DEFAUT = "reseau_2018";
 
-    facteurCH4: 30,
-
-    facteurN2O: 4,
-
-    uniteFacteur: "kg/TJ",
-
-    source:
-        "Valeurs de référence utilisées pour le prototype — à affiner selon la biomasse étudiée"
-
+/* Tarif moyen SONABEL pour le fallback FCFA → kWh (professionnel, estimation) */
+const TARIF_MOYEN_FCFA_KWH = {
+    valeur: 130,
+    unite: "FCFA/kWh",
+    zone: "Burkina Faso",
+    source: "Estimation — grille SONABEL professionnelle, à affiner par usage",
+    statut: "provisoire"
 };
 
 
 /* =========================================
-   CHARBON DE BOIS
-   ========================================= */
-
-const FACTEUR_CHARBON = {
-
-    nom: "Charbon de bois",
-
-    unite: "kg",
-
-    NCV: 29,
-
-    facteurCO2: 94600,
-
-    facteurCH4: 10,
-
-    facteurN2O: 1.5,
-
-    uniteFacteur: "kg/TJ",
-
-    source:
-        "Valeurs de référence utilisées pour le prototype — à documenter selon le contexte national"
-
-};
-
-
-/* =========================================
-   ELECTRICITE
-   ========================================= */
-
-const FACTEUR_ELECTRICITE = {
-
-    unite: "kWh",
-
-    facteur: 0.588,
-
-    uniteFacteur: "kgCO2e/kWh",
-
-    anneeReference: 2014,
-
-    statut:
-        "Facteur de référence historique — ne pas présenter comme facteur officiel 2026",
-
-    source:
-        "Référence historique du réseau électrique du Burkina Faso"
-
-
-};
-
-
-/* =========================================
-   FLUIDES FRIGORIGENES
-   =========================================
-   
-   Ces valeurs correspondent au GWP des
-   fluides et non à des facteurs nationaux
-   d'émission.
+   FLUIDES FRIGORIGÈNES — GWP AR4
    ========================================= */
 
 const FACTEURS_FRIGORIGENES = {
 
-
-    /* R-134a */
-
     r134a: {
-
         nom: "R-134a",
-
-        unite: "kg",
-
         facteur: 1430,
-
-        type: "GWP",
-
-        source:
-            "Valeur internationale de référence du GWP"
-
+        unite: "kgCO2e/kg",
+        type: "GWP AR4",
+        source: "IPCC AR4 — 100 ans"
     },
-
-
-    /* R-404A */
 
     r404a: {
-
         nom: "R-404A",
-
-        unite: "kg",
-
         facteur: 3922,
-
-        type: "GWP",
-
-        source:
-            "Valeur internationale de référence du GWP"
-
+        unite: "kgCO2e/kg",
+        type: "GWP AR4",
+        source: "IPCC AR4 — 100 ans"
     },
 
-
-    /* R-32 */
-
     r32: {
-
         nom: "R-32",
-
-        unite: "kg",
-
         facteur: 675,
+        unite: "kgCO2e/kg",
+        type: "GWP AR4",
+        source: "IPCC AR4 — 100 ans"
+    },
 
-        type: "GWP",
+    r410a: {
+        nom: "R-410A",
+        facteur: 2088,
+        unite: "kgCO2e/kg",
+        type: "GWP AR4",
+        source: "IPCC AR4 — 100 ans"
+    },
 
-        source:
-            "Valeur internationale de référence du GWP"
-
+    r407c: {
+        nom: "R-407C",
+        facteur: 1774,
+        unite: "kgCO2e/kg",
+        type: "GWP AR4",
+        source: "IPCC AR4 — 100 ans"
     }
 
 };
 
 
 /* =========================================
-   CIMENT
-   =========================================
-   
-   Le ciment représente une source importante
-   dans le secteur BTP.
-   
-   Pour éviter d'utiliser un facteur sans
-   justification méthodologique suffisante,
-   le calcul automatique reste désactivé
-   dans cette version du prototype.
+   CIMENT — FACTEUR PROVISOIRE
    ========================================= */
 
 const FACTEUR_CIMENT = {
-
-    unite: "kg",
-
-    facteur: 0,
-
-    statut:
-        "Facteur à documenter avant intégration au calcul",
-
-    source:
-        "Non retenu dans la version actuelle du prototype"
-
+    nom: "Ciment (moyenne générique)",
+    facteur: 0.85,
+    unite: "kgCO2e/kg",
+    statut: "provisoire",
+    source: "Valeur générique internationale (clinker moyen)",
+    note: "Approximation provisoire. À remplacer dès qu'un facteur fournisseur ou régional représentatif du ciment commercialisé au Burkina Faso est disponible. Poste séparé du diesel des engins et de l'électricité du chantier."
 };
 
 
 /* =========================================
-   DECHETS ORGANIQUES
-   =========================================
-   
-   La quantité seule ne permet pas de déterminer
-   correctement les émissions.
-   
-   Le traitement doit être connu :
-   compostage, enfouissement, méthanisation,
-   brûlage, etc.
+   ÉLEVAGE — FERMENTATION ENTÉRIQUE
+   GIEC 2006, Vol.4, Ch.10 — valeurs Afrique subsaharienne
    ========================================= */
 
-const FACTEUR_DECHETS = {
+const FACTEURS_ELEVAGE = {
 
-    unite: "kg",
-
-    facteur: 0,
-
-    statut:
-        "Non calculé — méthode de traitement à préciser",
-
-    source:
-        "Méthodologie à définir pour le prototype"
-
-
-};
-
-
-/* =========================================
-   AGRICULTURE ET ELEVAGE
-   =========================================
-   
-   Ces émissions nécessitent davantage
-   d'informations que celles actuellement
-   demandées dans le formulaire.
-   
-   Elles restent donc désactivées pour
-   éviter une fausse précision.
-   ========================================= */
-
-const FACTEURS_AGRICULTURE = {
-
-    animaux: {
-
-        facteur: 0,
-
-        unite: "animal",
-
-        statut:
-            "Non calculé — espèce et catégorie animale à préciser"
-
+    bovins: {
+        nom: "Bovins",
+        facteurCH4Annuel: 31,
+        unite: "kgCH4/tête/an",
+        facteurCO2eAnnuel: 775,
+        source: "GIEC 2006, Vol.4, Ch.10, Table 10.10 (Afrique)",
+        statut: "default",
+        note: "Divisé par 12 pour obtenir une estimation mensuelle."
     },
 
-
-    fumier: {
-
-        facteur: 0,
-
-        unite: "kg",
-
-        statut:
-            "Non calculé — mode de gestion du fumier à préciser"
-
+    ovins: {
+        nom: "Ovins",
+        facteurCH4Annuel: 5,
+        unite: "kgCH4/tête/an",
+        facteurCO2eAnnuel: 125,
+        source: "GIEC 2006, Vol.4, Ch.10, Table 10.10 (Afrique)",
+        statut: "default"
     },
 
+    caprins: {
+        nom: "Caprins",
+        facteurCH4Annuel: 5,
+        unite: "kgCH4/tête/an",
+        facteurCO2eAnnuel: 125,
+        source: "GIEC 2006, Vol.4, Ch.10, Table 10.10 (Afrique)",
+        statut: "default"
+    },
 
-    engrais: {
-
-        facteur: 0,
-
-        unite: "kg",
-
-        statut:
-            "Non calculé — teneur en azote à préciser"
-
+    porcins: {
+        nom: "Porcins",
+        facteurCH4Annuel: 1,
+        unite: "kgCH4/tête/an",
+        facteurCO2eAnnuel: 25,
+        source: "GIEC 2006, Vol.4, Ch.10, Table 10.10 (Afrique)",
+        statut: "default"
     }
 
 };
 
+const GESTION_FUMIER = [
+    { id: "paturage",   nom: "Laissé au pâturage" },
+    { id: "tas",        nom: "Stocké en tas" },
+    { id: "compost",    nom: "Composté" },
+    { id: "fosse",      nom: "Fosse / accumulation" },
+    { id: "epandage",   nom: "Épandu sur les sols" },
+    { id: "biodigesteur", nom: "Biodigesteur" }
+];
+
 
 /* =========================================
-   RESEAUX DE CHALEUR / FROID
+   ENGRAIS AZOTÉS
+   GIEC 2006, Vol.4, Ch.11 — émissions directes N2O
    ========================================= */
 
-const FACTEURS_RESEAUX = {
+const FACTEURS_ENGRAIS = {
 
-    reseauChaleur: {
-
-        unite: "kWh",
-
-        facteur: 0,
-
-        statut:
-            "Facteur à documenter"
-
+    uree: {
+        nom: "Urée (46 % N)",
+        teneurN: 0.46,
+        facteurCO2Uree: 0.733,
+        source: "GIEC 2006, Vol.4, Ch.11 + hydrolyse urée",
+        statut: "default"
     },
 
+    npk_15_15_15: {
+        nom: "NPK 15-15-15 (15 % N)",
+        teneurN: 0.15,
+        source: "GIEC 2006, Vol.4, Ch.11",
+        statut: "default"
+    },
 
-    reseauFroid: {
+    npk_14_23_14: {
+        nom: "NPK 14-23-14 (14 % N, coton)",
+        teneurN: 0.14,
+        source: "GIEC 2006, Vol.4, Ch.11",
+        statut: "default"
+    },
 
-        unite: "kWh",
-
-        facteur: 0,
-
-        statut:
-            "Facteur à documenter"
-
+    sulfate_ammonium: {
+        nom: "Sulfate d'ammonium (21 % N)",
+        teneurN: 0.21,
+        source: "GIEC 2006, Vol.4, Ch.11",
+        statut: "default"
     }
+
+};
+
+/* Facteur N2O direct : 0.01 kg N2O-N / kg N, converti en N2O (× 44/28), pondéré GWP AR4 */
+const FACTEUR_N2O_DIRECT_PAR_KG_N = 0.01 * (44 / 28) * GWP_BURKINA.N2O; // ≈ 4.68 kgCO2e/kgN
+
+
+/* =========================================
+   DÉCHETS ORGANIQUES
+   Le facteur dépend du mode de traitement.
+   Tant qu'aucune quantité ET destination ne sont fournies,
+   aucune estimation n'est produite.
+   ========================================= */
+
+const DESTINATIONS_DECHETS = [
+    { id: "compostage",    nom: "Compostage" },
+    { id: "brulage",       nom: "Brûlage" },
+    { id: "decharge",      nom: "Mise en décharge" },
+    { id: "alim_animale",  nom: "Alimentation animale" },
+    { id: "biodigesteur",  nom: "Biodigesteur" }
+];
+
+
+/* =========================================
+   UNITÉS LOCALES — CONVERSIONS DOCUMENTÉES
+   Chaque conversion affiche sa source.
+   Les valeurs marquées "provisoire" doivent être confirmées.
+   ========================================= */
+
+const UNITES_LOCALES = {
+
+    carburant_liquide: [
+        { id: "litre",    nom: "Litres",          multiplicateur: 1 },
+        { id: "bidon_20", nom: "Bidon de 20 L",   multiplicateur: 20 },
+        { id: "fut_200",  nom: "Fût de 200 L",    multiplicateur: 200 }
+    ],
+
+    gpl: [
+        { id: "bouteille_6",   nom: "Bouteille 6 kg",    multiplicateur: 6,   provisoire: false },
+        { id: "bouteille_12_5",nom: "Bouteille 12,5 kg", multiplicateur: 12.5,provisoire: false },
+        { id: "bouteille_25",  nom: "Bouteille 25 kg",   multiplicateur: 25,  provisoire: false },
+        { id: "bouteille_50",  nom: "Bouteille 50 kg",   multiplicateur: 50,  provisoire: false },
+        { id: "kg",            nom: "Kilogrammes",       multiplicateur: 1 }
+    ],
+
+    bois: [
+        { id: "kg",    nom: "Kilogrammes",    multiplicateur: 1 },
+        { id: "fagot", nom: "Fagot (~20 kg)", multiplicateur: 20, provisoire: true }
+    ],
+
+    charbon: [
+        { id: "kg",  nom: "Kilogrammes",   multiplicateur: 1 },
+        { id: "sac", nom: "Sac (~30 kg)",  multiplicateur: 30, provisoire: true }
+    ],
+
+    ciment: [
+        { id: "sac_50", nom: "Sac de 50 kg", multiplicateur: 50 },
+        { id: "tonne",  nom: "Tonne",        multiplicateur: 1000 }
+    ],
+
+    engrais: [
+        { id: "sac_50", nom: "Sac de 50 kg", multiplicateur: 50 },
+        { id: "kg",     nom: "Kilogrammes",  multiplicateur: 1 },
+        { id: "tonne",  nom: "Tonne",        multiplicateur: 1000 }
+    ]
 
 };
 
 
 /* =========================================
-   STRUCTURE GLOBALE
+   QUALITÉ DE DONNÉE
+   ========================================= */
+
+const QUALITES = {
+    confirmee:  { id: "confirmee",  nom: "Confirmée",  description: "Facture, reçu, relevé de compteur, bon de livraison." },
+    declaree:   { id: "declaree",   nom: "Déclarée",   description: "Quantité renseignée sans justificatif." },
+    estimee:    { id: "estimee",    nom: "Estimée",    description: "Calculée depuis un montant FCFA, un nombre de sacs, une conversion locale." },
+    manquante:  { id: "manquante",  nom: "Manquante",  description: "Source identifiée mais quantité indisponible." }
+};
+
+
+/* =========================================
+   STRUCTURE GLOBALE — AGRÉGAT
    ========================================= */
 
 const FACTEURS_EMISSION = {
 
-
-    /* Electricité */
-
-    electricite:
-        FACTEUR_ELECTRICITE,
-
+    /* Électricité */
+    electricite_reference: FACTEURS_ELECTRICITE[0],
+    electricite_historique: FACTEURS_ELECTRICITE[1],
 
     /* Combustibles */
-
-    essence:
-        FACTEURS_COMBUSTIBLES.essence,
-
-    diesel:
-        FACTEURS_COMBUSTIBLES.diesel,
-
-    propane:
-        FACTEURS_COMBUSTIBLES.propane,
-
-    fioul:
-        FACTEURS_COMBUSTIBLES.fioul,
-
+    essence: FACTEURS_COMBUSTIBLES.essence,
+    diesel_moteur: FACTEURS_COMBUSTIBLES.diesel_moteur,
+    diesel_groupe: FACTEURS_COMBUSTIBLES.diesel_groupe,
+    propane: FACTEURS_COMBUSTIBLES.propane,
+    fioul: FACTEURS_COMBUSTIBLES.fioul,
 
     /* Biomasse */
-
-    bois:
-        FACTEUR_BOIS,
-
-    charbon:
-        FACTEUR_CHARBON,
-
+    bois: FACTEURS_COMBUSTIBLES.bois,
+    charbon_bois: FACTEURS_COMBUSTIBLES.charbon_bois,
 
     /* Fluides */
-
-    r134a:
-        FACTEURS_FRIGORIGENES.r134a,
-
-    r404a:
-        FACTEURS_FRIGORIGENES.r404a,
-
-    r32:
-        FACTEURS_FRIGORIGENES.r32,
-
+    r134a: FACTEURS_FRIGORIGENES.r134a,
+    r404a: FACTEURS_FRIGORIGENES.r404a,
+    r32: FACTEURS_FRIGORIGENES.r32,
+    r410a: FACTEURS_FRIGORIGENES.r410a,
+    r407c: FACTEURS_FRIGORIGENES.r407c,
 
     /* BTP */
-
-    ciment:
-        FACTEUR_CIMENT,
-
-
-    /* Déchets */
-
-    dechets:
-        FACTEUR_DECHETS,
-
-
-    /* Agriculture */
-
-    animaux:
-        FACTEURS_AGRICULTURE.animaux,
-
-    fumier:
-        FACTEURS_AGRICULTURE.fumier,
-
-    engrais:
-        FACTEURS_AGRICULTURE.engrais,
-
-
-    /* Réseaux */
-
-    reseauChaleur:
-        FACTEURS_RESEAUX.reseauChaleur,
-
-    reseauFroid:
-        FACTEURS_RESEAUX.reseauFroid
+    ciment: FACTEUR_CIMENT
 
 };
