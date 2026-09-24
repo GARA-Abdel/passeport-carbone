@@ -86,7 +86,6 @@
 .delta.up   { background: rgba(230,140,120,0.25); color: #ffe9e2; }
 .delta.flat { background: rgba(200,200,200,0.15); color: #f0f0f0; }
 
-/* Niveau */
 .niveau-badge {
     display: inline-flex;
     align-items: center;
@@ -102,7 +101,6 @@
 .niveau-eleve      { background: #fbe0d8; color: #a8442b; }
 .niveau-tres-eleve { background: #f7cfc8; color: #8f2f1c; }
 
-/* Top 3 */
 .top3-item {
     display: grid;
     grid-template-columns: 1fr auto;
@@ -136,7 +134,6 @@
 .top3-item.rank-2 .bar-wrap i { background: #4a9a62; }
 .top3-item.rank-3 .bar-wrap i { background: #8cc89b; }
 
-/* Qualité */
 .quality-row {
     display: flex;
     justify-content: space-between;
@@ -150,7 +147,6 @@
 .quality-row .val  { font-weight: 700; color: #173d26; }
 .quality-row.manquante .val { color: #a8442b; }
 
-/* Actions */
 .action-card {
     display: flex;
     gap: 14px;
@@ -176,7 +172,6 @@
 }
 .action-card .txt { font-size: 14px; color: #2b3a30; line-height: 1.5; }
 
-/* Conseils */
 .conseil-item {
     display: flex;
     gap: 10px;
@@ -188,7 +183,6 @@
 .conseil-item:last-child { border-bottom: none; }
 .conseil-item .dot { color: #318049; flex-shrink: 0; }
 
-/* Tableau détail */
 .detail-table {
     width: 100%;
     border-collapse: collapse;
@@ -233,7 +227,6 @@
     margin-top: 3px;
 }
 
-/* En-tête print-only / footer print-only */
 .print-only { display: none; }
 
 .print-signature {
@@ -246,7 +239,6 @@
     justify-content: space-between;
 }
 
-/* Bouton PDF */
 .pdf-button {
     display: inline-flex;
     align-items: center;
@@ -262,10 +254,6 @@
 }
 .pdf-button:hover { background: #185c31; transform: translateY(-1px); }
 
-
-/* =========================================
-   IMPRESSION / PDF
-   ========================================= */
 
 @media print {
 
@@ -337,7 +325,6 @@
 
 <main class="form-page">
 
-    <!-- En-tête print-only -->
     <div class="print-only" style="margin-bottom:18px">
         <div style="display:flex;justify-content:space-between;align-items:baseline;border-bottom:2px solid #267a42;padding-bottom:10px;margin-bottom:4px">
             <strong style="font-size:16px;color:#173d26">🌿 Passeport Carbone</strong>
@@ -360,21 +347,16 @@
 </main>
 
 <script src="facteurs.js"></script>
+<script src="sources.js"></script>
 <script src="calcul.js"></script>
 <script>
 (function () {
 
-    /* =========================================
-       CLÉS DE STOCKAGE
-       ========================================= */
     const KEY_EVAL    = "passeportCarboneEvaluation";
     const KEY_HISTORY = "passeportCarboneHistorique";
 
     const $rapport = document.getElementById("rapport");
 
-    /* =========================================
-       LECTURE
-       ========================================= */
     const stored = localStorage.getItem(KEY_EVAL);
     if (!stored) {
         $rapport.innerHTML = messageVide(
@@ -403,9 +385,6 @@
         return;
     }
 
-    /* =========================================
-       CALCUL
-       ========================================= */
     const report = window.PasseportCarboneCalcul.calculerBilanMensuel(donnees);
 
     if (!report) {
@@ -413,9 +392,6 @@
         return;
     }
 
-    /* =========================================
-       HISTORIQUE
-       ========================================= */
     let hist = {};
     try { hist = JSON.parse(localStorage.getItem(KEY_HISTORY)) || {}; } catch {}
     const prev = getRapportMoisPrecedent(donnees, hist);
@@ -429,14 +405,8 @@
     };
     try { localStorage.setItem(KEY_HISTORY, JSON.stringify(hist)); } catch {}
 
-    /* =========================================
-       RENDU
-       ========================================= */
     $rapport.innerHTML = rendreRapport(report, donnees, prev);
 
-    /* =========================================
-       BOUTON PDF
-       ========================================= */
     const btnPdf = document.getElementById("btn-pdf");
     if (btnPdf) {
         btnPdf.addEventListener("click", () => window.print());
@@ -444,10 +414,6 @@
 
 })();
 
-
-/* =========================================
-   HELPERS
-   ========================================= */
 
 function messageVide(titre, texte, lien, labelLien) {
     return `
@@ -523,17 +489,12 @@ function formatActivite(d) {
 }
 
 
-/* =========================================
-   RENDU COMPLET
-   ========================================= */
-
 function rendreRapport(report, donnees, prev) {
 
     const totalOp = report.total_co2e_kg;
     const totalBio = report.total_biogenic_kg;
     const niveau = report.niveau;
 
-    /* --- Delta vs mois précédent --- */
     let deltaHtml = "";
     if (prev) {
         const d = totalOp - prev.total_co2e_kg;
@@ -554,7 +515,6 @@ function rendreRapport(report, donnees, prev) {
         deltaHtml = `<span class="delta flat">→ Premier bilan enregistré pour ce secteur</span>`;
     }
 
-    /* --- Bloc biogénique --- */
     const bioHtml = totalBio > 0 ? `
         <div class="biogenic">
             <div>
@@ -563,7 +523,6 @@ function rendreRapport(report, donnees, prev) {
             </div>
         </div>` : "";
 
-    /* --- Top 3 --- */
     let top3Html = "";
     if (report.top3.length === 0) {
         top3Html = `<p style="color:#7a857d;padding:10px 0">Aucune source calculable ce mois-ci.</p>`;
@@ -580,7 +539,6 @@ function rendreRapport(report, donnees, prev) {
         }).join("");
     }
 
-    /* --- Qualité --- */
     const q = report.qualityShare;
     const qc = report.qualityCounts;
     const qualiteHtml = `
@@ -601,7 +559,6 @@ function rendreRapport(report, donnees, prev) {
             <span class="val">${qc.manquante || 0}</span>
         </div>`;
 
-    /* --- Actions --- */
     const actionsHtml = report.actions.map(a => `
         <div class="action-card">
             <div class="icon">✓</div>
@@ -611,7 +568,6 @@ function rendreRapport(report, donnees, prev) {
             </div>
         </div>`).join("");
 
-    /* --- Conseils secteur --- */
     let conseilsHtml = "";
     if (report.conseilsSecteur.length > 0) {
         conseilsHtml = report.conseilsSecteur.map(c => `
@@ -621,7 +577,6 @@ function rendreRapport(report, donnees, prev) {
             </div>`).join("");
     }
 
-    /* --- Tableau détail --- */
     const detailsTries = [...report.details].sort((a, b) => b.co2e - a.co2e);
     const detailHtml = detailsTries.map(d => {
         const note = d.note ? `<span class="note">${echapper(d.note)}</span>` : "";
@@ -634,12 +589,10 @@ function rendreRapport(report, donnees, prev) {
             </tr>`;
     }).join("");
 
-    /* --- Date --- */
     const dateImpression = new Date().toLocaleDateString("fr-FR", {
         day: "2-digit", month: "long", year: "numeric"
     });
 
-    /* --- Rendu final --- */
     return `
         <section class="form-intro no-print">
             <span class="section-label">🌍 RAPPORT CARBONE MENSUEL</span>
@@ -647,7 +600,6 @@ function rendreRapport(report, donnees, prev) {
             <p>${echapper(report.nom || "PME")} — ${echapper(formatMois(report.mois))} — ${echapper(nomSecteur(report.secteur))}</p>
         </section>
 
-        <!-- HERO -->
         <section class="report-hero">
             <div class="label">Émissions opérationnelles du mois</div>
             <div class="big-value">${formatKg(totalOp, true).replace(/ t$/, "")}<span class="big-unit">t CO₂e</span></div>
@@ -656,13 +608,11 @@ function rendreRapport(report, donnees, prev) {
             <div>${deltaHtml}</div>
         </section>
 
-        <!-- NIVEAU -->
         <section class="form-card">
             <div class="niveau-badge niveau-${niveau.niveau}">${niveau.titre}</div>
             <p style="color:#536057;font-size:14px;margin:0">${echapper(niveau.message)}</p>
         </section>
 
-        <!-- TOP 3 -->
         <section class="form-card">
             <div class="form-header">
                 <span class="form-number">01</span>
@@ -672,7 +622,6 @@ function rendreRapport(report, donnees, prev) {
             ${top3Html}
         </section>
 
-        <!-- QUALITÉ -->
         <section class="form-card">
             <div class="form-header">
                 <span class="form-number">02</span>
@@ -682,7 +631,6 @@ function rendreRapport(report, donnees, prev) {
             ${qualiteHtml}
         </section>
 
-        <!-- ACTIONS -->
         <section class="form-card">
             <div class="form-header">
                 <span class="form-number">03</span>
@@ -692,7 +640,6 @@ function rendreRapport(report, donnees, prev) {
             ${actionsHtml}
         </section>
 
-        <!-- CONSEILS SECTEUR -->
         ${conseilsHtml ? `
         <section class="form-card">
             <div class="form-header">
@@ -702,7 +649,6 @@ function rendreRapport(report, donnees, prev) {
             ${conseilsHtml}
         </section>` : ""}
 
-        <!-- DÉTAIL -->
         <section class="form-card">
             <div class="form-header">
                 <span class="form-number">05</span>
@@ -728,7 +674,6 @@ function rendreRapport(report, donnees, prev) {
             </p>` : ""}
         </section>
 
-        <!-- MÉTHODO -->
         <section class="form-card">
             <div class="form-header">
                 <span class="form-number">06</span>
@@ -747,13 +692,11 @@ function rendreRapport(report, donnees, prev) {
             </p>
         </section>
 
-        <!-- SIGNATURE PRINT -->
         <div class="print-signature">
             <span>Passeport Carbone — Prototype de recherche</span>
             <span>Édité le ${dateImpression}</span>
         </div>
 
-        <!-- ACTIONS -->
         <section class="form-card no-print">
             <div class="form-actions">
                 <a href="detail.html" class="back-button">← Modifier les données</a>
@@ -765,11 +708,6 @@ function rendreRapport(report, donnees, prev) {
         </section>
     `;
 }
-
-
-/* =========================================
-   PROTECTION HTML
-   ========================================= */
 
 function echapper(texte) {
     return String(texte == null ? "" : texte)
