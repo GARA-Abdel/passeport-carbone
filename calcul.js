@@ -266,7 +266,7 @@ function calculerSource(sourceId, input) {
 
         case "fumier": {
             /* La gestion du fumier est enregistrée mais pas encore quantifiée.
-               Les émissions dépendent du mode de gestion et de la espèce —
+               Les émissions dépendent du mode de gestion et de l'espèce —
                facteurs par filière à documenter avant tout calcul. */
             base.co2e = 0;
             base.note = "Pratique de gestion du fumier enregistrée. Quantification en attente de facteurs par filière.";
@@ -286,7 +286,8 @@ function calculerSource(sourceId, input) {
             return null;
     }
 
-    return base;
+    /* On conserve la saisie d'origine pour l'affichage du détail dans le rapport */
+    return Object.assign({}, base, { input: input });
 }
 
 
