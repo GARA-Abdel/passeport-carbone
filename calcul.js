@@ -352,26 +352,63 @@ const CONSEILS_SECTEURS = {
 
 
 /* =========================================
-   NIVEAU D'ÉMISSION
+   SEUILS SECTORIELS D'INTERPRÉTATION
+   Fourchettes mensuelles en kg CO2e opérationnel.
+   Basés sur les ordres de grandeur d'activité des PME
+   burkinabè. Restent indicatifs — pas une norme nationale.
    ========================================= */
 
-function determinerNiveauEmission(totalKg) {
-    totalKg = _nombre(totalKg);
+const SEUILS_SECTORIELS = {
 
-    if (totalKg < 100) {
-        return { niveau: "faible", titre: "Émissions relativement faibles",
-                 message: "Le niveau est faible pour le périmètre déclaré. Continuez à suivre vos consommations chaque mois." };
+    /* [borne basse, borne attendue, borne haute] */
+    agroalimentaire: [200, 1000, 3000],
+    btp:             [500, 2500, 8000],
+    industrie:       [500, 2500, 8000],
+    commerce:        [500, 3000, 10000],
+    agriculture:     [500, 2500, 8000]
+
+};
+
+const SEUILS_PAR_DEFAUT = [500, 2500, 8000];
+
+
+/* =========================================
+   NIVEAU D'ÉMISSION — sectorisé et non prescriptif
+   ========================================= */
+
+function determinerNiveauEmission(totalKg, secteur) {
+    totalKg = _nombre(totalKg);
+    const seuils = SEUILS_SECTORIELS[secteur] || SEUILS_PAR_DEFAUT;
+
+    if (totalKg < seuils[0]) {
+        return {
+            niveau: "bas",
+            titre: "Dans la fourchette basse du secteur",
+            message: "Le niveau d'émission déclaré est inférieur aux ordres de grandeur habituels pour ce type d'activité. Continuez à suivre vos consommations chaque mois."
+        };
     }
-    if (totalKg < 1000) {
-        return { niveau: "modere", titre: "Émissions à surveiller",
-                 message: "Un suivi régulier est recommandé. Identifiez les principales sources." };
+
+    if (totalKg < seuils[1]) {
+        return {
+            niveau: "attendu",
+            titre: "Niveau attendu pour ce secteur",
+            message: "Le niveau d'émission déclaré se situe dans la fourchette habituelle de votre secteur. Un suivi mensuel régulier reste recommandé pour identifier les évolutions."
+        };
     }
-    if (totalKg < 5000) {
-        return { niveau: "eleve", titre: "Émissions élevées",
-                 message: "Identifiez les principales sources et mettez en place des actions prioritaires." };
+
+    if (totalKg < seuils[2]) {
+        return {
+            niveau: "au-dessus",
+            titre: "Au-dessus de la fourchette attendue",
+            message: "Le niveau d'émission déclaré dépasse les ordres de grandeur habituels pour ce type d'activité. Identifiez les principales sources et cherchez des pistes de réduction."
+        };
     }
-    return { niveau: "tres-eleve", titre: "Émissions très élevées",
-             message: "Une analyse approfondie et un plan d'action prioritaire sont recommandés." };
+
+    return {
+        niveau: "significatif",
+        titre: "Poste significatif — priorité de réduction",
+        message: "Le niveau d'émission déclaré est nettement supérieur aux ordres de grandeur habituels pour ce type d'activité. Une analyse approfondie des principales sources est recommandée."
+    };
 }
 
 
@@ -442,8 +479,8 @@ function calculerBilanMensuel(donnees) {
         }
     }
 
-    /* Niveau et conseils */
-    const niveau = determinerNiveauEmission(total_co2e);
+    /* Niveau et conseils — niveau désormais sectorisé */
+    const niveau = determinerNiveauEmission(total_co2e, secteur);
     const conseilsSecteur = CONSEILS_SECTEURS[secteur] || [];
     const actions = genererActions(top3);
 
